@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Large generated data (keep only the small sample)
+data/*.csv
+!data/sample/
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
