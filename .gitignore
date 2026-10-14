@@ -5,9 +5,10 @@ __pycache__/
 venv/
 .pytest_cache/
 
-# Large generated data (keep only the small sample)
+# Large generated data: regenerate with the command in README.md.
+# Only the small sample in data/sample/ is committed.
 data/*.csv
-!data/sample/
+data/*.csv.gz
 
 # Editor / OS
 .vscode/

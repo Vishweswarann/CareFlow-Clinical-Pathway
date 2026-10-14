@@ -6,7 +6,7 @@ CareFlow is a Clinical Pathway Process Mining project that analyses how hospital
 
 This document describes the schema of the synthetic Emergency Department (ED) event log generated for the project.
 
-The dataset contains entirely fictional records created using Python and pandas. It does not contain real patient information and must not be interpreted as actual hospital statistics.
+All records are fictional and generated programmatically. The dataset contains no real patient information and must not be interpreted as actual hospital statistics or clinical guidance.
 
 ## 2. Dataset Summary
 
@@ -16,16 +16,18 @@ The dataset contains entirely fictional records created using Python and pandas.
 | Generation language | Python |
 | Data processing library | pandas |
 | File format | CSV |
-| Number of encounters in the current full dataset | 5,000 |
-| Number of events in the current full dataset | 34,680 |
-| Number of columns | 8 |
+| Events in the current full dataset | 200,004 |
+| Encounters in the current full dataset | 28,737 |
+| Number of columns | 15 |
 | Number of activity types | 9 |
-| Random seed used | 42 |
-| Arrival date range configured | 2025-01-01 over 365 days |
+| Random seed used for the current dataset | 42 |
+| Configured start date | 2025-01-01 |
 | Full dataset path | `data/ehr_events_full.csv` |
 | Sample dataset path | `data/sample/ehr_events_sample.csv` |
 
 The full dataset contains multiple events per encounter. Therefore, the number of event records is greater than the number of encounters.
+
+The event target is a minimum rather than an exact count because the generator completes encounters instead of cutting an encounter off to reach an exact row count.
 
 ## 3. Event-Level Schema
 
@@ -33,54 +35,61 @@ Each row represents one activity performed during a hospital encounter.
 
 | Column | Description | Purpose |
 |---|---|---|
-| `event_id` | Unique identifier for an event | Distinguishes individual event records |
-| `case_id` | Unique identifier for a hospital encounter | Groups events belonging to the same encounter |
-| `activity` | Name of the clinical activity performed | Represents a step in the clinical pathway |
-| `timestamp` | Date and time associated with the event | Establishes event order and supports duration analysis |
-| `department` | Department responsible for the activity | Supports department-level analysis |
+| `event_id` | Unique event identifier | Distinguishes individual event records |
+| `case_id` | Encounter identifier | Groups events belonging to the same encounter |
+| `activity` | Clinical activity name | Represents a step in the clinical pathway |
+| `timestamp` | Generated event date and time | Establishes event order and supports elapsed-time analysis |
+| `department` | Department associated with the activity | Supports department-level analysis |
+| `event_sequence` | Position of the event within its encounter, starting at 1 | Supports ordering and pathway reconstruction |
+| `resource_role` | Fictional staff role assigned to the activity | Supports role-level analysis |
+| `resource_id` | Fictional staff identifier | Identifies the assigned synthetic resource |
+| `event_detail` | Generated description of the activity | Adds contextual detail to the event |
 | `arrival_mode` | Synthetic mode of arrival | Provides encounter context |
-| `triage_level` | Synthetic triage urgency level from 1 to 5 | Supports grouping by assigned urgency |
-| `disposition` | Encounter outcome, such as discharge or hospital admission | Identifies how the encounter concludes |
+| `age_group` | Synthetic age category | Supports age-group analysis |
+| `gender` | Synthetic gender category | Supports demographic grouping |
+| `chief_complaint` | Synthetic reason for the visit | Supports complaint-level pathway analysis |
+| `triage_level` | Synthetic urgency level from 1 to 5 | Supports grouping by assigned urgency |
+| `disposition` | Encounter outcome: discharge or admission | Identifies how the encounter concludes |
 
 ### Identifier conventions
 
-- `event_id` identifies an individual event and must be unique across the dataset.
-- `case_id` identifies an encounter and is shared by all events within that encounter.
-- A single encounter may contain several events.
-- The dataset does not use real patient identifiers.
+- `event_id` must be unique across the dataset.
+- `case_id` is shared by all events belonging to the same encounter.
+- `event_sequence` starts at 1 and increases consecutively within each encounter.
+- Resource identifiers refer to fictional staff members, not real employees.
+- No real patient identifiers are used.
 
 ### Timestamp conventions
 
-Timestamps represent the generated times of clinical activities. Events within an encounter are expected to occur in chronological order.
+Timestamps represent generated event times. Events within an encounter are expected to be chronologically ordered.
 
-Differences between consecutive timestamps can be used to calculate elapsed time between activities. These differences should not automatically be interpreted as pure waiting time because they may include processing time or other intervals.
+Differences between consecutive timestamps measure elapsed time between recorded activities. They should not automatically be interpreted as pure waiting time because they may include other operational intervals.
 
-## 4. Clinical Activities
+## 4. Clinical Activities and Staff Roles
 
-The current dataset contains nine activity types.
+The generator supports nine activity types.
 
-| Activity | Description |
-|---|---|
-| Registration | Recording the encounter at arrival |
-| Triage | Initial urgency assessment |
-| Doctor Consultation | Clinical consultation |
-| Laboratory Testing | Laboratory investigation |
-| Imaging | Diagnostic imaging |
-| Treatment | Treatment-related activity |
-| Reassessment | Follow-up clinical assessment |
-| Discharge | Ending the encounter with discharge |
-| Hospital Admission | Ending the ED encounter with hospital admission |
+| Activity | Expected department | Assigned staff role |
+|---|---|---|
+| Registration | Front Desk | Registration Clerk |
+| Triage | Triage | Triage Nurse |
+| Doctor Consultation | Emergency Medicine | ED Physician |
+| Laboratory Testing | Laboratory | Lab Technician |
+| Imaging | Radiology | Radiographer |
+| Treatment | Emergency Medicine | ED Nurse |
+| Reassessment | Emergency Medicine | ED Nurse |
+| Discharge | Emergency Medicine | ED Physician |
+| Hospital Admission | Inpatient Admissions | Admissions Officer |
 
-The generator supports variations in the sequence and number of activities. Some encounters include diagnostic testing, repeated activities, reassessments, or longer intervals between events.
+Encounters begin with Registration followed by Triage. Subsequent activities vary according to the generator's pathway rules. Encounters conclude with Discharge or Hospital Admission according to their generated disposition.
 
-These sequences are simplified synthetic representations intended for process-mining experimentation. They are not clinical guidelines.
+The generator may include diagnostic tests, repeated activities, reassessments, and other pathway variations. These are simplified synthetic representations, not clinical guidelines.
 
 ## 5. Synthetic Data Generation Assumptions
 
-The dataset is generated programmatically using Python and pandas.
-
 The generator supports configuration of:
-- Number of encounters
+
+- Encounter count or target event count
 - Random seed
 - Output CSV path
 - Start date
@@ -88,70 +97,100 @@ The generator supports configuration of:
 
 A fixed random seed makes generation reproducible when the code, configuration, and software environment remain unchanged.
 
-Pathway choices, activity frequencies, and time intervals are generated according to assumptions encoded in the script. They have not been established as representative of real hospital populations or operational performance.
+The current generation command is:
 
-## 6. Data Quality Requirements
+```powershell
+python src/generate_ehr_events.py --target-events 200000 --seed 42 --output data/ehr_events_full.csv
+```
 
-The generated event log should satisfy the following checks:
+The generator produced 200,004 events across 28,737 encounters for this configuration.
 
-1. All required columns are present.
-2. Event identifiers are unique.
-3. Encounter identifiers are valid.
-4. Required fields contain no missing values.
-5. Timestamps can be parsed as valid date-time values.
-6. Events are chronologically ordered within each encounter.
-7. Encounter-level attributes remain consistent across events belonging to the same encounter.
-8. Each encounter ends with an appropriate terminal event.
-9. Activity and department values follow the generator's definitions.
+### Waiting-time constraint
 
-Initial validation of the 5,000-encounter dataset found:
-- 34,680 event records
-- 5,000 unique encounters
-- 34,680 unique event identifiers
+The generator draws waiting times using a lognormal distribution and applies a minimum wait of 60 seconds and a maximum wait of four hours for each individual event-to-event interval.
+
+The four-hour maximum is a synthetic-data modeling constraint intended to limit extreme random draws. It is not a claim about actual hospital waiting-time standards. Total encounter duration can exceed four hours because an encounter may contain multiple intervals.
+
+Pathway choices, activity frequencies, staff assignments, and timing distributions are assumptions encoded in the generator. They have not been established as representative of real hospital populations or operational performance.
+
+## 6. Data Quality and Validation
+
+The current dataset has been checked for:
+
+- Required columns and missing values
+- Duplicate event records and event identifiers
+- Timestamp validity and chronological ordering
+- Consecutive event sequence numbers
+- Consistency of encounter-level attributes
+- Activity-to-department mapping
+- Correct encounter starts and terminal activities
+- Activity-to-staff-role mapping
+- Resource ID prefixes matching their assigned staff roles
+
+The latest validation run reported:
+
+- 200,004 event records and 28,737 encounters
 - Zero missing values
-- Zero invalid timestamps
-- Zero out-of-order adjacent events in the generated CSV
-- Zero encounters without a terminal event
+- Zero exact duplicate rows
+- Zero duplicate event identifiers
+- Zero invalid or missing timestamps
+- Zero negative or zero timestamp gaps
+- Consecutive event sequences for every encounter
+- Zero activity-to-department mismatches
+- Zero incorrect final activities
+- Zero resource-role mismatches
+- Zero resource ID prefix mismatches
 
-These results describe the checks performed so far. Further automated testing is required to verify pathway logic, reproducibility, and other constraints.
+The automated test suite previously passed all 16 tests, including tests for schema, uniqueness, encounter structure, pathway variation, reproducibility, and target-event behavior.
+
+These checks establish consistency with the implemented generation rules. They do not establish clinical realism or guarantee that every possible data-quality issue has been tested.
 
 ## 7. Process Mining Compatibility
 
-The dataset is designed to support process mining with PM4Py.
+The dataset is designed to support event-log construction in PM4Py.
 
-The primary fields for event-log construction are:
+The primary fields are:
+
 - Case identifier: `case_id`
 - Activity identifier: `activity`
 - Timestamp: `timestamp`
 
-The event log can support:
+Potential analyses include:
+
 - Process discovery
-- Process variant analysis
+- Pathway variant analysis
 - Repeated-activity and loop analysis
 - Elapsed-time analysis
-- Identification of potential bottlenecks
+- Investigation of potential bottlenecks
 
-Conformance checking requires an explicitly defined reference process model and is not established merely by generating the event log.
+Conformance checking requires an explicitly defined reference process model; generating an event log alone does not establish conformance.
 
-## 8. File Locations
+## 8. Project File Locations
 
-- Python generator: `src/generate_ehr_events.py`
+- Generator: `src/generate_ehr_events.py`
+- Automated tests: `tests/test_generate_ehr_events.py`
 - Sample event log: `data/sample/ehr_events_sample.csv`
-- Full event log: `data/ehr_events_full.csv`
-- Requirements: `requirements.txt`
-- Event schema documentation: `docs/event_schema.md`
+- Full generated event log: `data/ehr_events_full.csv`
+- Data dictionary: `docs/data_dictionary.md`
+- Event schema: `docs/event_schema.md`
+- Data validation: `src/eda_validation.py`
+- EDA analysis: `src/eda_analysis.py`
+- Runtime dependencies: `requirements.txt`
+- Development dependencies: `requirements-dev.txt`
+- CI workflow: `.github/workflows/ci.yml`
 
-The sample dataset is intended for quick inspection and testing. The full dataset is intended for the team's analysis and integration workflow.
+The full generated dataset is excluded from normal Git tracking by the project's ignore rules. Coordinate a separate handoff method with the team if the full CSV is required by other contributors.
 
 ## 9. Limitations
 
 - All records are synthetic.
 - Clinical pathways are simplified.
-- Timing and activity distributions are assumptions.
+- Activity and timing distributions are assumptions.
+- The four-hour interval cap is a generation constraint, not a real-world standard.
 - The dataset is not suitable for clinical decision-making.
-- Data-quality checks do not establish clinical realism.
-- The final schema and full-dataset sharing method should be confirmed with the project team before downstream integration.
+- Data-quality checks do not establish clinical validity.
+- Downstream integration and the full-dataset sharing method should be confirmed with the project team.
 
 ## 10. Intended Use
 
-This dataset is intended solely for the CareFlow academic project, including data ingestion, transformation, process mining, operational analysis, and dashboard development.
+This dataset is intended for the CareFlow academic project, including data ingestion, transformation, process mining, operational analysis, and dashboard development.

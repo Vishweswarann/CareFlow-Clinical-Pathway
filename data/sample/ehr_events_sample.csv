@@ -1,691 +1,697 @@
-event_id,case_id,activity,timestamp,department,arrival_mode,triage_level,disposition
-EV0000001,ED000007,Registration,2026-01-02 22:59:48,Front Desk,Walk-in,3,Discharged
-EV0000002,ED000007,Triage,2026-01-02 23:11:15,Triage,Walk-in,3,Discharged
-EV0000003,ED000007,Doctor Consultation,2026-01-02 23:45:35,Emergency Medicine,Walk-in,3,Discharged
-EV0000004,ED000007,Imaging,2026-01-03 00:12:59,Radiology,Walk-in,3,Discharged
-EV0000005,ED000007,Treatment,2026-01-03 00:18:53,Emergency Medicine,Walk-in,3,Discharged
-EV0000006,ED000007,Treatment,2026-01-03 00:32:54,Emergency Medicine,Walk-in,3,Discharged
-EV0000007,ED000007,Reassessment,2026-01-03 01:21:56,Emergency Medicine,Walk-in,3,Discharged
-EV0000008,ED000007,Discharge,2026-01-03 01:38:20,Emergency Medicine,Walk-in,3,Discharged
-EV0000009,ED000071,Registration,2026-01-03 09:04:06,Front Desk,Walk-in,3,Admitted
-EV0000010,ED000071,Triage,2026-01-03 09:13:21,Triage,Walk-in,3,Admitted
-EV0000011,ED000050,Registration,2026-01-03 10:53:09,Front Desk,Walk-in,5,Discharged
-EV0000012,ED000050,Triage,2026-01-03 11:07:08,Triage,Walk-in,5,Discharged
-EV0000013,ED000071,Doctor Consultation,2026-01-03 11:33:15,Emergency Medicine,Walk-in,3,Admitted
-EV0000014,ED000071,Laboratory Testing,2026-01-03 11:51:05,Laboratory,Walk-in,3,Admitted
-EV0000015,ED000050,Doctor Consultation,2026-01-03 12:01:20,Emergency Medicine,Walk-in,5,Discharged
-EV0000016,ED000071,Treatment,2026-01-03 12:30:49,Emergency Medicine,Walk-in,3,Admitted
-EV0000017,ED000050,Reassessment,2026-01-03 12:45:14,Emergency Medicine,Walk-in,5,Discharged
-EV0000018,ED000050,Discharge,2026-01-03 13:04:26,Emergency Medicine,Walk-in,5,Discharged
-EV0000019,ED000071,Reassessment,2026-01-03 13:18:57,Emergency Medicine,Walk-in,3,Admitted
-EV0000020,ED000071,Hospital Admission,2026-01-03 18:00:07,Inpatient Admissions,Walk-in,3,Admitted
-EV0000021,ED000096,Registration,2026-01-05 14:58:45,Front Desk,Walk-in,2,Discharged
-EV0000022,ED000096,Triage,2026-01-05 15:04:27,Triage,Walk-in,2,Discharged
-EV0000023,ED000096,Doctor Consultation,2026-01-05 15:17:13,Emergency Medicine,Walk-in,2,Discharged
-EV0000024,ED000096,Imaging,2026-01-05 15:36:39,Radiology,Walk-in,2,Discharged
-EV0000025,ED000096,Triage,2026-01-05 15:38:53,Triage,Walk-in,2,Discharged
-EV0000026,ED000096,Doctor Consultation,2026-01-05 15:56:45,Emergency Medicine,Walk-in,2,Discharged
-EV0000027,ED000096,Laboratory Testing,2026-01-05 16:01:45,Laboratory,Walk-in,2,Discharged
-EV0000028,ED000096,Treatment,2026-01-05 16:04:00,Emergency Medicine,Walk-in,2,Discharged
-EV0000029,ED000096,Reassessment,2026-01-05 16:17:26,Emergency Medicine,Walk-in,2,Discharged
-EV0000030,ED000096,Reassessment,2026-01-05 16:39:24,Emergency Medicine,Walk-in,2,Discharged
-EV0000031,ED000096,Discharge,2026-01-05 16:54:36,Emergency Medicine,Walk-in,2,Discharged
-EV0000032,ED000066,Registration,2026-01-05 23:25:50,Front Desk,Ambulance,3,Admitted
-EV0000033,ED000066,Triage,2026-01-05 23:33:20,Triage,Ambulance,3,Admitted
-EV0000034,ED000066,Doctor Consultation,2026-01-06 00:11:11,Emergency Medicine,Ambulance,3,Admitted
-EV0000035,ED000066,Treatment,2026-01-06 00:24:57,Emergency Medicine,Ambulance,3,Admitted
-EV0000036,ED000066,Reassessment,2026-01-06 01:43:50,Emergency Medicine,Ambulance,3,Admitted
-EV0000037,ED000066,Hospital Admission,2026-01-06 02:25:50,Inpatient Admissions,Ambulance,3,Admitted
-EV0000038,ED000065,Registration,2026-01-07 06:21:45,Front Desk,Transfer,3,Admitted
-EV0000039,ED000065,Triage,2026-01-07 06:29:10,Triage,Transfer,3,Admitted
-EV0000040,ED000065,Doctor Consultation,2026-01-07 08:39:59,Emergency Medicine,Transfer,3,Admitted
-EV0000041,ED000065,Treatment,2026-01-07 08:54:06,Emergency Medicine,Transfer,3,Admitted
-EV0000042,ED000065,Reassessment,2026-01-07 09:51:59,Emergency Medicine,Transfer,3,Admitted
-EV0000043,ED000065,Hospital Admission,2026-01-07 10:39:25,Inpatient Admissions,Transfer,3,Admitted
-EV0000044,ED000041,Registration,2026-01-08 00:19:13,Front Desk,Walk-in,4,Discharged
-EV0000045,ED000041,Triage,2026-01-08 00:46:42,Triage,Walk-in,4,Discharged
-EV0000046,ED000041,Doctor Consultation,2026-01-08 01:22:16,Emergency Medicine,Walk-in,4,Discharged
-EV0000047,ED000041,Laboratory Testing,2026-01-08 01:48:09,Laboratory,Walk-in,4,Discharged
-EV0000048,ED000041,Treatment,2026-01-08 01:58:01,Emergency Medicine,Walk-in,4,Discharged
-EV0000049,ED000041,Reassessment,2026-01-08 02:25:43,Emergency Medicine,Walk-in,4,Discharged
-EV0000050,ED000041,Discharge,2026-01-08 03:06:20,Emergency Medicine,Walk-in,4,Discharged
-EV0000051,ED000054,Registration,2026-01-08 05:40:25,Front Desk,Ambulance,2,Admitted
-EV0000052,ED000054,Triage,2026-01-08 05:42:38,Triage,Ambulance,2,Admitted
-EV0000053,ED000054,Doctor Consultation,2026-01-08 05:49:29,Emergency Medicine,Ambulance,2,Admitted
-EV0000054,ED000054,Laboratory Testing,2026-01-08 05:57:47,Laboratory,Ambulance,2,Admitted
-EV0000055,ED000054,Treatment,2026-01-08 06:06:27,Emergency Medicine,Ambulance,2,Admitted
-EV0000056,ED000054,Reassessment,2026-01-08 06:17:55,Emergency Medicine,Ambulance,2,Admitted
-EV0000057,ED000054,Hospital Admission,2026-01-08 06:53:10,Inpatient Admissions,Ambulance,2,Admitted
-EV0000058,ED000002,Registration,2026-01-09 02:14:49,Front Desk,Walk-in,3,Admitted
-EV0000059,ED000002,Triage,2026-01-09 02:21:23,Triage,Walk-in,3,Admitted
-EV0000060,ED000002,Doctor Consultation,2026-01-09 02:47:09,Emergency Medicine,Walk-in,3,Admitted
-EV0000061,ED000002,Imaging,2026-01-09 03:04:56,Radiology,Walk-in,3,Admitted
-EV0000062,ED000002,Triage,2026-01-09 03:11:35,Triage,Walk-in,3,Admitted
-EV0000063,ED000002,Doctor Consultation,2026-01-09 03:34:51,Emergency Medicine,Walk-in,3,Admitted
-EV0000064,ED000002,Treatment,2026-01-09 03:51:38,Emergency Medicine,Walk-in,3,Admitted
-EV0000065,ED000002,Reassessment,2026-01-09 04:44:39,Emergency Medicine,Walk-in,3,Admitted
-EV0000066,ED000002,Reassessment,2026-01-09 05:40:01,Emergency Medicine,Walk-in,3,Admitted
-EV0000067,ED000002,Hospital Admission,2026-01-09 09:01:04,Inpatient Admissions,Walk-in,3,Admitted
-EV0000068,ED000008,Registration,2026-01-11 19:04:38,Front Desk,Transfer,3,Discharged
-EV0000069,ED000008,Triage,2026-01-11 19:06:34,Triage,Transfer,3,Discharged
-EV0000070,ED000008,Doctor Consultation,2026-01-11 19:48:03,Emergency Medicine,Transfer,3,Discharged
-EV0000071,ED000008,Imaging,2026-01-11 20:28:58,Radiology,Transfer,3,Discharged
-EV0000072,ED000008,Treatment,2026-01-11 20:41:05,Emergency Medicine,Transfer,3,Discharged
-EV0000073,ED000008,Reassessment,2026-01-11 21:32:41,Emergency Medicine,Transfer,3,Discharged
-EV0000074,ED000008,Discharge,2026-01-11 21:52:31,Emergency Medicine,Transfer,3,Discharged
-EV0000075,ED000091,Registration,2026-01-13 00:30:04,Front Desk,Ambulance,1,Admitted
-EV0000076,ED000091,Triage,2026-01-13 00:31:07,Triage,Ambulance,1,Admitted
-EV0000077,ED000091,Doctor Consultation,2026-01-13 00:52:09,Emergency Medicine,Ambulance,1,Admitted
-EV0000078,ED000091,Imaging,2026-01-13 01:04:32,Radiology,Ambulance,1,Admitted
-EV0000079,ED000091,Triage,2026-01-13 01:05:38,Triage,Ambulance,1,Admitted
-EV0000080,ED000091,Doctor Consultation,2026-01-13 01:09:29,Emergency Medicine,Ambulance,1,Admitted
-EV0000081,ED000091,Laboratory Testing,2026-01-13 01:15:19,Laboratory,Ambulance,1,Admitted
-EV0000082,ED000091,Treatment,2026-01-13 01:23:04,Emergency Medicine,Ambulance,1,Admitted
-EV0000083,ED000091,Reassessment,2026-01-13 01:26:43,Emergency Medicine,Ambulance,1,Admitted
-EV0000084,ED000091,Reassessment,2026-01-13 01:33:07,Emergency Medicine,Ambulance,1,Admitted
-EV0000085,ED000091,Hospital Admission,2026-01-13 01:47:08,Inpatient Admissions,Ambulance,1,Admitted
-EV0000086,ED000062,Registration,2026-01-15 09:28:20,Front Desk,Walk-in,3,Discharged
-EV0000087,ED000062,Triage,2026-01-15 09:35:26,Triage,Walk-in,3,Discharged
-EV0000088,ED000062,Doctor Consultation,2026-01-15 09:54:24,Emergency Medicine,Walk-in,3,Discharged
-EV0000089,ED000062,Treatment,2026-01-15 10:12:22,Emergency Medicine,Walk-in,3,Discharged
-EV0000090,ED000062,Reassessment,2026-01-15 12:41:25,Emergency Medicine,Walk-in,3,Discharged
-EV0000091,ED000062,Discharge,2026-01-15 13:17:29,Emergency Medicine,Walk-in,3,Discharged
-EV0000092,ED000018,Registration,2026-01-15 15:13:29,Front Desk,Walk-in,5,Discharged
-EV0000093,ED000018,Triage,2026-01-15 15:38:29,Triage,Walk-in,5,Discharged
-EV0000094,ED000018,Doctor Consultation,2026-01-15 16:00:27,Emergency Medicine,Walk-in,5,Discharged
-EV0000095,ED000018,Laboratory Testing,2026-01-15 16:38:35,Laboratory,Walk-in,5,Discharged
-EV0000096,ED000018,Reassessment,2026-01-15 17:11:30,Emergency Medicine,Walk-in,5,Discharged
-EV0000097,ED000018,Discharge,2026-01-15 18:23:25,Emergency Medicine,Walk-in,5,Discharged
-EV0000098,ED000015,Registration,2026-01-16 13:51:29,Front Desk,Ambulance,1,Admitted
-EV0000099,ED000015,Triage,2026-01-16 13:59:43,Triage,Ambulance,1,Admitted
-EV0000100,ED000015,Doctor Consultation,2026-01-16 14:19:31,Emergency Medicine,Ambulance,1,Admitted
-EV0000101,ED000015,Laboratory Testing,2026-01-16 14:25:21,Laboratory,Ambulance,1,Admitted
-EV0000102,ED000015,Imaging,2026-01-16 14:36:35,Radiology,Ambulance,1,Admitted
-EV0000103,ED000015,Treatment,2026-01-16 14:39:29,Emergency Medicine,Ambulance,1,Admitted
-EV0000104,ED000015,Reassessment,2026-01-16 14:43:23,Emergency Medicine,Ambulance,1,Admitted
-EV0000105,ED000015,Hospital Admission,2026-01-16 15:04:38,Inpatient Admissions,Ambulance,1,Admitted
-EV0000106,ED000036,Registration,2026-01-17 00:50:50,Front Desk,Ambulance,3,Discharged
-EV0000107,ED000036,Triage,2026-01-17 00:56:34,Triage,Ambulance,3,Discharged
-EV0000108,ED000036,Doctor Consultation,2026-01-17 01:55:43,Emergency Medicine,Ambulance,3,Discharged
-EV0000109,ED000036,Treatment,2026-01-17 02:18:08,Emergency Medicine,Ambulance,3,Discharged
-EV0000110,ED000036,Reassessment,2026-01-17 03:30:08,Emergency Medicine,Ambulance,3,Discharged
-EV0000111,ED000036,Discharge,2026-01-17 03:42:51,Emergency Medicine,Ambulance,3,Discharged
-EV0000112,ED000029,Registration,2026-01-17 13:37:21,Front Desk,Walk-in,3,Discharged
-EV0000113,ED000029,Triage,2026-01-17 13:44:31,Triage,Walk-in,3,Discharged
-EV0000114,ED000029,Doctor Consultation,2026-01-17 14:14:20,Emergency Medicine,Walk-in,3,Discharged
-EV0000115,ED000029,Imaging,2026-01-17 14:38:19,Radiology,Walk-in,3,Discharged
-EV0000116,ED000029,Treatment,2026-01-17 14:46:53,Emergency Medicine,Walk-in,3,Discharged
-EV0000117,ED000029,Reassessment,2026-01-17 16:09:54,Emergency Medicine,Walk-in,3,Discharged
-EV0000118,ED000029,Discharge,2026-01-17 16:49:58,Emergency Medicine,Walk-in,3,Discharged
-EV0000119,ED000009,Registration,2026-01-17 21:56:04,Front Desk,Walk-in,3,Discharged
-EV0000120,ED000009,Triage,2026-01-17 22:09:28,Triage,Walk-in,3,Discharged
-EV0000121,ED000009,Doctor Consultation,2026-01-17 23:09:29,Emergency Medicine,Walk-in,3,Discharged
-EV0000122,ED000009,Imaging,2026-01-17 23:27:28,Radiology,Walk-in,3,Discharged
-EV0000123,ED000009,Treatment,2026-01-17 23:43:26,Emergency Medicine,Walk-in,3,Discharged
-EV0000124,ED000009,Treatment,2026-01-18 00:04:03,Emergency Medicine,Walk-in,3,Discharged
-EV0000125,ED000009,Reassessment,2026-01-18 00:21:25,Emergency Medicine,Walk-in,3,Discharged
-EV0000126,ED000009,Discharge,2026-01-18 00:38:14,Emergency Medicine,Walk-in,3,Discharged
-EV0000127,ED000017,Registration,2026-01-18 20:11:03,Front Desk,Walk-in,3,Discharged
-EV0000128,ED000017,Triage,2026-01-18 20:16:56,Triage,Walk-in,3,Discharged
-EV0000129,ED000017,Doctor Consultation,2026-01-18 20:49:33,Emergency Medicine,Walk-in,3,Discharged
-EV0000130,ED000017,Laboratory Testing,2026-01-18 21:20:57,Laboratory,Walk-in,3,Discharged
-EV0000131,ED000017,Laboratory Testing,2026-01-18 21:59:59,Laboratory,Walk-in,3,Discharged
-EV0000132,ED000017,Treatment,2026-01-18 22:25:47,Emergency Medicine,Walk-in,3,Discharged
-EV0000133,ED000017,Reassessment,2026-01-18 23:18:12,Emergency Medicine,Walk-in,3,Discharged
-EV0000134,ED000017,Discharge,2026-01-18 23:59:24,Emergency Medicine,Walk-in,3,Discharged
-EV0000135,ED000058,Registration,2026-01-19 10:45:20,Front Desk,Walk-in,4,Discharged
-EV0000136,ED000058,Triage,2026-01-19 10:53:24,Triage,Walk-in,4,Discharged
-EV0000137,ED000058,Doctor Consultation,2026-01-19 11:25:29,Emergency Medicine,Walk-in,4,Discharged
-EV0000138,ED000058,Treatment,2026-01-19 11:40:26,Emergency Medicine,Walk-in,4,Discharged
-EV0000139,ED000058,Reassessment,2026-01-19 12:09:24,Emergency Medicine,Walk-in,4,Discharged
-EV0000140,ED000058,Discharge,2026-01-19 12:34:30,Emergency Medicine,Walk-in,4,Discharged
-EV0000141,ED000047,Registration,2026-01-20 08:53:44,Front Desk,Ambulance,3,Discharged
-EV0000142,ED000047,Triage,2026-01-20 09:20:46,Triage,Ambulance,3,Discharged
-EV0000143,ED000047,Doctor Consultation,2026-01-20 09:39:44,Emergency Medicine,Ambulance,3,Discharged
-EV0000144,ED000047,Treatment,2026-01-20 09:51:34,Emergency Medicine,Ambulance,3,Discharged
-EV0000145,ED000047,Reassessment,2026-01-20 10:16:10,Emergency Medicine,Ambulance,3,Discharged
-EV0000146,ED000047,Discharge,2026-01-20 10:28:10,Emergency Medicine,Ambulance,3,Discharged
-EV0000147,ED000094,Registration,2026-01-20 14:25:37,Front Desk,Walk-in,4,Discharged
-EV0000148,ED000094,Triage,2026-01-20 14:46:28,Triage,Walk-in,4,Discharged
-EV0000149,ED000094,Doctor Consultation,2026-01-20 15:42:00,Emergency Medicine,Walk-in,4,Discharged
-EV0000150,ED000094,Treatment,2026-01-20 16:18:39,Emergency Medicine,Walk-in,4,Discharged
-EV0000151,ED000094,Reassessment,2026-01-20 16:43:08,Emergency Medicine,Walk-in,4,Discharged
-EV0000152,ED000094,Discharge,2026-01-20 17:12:28,Emergency Medicine,Walk-in,4,Discharged
-EV0000153,ED000027,Registration,2026-01-21 10:00:35,Front Desk,Walk-in,3,Discharged
-EV0000154,ED000027,Triage,2026-01-21 10:07:48,Triage,Walk-in,3,Discharged
-EV0000155,ED000027,Doctor Consultation,2026-01-21 10:59:49,Emergency Medicine,Walk-in,3,Discharged
-EV0000156,ED000027,Treatment,2026-01-21 11:07:59,Emergency Medicine,Walk-in,3,Discharged
-EV0000157,ED000027,Discharge,2026-01-21 11:29:42,Emergency Medicine,Walk-in,3,Discharged
-EV0000158,ED000072,Registration,2026-01-23 16:27:35,Front Desk,Walk-in,5,Discharged
-EV0000159,ED000072,Triage,2026-01-23 16:38:03,Triage,Walk-in,5,Discharged
-EV0000160,ED000072,Doctor Consultation,2026-01-23 17:58:54,Emergency Medicine,Walk-in,5,Discharged
-EV0000161,ED000072,Treatment,2026-01-23 18:19:34,Emergency Medicine,Walk-in,5,Discharged
-EV0000162,ED000072,Reassessment,2026-01-23 18:55:19,Emergency Medicine,Walk-in,5,Discharged
-EV0000163,ED000072,Discharge,2026-01-23 19:27:34,Emergency Medicine,Walk-in,5,Discharged
-EV0000164,ED000031,Registration,2026-01-24 08:05:39,Front Desk,Walk-in,4,Discharged
-EV0000165,ED000031,Triage,2026-01-24 08:29:39,Triage,Walk-in,4,Discharged
-EV0000166,ED000031,Doctor Consultation,2026-01-24 08:52:39,Emergency Medicine,Walk-in,4,Discharged
-EV0000167,ED000031,Laboratory Testing,2026-01-24 09:12:14,Laboratory,Walk-in,4,Discharged
-EV0000168,ED000031,Treatment,2026-01-24 09:23:45,Emergency Medicine,Walk-in,4,Discharged
-EV0000169,ED000031,Treatment,2026-01-24 09:37:53,Emergency Medicine,Walk-in,4,Discharged
-EV0000170,ED000031,Reassessment,2026-01-24 10:44:32,Emergency Medicine,Walk-in,4,Discharged
-EV0000171,ED000031,Discharge,2026-01-24 11:05:54,Emergency Medicine,Walk-in,4,Discharged
-EV0000172,ED000001,Registration,2026-01-28 09:38:01,Front Desk,Walk-in,2,Admitted
-EV0000173,ED000001,Triage,2026-01-28 09:42:49,Triage,Walk-in,2,Admitted
-EV0000174,ED000001,Doctor Consultation,2026-01-28 10:07:49,Emergency Medicine,Walk-in,2,Admitted
-EV0000175,ED000001,Laboratory Testing,2026-01-28 10:17:13,Laboratory,Walk-in,2,Admitted
-EV0000176,ED000001,Treatment,2026-01-28 10:21:44,Emergency Medicine,Walk-in,2,Admitted
-EV0000177,ED000001,Treatment,2026-01-28 10:27:36,Emergency Medicine,Walk-in,2,Admitted
-EV0000178,ED000001,Reassessment,2026-01-28 10:54:39,Emergency Medicine,Walk-in,2,Admitted
-EV0000179,ED000001,Reassessment,2026-01-28 11:11:08,Emergency Medicine,Walk-in,2,Admitted
-EV0000180,ED000040,Registration,2026-01-28 11:29:21,Front Desk,Walk-in,5,Discharged
-EV0000181,ED000001,Hospital Admission,2026-01-28 11:35:14,Inpatient Admissions,Walk-in,2,Admitted
-EV0000182,ED000040,Triage,2026-01-28 11:37:10,Triage,Walk-in,5,Discharged
-EV0000183,ED000040,Doctor Consultation,2026-01-28 13:39:52,Emergency Medicine,Walk-in,5,Discharged
-EV0000184,ED000040,Reassessment,2026-01-28 14:34:04,Emergency Medicine,Walk-in,5,Discharged
-EV0000185,ED000040,Discharge,2026-01-28 15:17:55,Emergency Medicine,Walk-in,5,Discharged
-EV0000186,ED000078,Registration,2026-01-28 20:44:56,Front Desk,Walk-in,3,Discharged
-EV0000187,ED000078,Triage,2026-01-28 20:53:35,Triage,Walk-in,3,Discharged
-EV0000188,ED000078,Doctor Consultation,2026-01-28 21:14:55,Emergency Medicine,Walk-in,3,Discharged
-EV0000189,ED000078,Laboratory Testing,2026-01-28 21:38:30,Laboratory,Walk-in,3,Discharged
-EV0000190,ED000078,Treatment,2026-01-28 21:49:41,Emergency Medicine,Walk-in,3,Discharged
-EV0000191,ED000078,Treatment,2026-01-28 22:15:02,Emergency Medicine,Walk-in,3,Discharged
-EV0000192,ED000078,Reassessment,2026-01-28 23:01:35,Emergency Medicine,Walk-in,3,Discharged
-EV0000193,ED000078,Reassessment,2026-01-29 01:03:24,Emergency Medicine,Walk-in,3,Discharged
-EV0000194,ED000078,Discharge,2026-01-29 01:29:51,Emergency Medicine,Walk-in,3,Discharged
-EV0000195,ED000049,Registration,2026-01-29 19:56:22,Front Desk,Walk-in,4,Discharged
-EV0000196,ED000049,Triage,2026-01-29 20:15:54,Triage,Walk-in,4,Discharged
-EV0000197,ED000049,Doctor Consultation,2026-01-29 20:54:16,Emergency Medicine,Walk-in,4,Discharged
-EV0000198,ED000049,Laboratory Testing,2026-01-29 21:17:38,Laboratory,Walk-in,4,Discharged
-EV0000199,ED000049,Reassessment,2026-01-29 21:51:55,Emergency Medicine,Walk-in,4,Discharged
-EV0000200,ED000049,Discharge,2026-01-29 22:19:27,Emergency Medicine,Walk-in,4,Discharged
-EV0000201,ED000068,Registration,2026-01-29 22:30:09,Front Desk,Walk-in,4,Discharged
-EV0000202,ED000068,Triage,2026-01-29 22:37:22,Triage,Walk-in,4,Discharged
-EV0000203,ED000068,Doctor Consultation,2026-01-30 00:23:05,Emergency Medicine,Walk-in,4,Discharged
-EV0000204,ED000068,Treatment,2026-01-30 00:51:47,Emergency Medicine,Walk-in,4,Discharged
-EV0000205,ED000068,Reassessment,2026-01-30 01:46:45,Emergency Medicine,Walk-in,4,Discharged
-EV0000206,ED000068,Discharge,2026-01-30 01:54:30,Emergency Medicine,Walk-in,4,Discharged
-EV0000207,ED000025,Registration,2026-01-30 22:53:55,Front Desk,Walk-in,4,Discharged
-EV0000208,ED000025,Triage,2026-01-30 23:32:29,Triage,Walk-in,4,Discharged
-EV0000209,ED000025,Doctor Consultation,2026-01-31 00:47:21,Emergency Medicine,Walk-in,4,Discharged
-EV0000210,ED000025,Reassessment,2026-01-31 06:20:46,Emergency Medicine,Walk-in,4,Discharged
-EV0000211,ED000025,Reassessment,2026-01-31 06:44:21,Emergency Medicine,Walk-in,4,Discharged
-EV0000212,ED000025,Discharge,2026-01-31 07:25:09,Emergency Medicine,Walk-in,4,Discharged
-EV0000213,ED000014,Registration,2026-01-31 17:14:51,Front Desk,Walk-in,5,Discharged
-EV0000214,ED000014,Triage,2026-01-31 17:22:45,Triage,Walk-in,5,Discharged
-EV0000215,ED000014,Doctor Consultation,2026-01-31 18:04:08,Emergency Medicine,Walk-in,5,Discharged
-EV0000216,ED000014,Reassessment,2026-01-31 18:25:25,Emergency Medicine,Walk-in,5,Discharged
-EV0000217,ED000014,Discharge,2026-01-31 19:02:40,Emergency Medicine,Walk-in,5,Discharged
-EV0000218,ED000073,Registration,2026-02-01 10:21:41,Front Desk,Walk-in,4,Discharged
-EV0000219,ED000073,Triage,2026-02-01 10:27:04,Triage,Walk-in,4,Discharged
-EV0000220,ED000073,Doctor Consultation,2026-02-01 11:01:15,Emergency Medicine,Walk-in,4,Discharged
-EV0000221,ED000073,Reassessment,2026-02-01 11:39:00,Emergency Medicine,Walk-in,4,Discharged
-EV0000222,ED000073,Reassessment,2026-02-01 13:30:13,Emergency Medicine,Walk-in,4,Discharged
-EV0000223,ED000073,Discharge,2026-02-01 14:09:25,Emergency Medicine,Walk-in,4,Discharged
-EV0000224,ED000085,Registration,2026-02-01 14:35:10,Front Desk,Ambulance,3,Admitted
-EV0000225,ED000085,Triage,2026-02-01 14:41:22,Triage,Ambulance,3,Admitted
-EV0000226,ED000085,Doctor Consultation,2026-02-01 15:10:13,Emergency Medicine,Ambulance,3,Admitted
-EV0000227,ED000085,Laboratory Testing,2026-02-01 15:33:08,Laboratory,Ambulance,3,Admitted
-EV0000228,ED000085,Laboratory Testing,2026-02-01 15:58:08,Laboratory,Ambulance,3,Admitted
-EV0000229,ED000085,Treatment,2026-02-01 16:12:02,Emergency Medicine,Ambulance,3,Admitted
-EV0000230,ED000085,Treatment,2026-02-01 16:19:55,Emergency Medicine,Ambulance,3,Admitted
-EV0000231,ED000085,Hospital Admission,2026-02-01 18:23:17,Inpatient Admissions,Ambulance,3,Admitted
-EV0000232,ED000095,Registration,2026-02-03 08:08:47,Front Desk,Walk-in,4,Discharged
-EV0000233,ED000095,Triage,2026-02-03 08:23:14,Triage,Walk-in,4,Discharged
-EV0000234,ED000095,Doctor Consultation,2026-02-03 08:58:38,Emergency Medicine,Walk-in,4,Discharged
-EV0000235,ED000095,Laboratory Testing,2026-02-03 09:38:36,Laboratory,Walk-in,4,Discharged
-EV0000236,ED000095,Treatment,2026-02-03 09:48:37,Emergency Medicine,Walk-in,4,Discharged
-EV0000237,ED000095,Reassessment,2026-02-03 10:27:36,Emergency Medicine,Walk-in,4,Discharged
-EV0000238,ED000095,Discharge,2026-02-03 11:03:11,Emergency Medicine,Walk-in,4,Discharged
-EV0000239,ED000060,Registration,2026-02-03 17:48:25,Front Desk,Walk-in,2,Admitted
-EV0000240,ED000060,Triage,2026-02-03 17:51:43,Triage,Walk-in,2,Admitted
-EV0000241,ED000060,Doctor Consultation,2026-02-03 18:10:51,Emergency Medicine,Walk-in,2,Admitted
-EV0000242,ED000060,Laboratory Testing,2026-02-03 18:21:21,Laboratory,Walk-in,2,Admitted
-EV0000243,ED000060,Treatment,2026-02-03 18:28:58,Emergency Medicine,Walk-in,2,Admitted
-EV0000244,ED000060,Treatment,2026-02-03 18:37:54,Emergency Medicine,Walk-in,2,Admitted
-EV0000245,ED000060,Reassessment,2026-02-03 19:22:42,Emergency Medicine,Walk-in,2,Admitted
-EV0000246,ED000060,Reassessment,2026-02-03 19:54:21,Emergency Medicine,Walk-in,2,Admitted
-EV0000247,ED000060,Hospital Admission,2026-02-03 20:10:18,Inpatient Admissions,Walk-in,2,Admitted
-EV0000248,ED000100,Registration,2026-02-03 21:04:01,Front Desk,Walk-in,3,Discharged
-EV0000249,ED000100,Triage,2026-02-03 21:19:26,Triage,Walk-in,3,Discharged
-EV0000250,ED000100,Doctor Consultation,2026-02-03 22:09:43,Emergency Medicine,Walk-in,3,Discharged
-EV0000251,ED000004,Registration,2026-02-03 22:48:11,Front Desk,Ambulance,1,Admitted
-EV0000252,ED000004,Triage,2026-02-03 22:49:47,Triage,Ambulance,1,Admitted
-EV0000253,ED000004,Doctor Consultation,2026-02-03 23:05:35,Emergency Medicine,Ambulance,1,Admitted
-EV0000254,ED000100,Imaging,2026-02-03 23:06:42,Radiology,Walk-in,3,Discharged
-EV0000255,ED000004,Laboratory Testing,2026-02-03 23:09:36,Laboratory,Ambulance,1,Admitted
-EV0000256,ED000004,Imaging,2026-02-03 23:14:52,Radiology,Ambulance,1,Admitted
-EV0000257,ED000100,Triage,2026-02-03 23:18:25,Triage,Walk-in,3,Discharged
-EV0000258,ED000004,Triage,2026-02-03 23:18:46,Triage,Ambulance,1,Admitted
-EV0000259,ED000004,Doctor Consultation,2026-02-03 23:25:40,Emergency Medicine,Ambulance,1,Admitted
-EV0000260,ED000004,Treatment,2026-02-03 23:29:54,Emergency Medicine,Ambulance,1,Admitted
-EV0000261,ED000004,Treatment,2026-02-03 23:31:41,Emergency Medicine,Ambulance,1,Admitted
-EV0000262,ED000004,Reassessment,2026-02-03 23:39:59,Emergency Medicine,Ambulance,1,Admitted
-EV0000263,ED000004,Hospital Admission,2026-02-03 23:45:46,Inpatient Admissions,Ambulance,1,Admitted
-EV0000264,ED000100,Doctor Consultation,2026-02-03 23:46:46,Emergency Medicine,Walk-in,3,Discharged
-EV0000265,ED000100,Laboratory Testing,2026-02-03 23:51:52,Laboratory,Walk-in,3,Discharged
-EV0000266,ED000100,Treatment,2026-02-04 00:02:27,Emergency Medicine,Walk-in,3,Discharged
-EV0000267,ED000100,Reassessment,2026-02-04 00:18:07,Emergency Medicine,Walk-in,3,Discharged
-EV0000268,ED000100,Discharge,2026-02-04 00:51:20,Emergency Medicine,Walk-in,3,Discharged
-EV0000269,ED000035,Registration,2026-02-05 08:07:54,Front Desk,Walk-in,3,Admitted
-EV0000270,ED000035,Triage,2026-02-05 08:18:45,Triage,Walk-in,3,Admitted
-EV0000271,ED000035,Doctor Consultation,2026-02-05 08:34:08,Emergency Medicine,Walk-in,3,Admitted
-EV0000272,ED000035,Laboratory Testing,2026-02-05 09:01:23,Laboratory,Walk-in,3,Admitted
-EV0000273,ED000035,Reassessment,2026-02-05 10:27:02,Emergency Medicine,Walk-in,3,Admitted
-EV0000274,ED000035,Reassessment,2026-02-05 11:31:23,Emergency Medicine,Walk-in,3,Admitted
-EV0000275,ED000035,Hospital Admission,2026-02-05 11:49:07,Inpatient Admissions,Walk-in,3,Admitted
-EV0000276,ED000092,Registration,2026-02-05 16:15:35,Front Desk,Walk-in,4,Discharged
-EV0000277,ED000092,Triage,2026-02-05 16:29:46,Triage,Walk-in,4,Discharged
-EV0000278,ED000092,Doctor Consultation,2026-02-05 17:43:48,Emergency Medicine,Walk-in,4,Discharged
-EV0000279,ED000022,Registration,2026-02-05 17:48:33,Front Desk,Walk-in,4,Discharged
-EV0000280,ED000022,Triage,2026-02-05 18:04:08,Triage,Walk-in,4,Discharged
-EV0000281,ED000092,Imaging,2026-02-05 18:27:28,Radiology,Walk-in,4,Discharged
-EV0000282,ED000022,Doctor Consultation,2026-02-05 18:41:11,Emergency Medicine,Walk-in,4,Discharged
-EV0000283,ED000092,Laboratory Testing,2026-02-05 18:47:27,Laboratory,Walk-in,4,Discharged
-EV0000284,ED000022,Reassessment,2026-02-05 19:47:37,Emergency Medicine,Walk-in,4,Discharged
-EV0000285,ED000020,Registration,2026-02-05 20:15:48,Front Desk,Ambulance,3,Discharged
-EV0000286,ED000020,Triage,2026-02-05 20:23:12,Triage,Ambulance,3,Discharged
-EV0000287,ED000022,Discharge,2026-02-05 20:40:03,Emergency Medicine,Walk-in,4,Discharged
-EV0000288,ED000020,Doctor Consultation,2026-02-05 20:53:59,Emergency Medicine,Ambulance,3,Discharged
-EV0000289,ED000020,Treatment,2026-02-05 21:15:39,Emergency Medicine,Ambulance,3,Discharged
-EV0000290,ED000020,Discharge,2026-02-05 21:23:01,Emergency Medicine,Ambulance,3,Discharged
-EV0000291,ED000092,Reassessment,2026-02-05 22:21:50,Emergency Medicine,Walk-in,4,Discharged
-EV0000292,ED000092,Reassessment,2026-02-05 22:55:25,Emergency Medicine,Walk-in,4,Discharged
-EV0000293,ED000092,Discharge,2026-02-05 23:13:00,Emergency Medicine,Walk-in,4,Discharged
-EV0000294,ED000081,Registration,2026-02-08 10:09:04,Front Desk,Walk-in,2,Discharged
-EV0000295,ED000081,Triage,2026-02-08 10:11:45,Triage,Walk-in,2,Discharged
-EV0000296,ED000081,Doctor Consultation,2026-02-08 10:18:31,Emergency Medicine,Walk-in,2,Discharged
-EV0000297,ED000081,Treatment,2026-02-08 10:29:26,Emergency Medicine,Walk-in,2,Discharged
-EV0000298,ED000081,Treatment,2026-02-08 10:38:27,Emergency Medicine,Walk-in,2,Discharged
-EV0000299,ED000081,Reassessment,2026-02-08 10:48:36,Emergency Medicine,Walk-in,2,Discharged
-EV0000300,ED000081,Reassessment,2026-02-08 10:56:45,Emergency Medicine,Walk-in,2,Discharged
-EV0000301,ED000081,Discharge,2026-02-08 11:08:10,Emergency Medicine,Walk-in,2,Discharged
-EV0000302,ED000046,Registration,2026-02-09 15:41:50,Front Desk,Walk-in,3,Discharged
-EV0000303,ED000046,Triage,2026-02-09 15:48:35,Triage,Walk-in,3,Discharged
-EV0000304,ED000046,Doctor Consultation,2026-02-09 16:23:53,Emergency Medicine,Walk-in,3,Discharged
-EV0000305,ED000046,Treatment,2026-02-09 16:32:16,Emergency Medicine,Walk-in,3,Discharged
-EV0000306,ED000046,Discharge,2026-02-09 16:48:41,Emergency Medicine,Walk-in,3,Discharged
-EV0000307,ED000075,Registration,2026-02-10 12:36:55,Front Desk,Walk-in,5,Discharged
-EV0000308,ED000075,Triage,2026-02-10 12:45:59,Triage,Walk-in,5,Discharged
-EV0000309,ED000075,Doctor Consultation,2026-02-10 13:46:21,Emergency Medicine,Walk-in,5,Discharged
-EV0000310,ED000075,Reassessment,2026-02-10 14:21:31,Emergency Medicine,Walk-in,5,Discharged
-EV0000311,ED000075,Discharge,2026-02-10 14:41:43,Emergency Medicine,Walk-in,5,Discharged
-EV0000312,ED000098,Registration,2026-02-10 21:25:44,Front Desk,Walk-in,4,Discharged
-EV0000313,ED000098,Triage,2026-02-10 21:41:36,Triage,Walk-in,4,Discharged
-EV0000314,ED000098,Doctor Consultation,2026-02-10 22:24:18,Emergency Medicine,Walk-in,4,Discharged
-EV0000315,ED000098,Treatment,2026-02-10 22:49:35,Emergency Medicine,Walk-in,4,Discharged
-EV0000316,ED000098,Reassessment,2026-02-10 23:14:27,Emergency Medicine,Walk-in,4,Discharged
-EV0000317,ED000098,Discharge,2026-02-10 23:41:33,Emergency Medicine,Walk-in,4,Discharged
-EV0000318,ED000033,Registration,2026-02-11 18:11:12,Front Desk,Walk-in,2,Discharged
-EV0000319,ED000033,Triage,2026-02-11 18:13:12,Triage,Walk-in,2,Discharged
-EV0000320,ED000033,Doctor Consultation,2026-02-11 19:02:26,Emergency Medicine,Walk-in,2,Discharged
-EV0000321,ED000033,Laboratory Testing,2026-02-11 19:05:28,Laboratory,Walk-in,2,Discharged
-EV0000322,ED000033,Laboratory Testing,2026-02-11 19:14:41,Laboratory,Walk-in,2,Discharged
-EV0000323,ED000033,Treatment,2026-02-11 19:25:00,Emergency Medicine,Walk-in,2,Discharged
-EV0000324,ED000033,Treatment,2026-02-11 19:47:59,Emergency Medicine,Walk-in,2,Discharged
-EV0000325,ED000033,Discharge,2026-02-11 20:06:51,Emergency Medicine,Walk-in,2,Discharged
-EV0000326,ED000011,Registration,2026-02-12 18:26:51,Front Desk,Walk-in,3,Discharged
-EV0000327,ED000011,Triage,2026-02-12 18:40:43,Triage,Walk-in,3,Discharged
-EV0000328,ED000011,Doctor Consultation,2026-02-12 19:06:25,Emergency Medicine,Walk-in,3,Discharged
-EV0000329,ED000011,Treatment,2026-02-12 19:26:15,Emergency Medicine,Walk-in,3,Discharged
-EV0000330,ED000011,Reassessment,2026-02-12 19:42:33,Emergency Medicine,Walk-in,3,Discharged
-EV0000331,ED000011,Discharge,2026-02-12 19:54:44,Emergency Medicine,Walk-in,3,Discharged
-EV0000332,ED000019,Registration,2026-02-14 14:42:23,Front Desk,Ambulance,1,Admitted
-EV0000333,ED000019,Triage,2026-02-14 14:43:23,Triage,Ambulance,1,Admitted
-EV0000334,ED000019,Doctor Consultation,2026-02-14 14:50:15,Emergency Medicine,Ambulance,1,Admitted
-EV0000335,ED000019,Laboratory Testing,2026-02-14 14:51:35,Laboratory,Ambulance,1,Admitted
-EV0000336,ED000019,Imaging,2026-02-14 14:57:20,Radiology,Ambulance,1,Admitted
-EV0000337,ED000019,Treatment,2026-02-14 14:59:00,Emergency Medicine,Ambulance,1,Admitted
-EV0000338,ED000019,Hospital Admission,2026-02-14 15:16:57,Inpatient Admissions,Ambulance,1,Admitted
-EV0000339,ED000097,Registration,2026-02-14 16:44:56,Front Desk,Walk-in,4,Discharged
-EV0000340,ED000097,Triage,2026-02-14 16:50:27,Triage,Walk-in,4,Discharged
-EV0000341,ED000097,Doctor Consultation,2026-02-14 18:00:12,Emergency Medicine,Walk-in,4,Discharged
-EV0000342,ED000097,Laboratory Testing,2026-02-14 18:35:07,Laboratory,Walk-in,4,Discharged
-EV0000343,ED000097,Treatment,2026-02-14 18:38:25,Emergency Medicine,Walk-in,4,Discharged
-EV0000344,ED000097,Treatment,2026-02-14 18:54:25,Emergency Medicine,Walk-in,4,Discharged
-EV0000345,ED000097,Reassessment,2026-02-14 19:16:29,Emergency Medicine,Walk-in,4,Discharged
-EV0000346,ED000097,Discharge,2026-02-14 19:44:41,Emergency Medicine,Walk-in,4,Discharged
-EV0000347,ED000076,Registration,2026-02-15 08:46:34,Front Desk,Walk-in,4,Discharged
-EV0000348,ED000076,Triage,2026-02-15 08:55:47,Triage,Walk-in,4,Discharged
-EV0000349,ED000076,Doctor Consultation,2026-02-15 09:47:08,Emergency Medicine,Walk-in,4,Discharged
-EV0000350,ED000076,Laboratory Testing,2026-02-15 10:35:05,Laboratory,Walk-in,4,Discharged
-EV0000351,ED000076,Reassessment,2026-02-15 11:04:24,Emergency Medicine,Walk-in,4,Discharged
-EV0000352,ED000076,Reassessment,2026-02-15 11:24:37,Emergency Medicine,Walk-in,4,Discharged
-EV0000353,ED000076,Discharge,2026-02-15 11:49:04,Emergency Medicine,Walk-in,4,Discharged
-EV0000354,ED000087,Registration,2026-02-15 22:31:08,Front Desk,Walk-in,5,Discharged
-EV0000355,ED000087,Triage,2026-02-15 22:38:58,Triage,Walk-in,5,Discharged
-EV0000356,ED000087,Doctor Consultation,2026-02-15 23:41:59,Emergency Medicine,Walk-in,5,Discharged
-EV0000357,ED000087,Reassessment,2026-02-16 00:31:53,Emergency Medicine,Walk-in,5,Discharged
-EV0000358,ED000087,Reassessment,2026-02-16 02:00:24,Emergency Medicine,Walk-in,5,Discharged
-EV0000359,ED000087,Discharge,2026-02-16 02:19:50,Emergency Medicine,Walk-in,5,Discharged
-EV0000360,ED000005,Registration,2026-02-17 12:33:28,Front Desk,Walk-in,5,Discharged
-EV0000361,ED000005,Triage,2026-02-17 12:41:21,Triage,Walk-in,5,Discharged
-EV0000362,ED000005,Doctor Consultation,2026-02-17 13:16:22,Emergency Medicine,Walk-in,5,Discharged
-EV0000363,ED000005,Reassessment,2026-02-17 13:58:23,Emergency Medicine,Walk-in,5,Discharged
-EV0000364,ED000005,Discharge,2026-02-17 14:12:12,Emergency Medicine,Walk-in,5,Discharged
-EV0000365,ED000042,Registration,2026-02-21 00:20:10,Front Desk,Walk-in,4,Discharged
-EV0000366,ED000042,Triage,2026-02-21 00:40:37,Triage,Walk-in,4,Discharged
-EV0000367,ED000042,Doctor Consultation,2026-02-21 01:04:32,Emergency Medicine,Walk-in,4,Discharged
-EV0000368,ED000042,Imaging,2026-02-21 01:44:52,Radiology,Walk-in,4,Discharged
-EV0000369,ED000042,Triage,2026-02-21 01:52:59,Triage,Walk-in,4,Discharged
-EV0000370,ED000042,Doctor Consultation,2026-02-21 02:29:59,Emergency Medicine,Walk-in,4,Discharged
-EV0000371,ED000042,Treatment,2026-02-21 02:49:40,Emergency Medicine,Walk-in,4,Discharged
-EV0000372,ED000042,Reassessment,2026-02-21 03:47:38,Emergency Medicine,Walk-in,4,Discharged
-EV0000373,ED000042,Discharge,2026-02-21 04:07:51,Emergency Medicine,Walk-in,4,Discharged
-EV0000374,ED000067,Registration,2026-02-21 19:32:20,Front Desk,Walk-in,3,Discharged
-EV0000375,ED000067,Triage,2026-02-21 19:38:10,Triage,Walk-in,3,Discharged
-EV0000376,ED000067,Doctor Consultation,2026-02-21 20:05:39,Emergency Medicine,Walk-in,3,Discharged
-EV0000377,ED000067,Laboratory Testing,2026-02-21 20:20:56,Laboratory,Walk-in,3,Discharged
-EV0000378,ED000067,Treatment,2026-02-21 20:29:03,Emergency Medicine,Walk-in,3,Discharged
-EV0000379,ED000067,Reassessment,2026-02-21 21:18:28,Emergency Medicine,Walk-in,3,Discharged
-EV0000380,ED000067,Discharge,2026-02-21 21:34:03,Emergency Medicine,Walk-in,3,Discharged
-EV0000381,ED000093,Registration,2026-02-23 11:43:11,Front Desk,Walk-in,5,Admitted
-EV0000382,ED000093,Triage,2026-02-23 11:50:26,Triage,Walk-in,5,Admitted
-EV0000383,ED000028,Registration,2026-02-23 11:50:32,Front Desk,Walk-in,3,Admitted
-EV0000384,ED000028,Triage,2026-02-23 12:16:54,Triage,Walk-in,3,Admitted
-EV0000385,ED000016,Registration,2026-02-23 12:34:29,Front Desk,Walk-in,3,Admitted
-EV0000386,ED000016,Triage,2026-02-23 12:41:47,Triage,Walk-in,3,Admitted
-EV0000387,ED000016,Doctor Consultation,2026-02-23 12:56:32,Emergency Medicine,Walk-in,3,Admitted
-EV0000388,ED000028,Doctor Consultation,2026-02-23 13:01:28,Emergency Medicine,Walk-in,3,Admitted
-EV0000389,ED000016,Laboratory Testing,2026-02-23 13:21:52,Laboratory,Walk-in,3,Admitted
-EV0000390,ED000093,Doctor Consultation,2026-02-23 13:26:25,Emergency Medicine,Walk-in,5,Admitted
-EV0000391,ED000028,Laboratory Testing,2026-02-23 13:36:41,Laboratory,Walk-in,3,Admitted
-EV0000392,ED000016,Imaging,2026-02-23 13:39:46,Radiology,Walk-in,3,Admitted
-EV0000393,ED000016,Triage,2026-02-23 13:45:50,Triage,Walk-in,3,Admitted
-EV0000394,ED000028,Treatment,2026-02-23 13:51:23,Emergency Medicine,Walk-in,3,Admitted
-EV0000395,ED000028,Treatment,2026-02-23 14:12:55,Emergency Medicine,Walk-in,3,Admitted
-EV0000396,ED000016,Doctor Consultation,2026-02-23 14:25:16,Emergency Medicine,Walk-in,3,Admitted
-EV0000397,ED000016,Treatment,2026-02-23 14:36:18,Emergency Medicine,Walk-in,3,Admitted
-EV0000398,ED000028,Hospital Admission,2026-02-23 14:38:54,Inpatient Admissions,Walk-in,3,Admitted
-EV0000399,ED000016,Reassessment,2026-02-23 15:13:40,Emergency Medicine,Walk-in,3,Admitted
-EV0000400,ED000093,Hospital Admission,2026-02-23 15:23:45,Inpatient Admissions,Walk-in,5,Admitted
-EV0000401,ED000016,Hospital Admission,2026-02-23 15:49:08,Inpatient Admissions,Walk-in,3,Admitted
-EV0000402,ED000051,Registration,2026-02-24 00:22:15,Front Desk,Ambulance,3,Admitted
-EV0000403,ED000051,Triage,2026-02-24 00:30:52,Triage,Ambulance,3,Admitted
-EV0000404,ED000051,Doctor Consultation,2026-02-24 01:21:12,Emergency Medicine,Ambulance,3,Admitted
-EV0000405,ED000051,Treatment,2026-02-24 01:39:06,Emergency Medicine,Ambulance,3,Admitted
-EV0000406,ED000051,Reassessment,2026-02-24 02:19:25,Emergency Medicine,Ambulance,3,Admitted
-EV0000407,ED000051,Reassessment,2026-02-24 02:52:38,Emergency Medicine,Ambulance,3,Admitted
-EV0000408,ED000051,Hospital Admission,2026-02-24 04:21:46,Inpatient Admissions,Ambulance,3,Admitted
-EV0000409,ED000024,Registration,2026-02-24 07:14:41,Front Desk,Ambulance,3,Discharged
-EV0000410,ED000024,Triage,2026-02-24 07:19:59,Triage,Ambulance,3,Discharged
-EV0000411,ED000024,Doctor Consultation,2026-02-24 08:33:37,Emergency Medicine,Ambulance,3,Discharged
-EV0000412,ED000024,Treatment,2026-02-24 08:47:12,Emergency Medicine,Ambulance,3,Discharged
-EV0000413,ED000024,Discharge,2026-02-24 09:06:04,Emergency Medicine,Ambulance,3,Discharged
-EV0000414,ED000037,Registration,2026-02-24 17:31:45,Front Desk,Transfer,1,Admitted
-EV0000415,ED000037,Triage,2026-02-24 17:32:45,Triage,Transfer,1,Admitted
-EV0000416,ED000037,Doctor Consultation,2026-02-24 17:36:31,Emergency Medicine,Transfer,1,Admitted
-EV0000417,ED000037,Laboratory Testing,2026-02-24 17:41:40,Laboratory,Transfer,1,Admitted
-EV0000418,ED000037,Imaging,2026-02-24 17:47:57,Radiology,Transfer,1,Admitted
-EV0000419,ED000037,Triage,2026-02-24 17:49:43,Triage,Transfer,1,Admitted
-EV0000420,ED000083,Registration,2026-02-24 18:04:28,Front Desk,Walk-in,4,Discharged
-EV0000421,ED000083,Triage,2026-02-24 18:13:13,Triage,Walk-in,4,Discharged
-EV0000422,ED000037,Doctor Consultation,2026-02-24 18:18:24,Emergency Medicine,Transfer,1,Admitted
-EV0000423,ED000037,Hospital Admission,2026-02-24 18:41:54,Inpatient Admissions,Transfer,1,Admitted
-EV0000424,ED000083,Doctor Consultation,2026-02-24 19:09:36,Emergency Medicine,Walk-in,4,Discharged
-EV0000425,ED000083,Treatment,2026-02-24 19:15:45,Emergency Medicine,Walk-in,4,Discharged
-EV0000426,ED000083,Reassessment,2026-02-24 20:13:30,Emergency Medicine,Walk-in,4,Discharged
-EV0000427,ED000083,Discharge,2026-02-24 20:53:34,Emergency Medicine,Walk-in,4,Discharged
-EV0000428,ED000080,Registration,2026-02-26 11:17:06,Front Desk,Walk-in,2,Admitted
-EV0000429,ED000080,Triage,2026-02-26 11:19:48,Triage,Walk-in,2,Admitted
-EV0000430,ED000080,Doctor Consultation,2026-02-26 11:35:20,Emergency Medicine,Walk-in,2,Admitted
-EV0000431,ED000080,Laboratory Testing,2026-02-26 11:44:33,Laboratory,Walk-in,2,Admitted
-EV0000432,ED000080,Treatment,2026-02-26 11:51:04,Emergency Medicine,Walk-in,2,Admitted
-EV0000433,ED000080,Reassessment,2026-02-26 12:14:17,Emergency Medicine,Walk-in,2,Admitted
-EV0000434,ED000080,Hospital Admission,2026-02-26 12:39:40,Inpatient Admissions,Walk-in,2,Admitted
-EV0000435,ED000048,Registration,2026-02-26 13:18:49,Front Desk,Walk-in,4,Discharged
-EV0000436,ED000048,Triage,2026-02-26 13:27:12,Triage,Walk-in,4,Discharged
-EV0000437,ED000010,Registration,2026-02-26 14:27:35,Front Desk,Ambulance,4,Discharged
-EV0000438,ED000048,Doctor Consultation,2026-02-26 14:32:24,Emergency Medicine,Walk-in,4,Discharged
-EV0000439,ED000010,Triage,2026-02-26 14:40:45,Triage,Ambulance,4,Discharged
-EV0000440,ED000048,Reassessment,2026-02-26 14:57:47,Emergency Medicine,Walk-in,4,Discharged
-EV0000441,ED000010,Doctor Consultation,2026-02-26 15:31:01,Emergency Medicine,Ambulance,4,Discharged
-EV0000442,ED000010,Treatment,2026-02-26 15:43:18,Emergency Medicine,Ambulance,4,Discharged
-EV0000443,ED000048,Discharge,2026-02-26 16:04:34,Emergency Medicine,Walk-in,4,Discharged
-EV0000444,ED000010,Reassessment,2026-02-26 16:18:14,Emergency Medicine,Ambulance,4,Discharged
-EV0000445,ED000010,Discharge,2026-02-26 17:14:50,Emergency Medicine,Ambulance,4,Discharged
-EV0000446,ED000055,Registration,2026-02-27 09:39:18,Front Desk,Walk-in,4,Discharged
-EV0000447,ED000055,Triage,2026-02-27 09:47:01,Triage,Walk-in,4,Discharged
-EV0000448,ED000055,Doctor Consultation,2026-02-27 11:00:29,Emergency Medicine,Walk-in,4,Discharged
-EV0000449,ED000055,Laboratory Testing,2026-02-27 11:20:35,Laboratory,Walk-in,4,Discharged
-EV0000450,ED000055,Treatment,2026-02-27 11:27:40,Emergency Medicine,Walk-in,4,Discharged
-EV0000451,ED000055,Reassessment,2026-02-27 12:34:24,Emergency Medicine,Walk-in,4,Discharged
-EV0000452,ED000055,Discharge,2026-02-27 13:02:17,Emergency Medicine,Walk-in,4,Discharged
-EV0000453,ED000090,Registration,2026-02-28 16:44:22,Front Desk,Walk-in,5,Discharged
-EV0000454,ED000086,Registration,2026-02-28 16:52:43,Front Desk,Ambulance,3,Discharged
-EV0000455,ED000086,Triage,2026-02-28 17:03:00,Triage,Ambulance,3,Discharged
-EV0000456,ED000090,Triage,2026-02-28 17:05:11,Triage,Walk-in,5,Discharged
-EV0000457,ED000086,Doctor Consultation,2026-02-28 17:42:48,Emergency Medicine,Ambulance,3,Discharged
-EV0000458,ED000090,Doctor Consultation,2026-02-28 17:45:53,Emergency Medicine,Walk-in,5,Discharged
-EV0000459,ED000086,Laboratory Testing,2026-02-28 17:59:06,Laboratory,Ambulance,3,Discharged
-EV0000460,ED000090,Treatment,2026-02-28 18:09:27,Emergency Medicine,Walk-in,5,Discharged
-EV0000461,ED000090,Discharge,2026-02-28 18:19:08,Emergency Medicine,Walk-in,5,Discharged
-EV0000462,ED000086,Imaging,2026-02-28 18:41:12,Radiology,Ambulance,3,Discharged
-EV0000463,ED000086,Treatment,2026-02-28 18:55:01,Emergency Medicine,Ambulance,3,Discharged
-EV0000464,ED000086,Reassessment,2026-02-28 19:29:32,Emergency Medicine,Ambulance,3,Discharged
-EV0000465,ED000086,Discharge,2026-02-28 20:06:03,Emergency Medicine,Ambulance,3,Discharged
-EV0000466,ED000056,Registration,2026-03-03 14:49:26,Front Desk,Transfer,3,Admitted
-EV0000467,ED000056,Triage,2026-03-03 14:56:25,Triage,Transfer,3,Admitted
-EV0000468,ED000056,Doctor Consultation,2026-03-03 15:05:50,Emergency Medicine,Transfer,3,Admitted
-EV0000469,ED000056,Laboratory Testing,2026-03-03 15:44:48,Laboratory,Transfer,3,Admitted
-EV0000470,ED000056,Imaging,2026-03-03 16:00:30,Radiology,Transfer,3,Admitted
-EV0000471,ED000056,Treatment,2026-03-03 16:11:00,Emergency Medicine,Transfer,3,Admitted
-EV0000472,ED000056,Reassessment,2026-03-03 16:32:20,Emergency Medicine,Transfer,3,Admitted
-EV0000473,ED000056,Hospital Admission,2026-03-03 17:02:01,Inpatient Admissions,Transfer,3,Admitted
-EV0000474,ED000074,Registration,2026-03-03 21:44:38,Front Desk,Walk-in,5,Discharged
-EV0000475,ED000074,Triage,2026-03-03 22:00:39,Triage,Walk-in,5,Discharged
-EV0000476,ED000074,Doctor Consultation,2026-03-03 22:36:00,Emergency Medicine,Walk-in,5,Discharged
-EV0000477,ED000074,Treatment,2026-03-03 22:51:52,Emergency Medicine,Walk-in,5,Discharged
-EV0000478,ED000074,Discharge,2026-03-03 23:36:57,Emergency Medicine,Walk-in,5,Discharged
-EV0000479,ED000053,Registration,2026-03-05 17:23:59,Front Desk,Ambulance,2,Admitted
-EV0000480,ED000053,Triage,2026-03-05 17:29:38,Triage,Ambulance,2,Admitted
-EV0000481,ED000053,Doctor Consultation,2026-03-05 17:37:55,Emergency Medicine,Ambulance,2,Admitted
-EV0000482,ED000053,Laboratory Testing,2026-03-05 17:44:42,Laboratory,Ambulance,2,Admitted
-EV0000483,ED000053,Treatment,2026-03-05 17:49:12,Emergency Medicine,Ambulance,2,Admitted
-EV0000484,ED000053,Hospital Admission,2026-03-05 18:09:43,Inpatient Admissions,Ambulance,2,Admitted
-EV0000485,ED000059,Registration,2026-03-05 23:29:31,Front Desk,Walk-in,5,Discharged
-EV0000486,ED000059,Triage,2026-03-05 23:52:25,Triage,Walk-in,5,Discharged
-EV0000487,ED000059,Doctor Consultation,2026-03-06 00:18:36,Emergency Medicine,Walk-in,5,Discharged
-EV0000488,ED000059,Discharge,2026-03-06 00:54:19,Emergency Medicine,Walk-in,5,Discharged
-EV0000489,ED000089,Registration,2026-03-07 23:43:52,Front Desk,Walk-in,3,Admitted
-EV0000490,ED000089,Triage,2026-03-07 23:47:40,Triage,Walk-in,3,Admitted
-EV0000491,ED000089,Doctor Consultation,2026-03-08 02:12:06,Emergency Medicine,Walk-in,3,Admitted
-EV0000492,ED000089,Laboratory Testing,2026-03-08 02:38:59,Laboratory,Walk-in,3,Admitted
-EV0000493,ED000089,Imaging,2026-03-08 03:11:50,Radiology,Walk-in,3,Admitted
-EV0000494,ED000089,Treatment,2026-03-08 03:24:56,Emergency Medicine,Walk-in,3,Admitted
-EV0000495,ED000089,Reassessment,2026-03-08 05:30:56,Emergency Medicine,Walk-in,3,Admitted
-EV0000496,ED000089,Hospital Admission,2026-03-08 05:56:12,Inpatient Admissions,Walk-in,3,Admitted
-EV0000497,ED000012,Registration,2026-03-10 11:01:07,Front Desk,Ambulance,2,Discharged
-EV0000498,ED000012,Triage,2026-03-10 11:07:18,Triage,Ambulance,2,Discharged
-EV0000499,ED000012,Doctor Consultation,2026-03-10 11:15:37,Emergency Medicine,Ambulance,2,Discharged
-EV0000500,ED000012,Imaging,2026-03-10 11:28:59,Radiology,Ambulance,2,Discharged
-EV0000501,ED000012,Laboratory Testing,2026-03-10 11:52:08,Laboratory,Ambulance,2,Discharged
-EV0000502,ED000012,Treatment,2026-03-10 11:56:52,Emergency Medicine,Ambulance,2,Discharged
-EV0000503,ED000012,Discharge,2026-03-10 12:13:58,Emergency Medicine,Ambulance,2,Discharged
-EV0000504,ED000030,Registration,2026-03-11 01:04:15,Front Desk,Ambulance,4,Discharged
-EV0000505,ED000030,Triage,2026-03-11 01:47:23,Triage,Ambulance,4,Discharged
-EV0000506,ED000030,Doctor Consultation,2026-03-11 02:29:34,Emergency Medicine,Ambulance,4,Discharged
-EV0000507,ED000030,Discharge,2026-03-11 03:49:31,Emergency Medicine,Ambulance,4,Discharged
-EV0000508,ED000088,Registration,2026-03-11 19:23:34,Front Desk,Ambulance,2,Admitted
-EV0000509,ED000088,Triage,2026-03-11 19:29:37,Triage,Ambulance,2,Admitted
-EV0000510,ED000088,Doctor Consultation,2026-03-11 20:38:14,Emergency Medicine,Ambulance,2,Admitted
-EV0000511,ED000088,Laboratory Testing,2026-03-11 20:47:35,Laboratory,Ambulance,2,Admitted
-EV0000512,ED000088,Imaging,2026-03-11 21:11:55,Radiology,Ambulance,2,Admitted
-EV0000513,ED000088,Treatment,2026-03-11 21:14:11,Emergency Medicine,Ambulance,2,Admitted
-EV0000514,ED000088,Reassessment,2026-03-11 21:37:10,Emergency Medicine,Ambulance,2,Admitted
-EV0000515,ED000088,Hospital Admission,2026-03-11 22:31:19,Inpatient Admissions,Ambulance,2,Admitted
-EV0000516,ED000026,Registration,2026-03-12 01:05:20,Front Desk,Walk-in,3,Discharged
-EV0000517,ED000026,Triage,2026-03-12 01:11:37,Triage,Walk-in,3,Discharged
-EV0000518,ED000026,Doctor Consultation,2026-03-12 02:22:34,Emergency Medicine,Walk-in,3,Discharged
-EV0000519,ED000026,Treatment,2026-03-12 02:29:20,Emergency Medicine,Walk-in,3,Discharged
-EV0000520,ED000026,Reassessment,2026-03-12 03:20:46,Emergency Medicine,Walk-in,3,Discharged
-EV0000521,ED000026,Discharge,2026-03-12 03:44:29,Emergency Medicine,Walk-in,3,Discharged
-EV0000522,ED000044,Registration,2026-03-12 22:47:57,Front Desk,Walk-in,4,Discharged
-EV0000523,ED000044,Triage,2026-03-12 22:59:10,Triage,Walk-in,4,Discharged
-EV0000524,ED000044,Doctor Consultation,2026-03-12 23:55:40,Emergency Medicine,Walk-in,4,Discharged
-EV0000525,ED000044,Reassessment,2026-03-13 01:58:14,Emergency Medicine,Walk-in,4,Discharged
-EV0000526,ED000044,Discharge,2026-03-13 02:35:15,Emergency Medicine,Walk-in,4,Discharged
-EV0000527,ED000034,Registration,2026-03-13 11:39:14,Front Desk,Ambulance,1,Admitted
-EV0000528,ED000034,Triage,2026-03-13 11:41:29,Triage,Ambulance,1,Admitted
-EV0000529,ED000034,Doctor Consultation,2026-03-13 11:47:40,Emergency Medicine,Ambulance,1,Admitted
-EV0000530,ED000034,Laboratory Testing,2026-03-13 11:52:17,Laboratory,Ambulance,1,Admitted
-EV0000531,ED000034,Imaging,2026-03-13 11:55:57,Radiology,Ambulance,1,Admitted
-EV0000532,ED000034,Treatment,2026-03-13 11:58:31,Emergency Medicine,Ambulance,1,Admitted
-EV0000533,ED000034,Treatment,2026-03-13 12:01:46,Emergency Medicine,Ambulance,1,Admitted
-EV0000534,ED000034,Reassessment,2026-03-13 12:22:38,Emergency Medicine,Ambulance,1,Admitted
-EV0000535,ED000034,Reassessment,2026-03-13 13:19:02,Emergency Medicine,Ambulance,1,Admitted
-EV0000536,ED000034,Hospital Admission,2026-03-13 13:24:48,Inpatient Admissions,Ambulance,1,Admitted
-EV0000537,ED000032,Registration,2026-03-14 20:49:47,Front Desk,Walk-in,3,Discharged
-EV0000538,ED000032,Triage,2026-03-14 21:17:55,Triage,Walk-in,3,Discharged
-EV0000539,ED000032,Doctor Consultation,2026-03-14 21:26:31,Emergency Medicine,Walk-in,3,Discharged
-EV0000540,ED000032,Laboratory Testing,2026-03-14 21:41:22,Laboratory,Walk-in,3,Discharged
-EV0000541,ED000032,Reassessment,2026-03-14 21:55:21,Emergency Medicine,Walk-in,3,Discharged
-EV0000542,ED000032,Discharge,2026-03-14 22:46:39,Emergency Medicine,Walk-in,3,Discharged
-EV0000543,ED000006,Registration,2026-03-15 15:15:50,Front Desk,Walk-in,5,Discharged
-EV0000544,ED000006,Triage,2026-03-15 15:27:22,Triage,Walk-in,5,Discharged
-EV0000545,ED000006,Doctor Consultation,2026-03-15 15:42:47,Emergency Medicine,Walk-in,5,Discharged
-EV0000546,ED000006,Laboratory Testing,2026-03-15 16:07:02,Laboratory,Walk-in,5,Discharged
-EV0000547,ED000006,Treatment,2026-03-15 16:39:40,Emergency Medicine,Walk-in,5,Discharged
-EV0000548,ED000006,Treatment,2026-03-15 17:09:43,Emergency Medicine,Walk-in,5,Discharged
-EV0000549,ED000006,Discharge,2026-03-15 17:30:54,Emergency Medicine,Walk-in,5,Discharged
-EV0000550,ED000069,Registration,2026-03-16 13:57:32,Front Desk,Walk-in,4,Discharged
-EV0000551,ED000043,Registration,2026-03-16 13:59:56,Front Desk,Ambulance,4,Discharged
-EV0000552,ED000069,Triage,2026-03-16 14:07:25,Triage,Walk-in,4,Discharged
-EV0000553,ED000043,Triage,2026-03-16 14:12:02,Triage,Ambulance,4,Discharged
-EV0000554,ED000069,Doctor Consultation,2026-03-16 14:31:12,Emergency Medicine,Walk-in,4,Discharged
-EV0000555,ED000069,Laboratory Testing,2026-03-16 15:00:38,Laboratory,Walk-in,4,Discharged
-EV0000556,ED000069,Reassessment,2026-03-16 16:07:52,Emergency Medicine,Walk-in,4,Discharged
-EV0000557,ED000043,Doctor Consultation,2026-03-16 16:08:59,Emergency Medicine,Ambulance,4,Discharged
-EV0000558,ED000069,Discharge,2026-03-16 16:25:04,Emergency Medicine,Walk-in,4,Discharged
-EV0000559,ED000043,Imaging,2026-03-16 16:53:19,Radiology,Ambulance,4,Discharged
-EV0000560,ED000043,Laboratory Testing,2026-03-16 17:06:42,Laboratory,Ambulance,4,Discharged
-EV0000561,ED000084,Registration,2026-03-16 17:14:28,Front Desk,Walk-in,2,Discharged
-EV0000562,ED000084,Triage,2026-03-16 17:17:44,Triage,Walk-in,2,Discharged
-EV0000563,ED000043,Treatment,2026-03-16 17:22:08,Emergency Medicine,Ambulance,4,Discharged
-EV0000564,ED000043,Reassessment,2026-03-16 17:42:42,Emergency Medicine,Ambulance,4,Discharged
-EV0000565,ED000084,Doctor Consultation,2026-03-16 17:49:31,Emergency Medicine,Walk-in,2,Discharged
-EV0000566,ED000084,Laboratory Testing,2026-03-16 17:59:18,Laboratory,Walk-in,2,Discharged
-EV0000567,ED000043,Discharge,2026-03-16 18:06:51,Emergency Medicine,Ambulance,4,Discharged
-EV0000568,ED000084,Imaging,2026-03-16 18:42:18,Radiology,Walk-in,2,Discharged
-EV0000569,ED000084,Treatment,2026-03-16 18:48:27,Emergency Medicine,Walk-in,2,Discharged
-EV0000570,ED000084,Reassessment,2026-03-16 19:25:17,Emergency Medicine,Walk-in,2,Discharged
-EV0000571,ED000084,Discharge,2026-03-16 19:36:06,Emergency Medicine,Walk-in,2,Discharged
-EV0000572,ED000099,Registration,2026-03-19 02:53:54,Front Desk,Walk-in,4,Discharged
-EV0000573,ED000099,Triage,2026-03-19 03:02:44,Triage,Walk-in,4,Discharged
-EV0000574,ED000099,Doctor Consultation,2026-03-19 03:33:09,Emergency Medicine,Walk-in,4,Discharged
-EV0000575,ED000099,Treatment,2026-03-19 03:53:21,Emergency Medicine,Walk-in,4,Discharged
-EV0000576,ED000099,Reassessment,2026-03-19 04:16:28,Emergency Medicine,Walk-in,4,Discharged
-EV0000577,ED000099,Discharge,2026-03-19 04:44:05,Emergency Medicine,Walk-in,4,Discharged
-EV0000578,ED000057,Registration,2026-03-19 11:59:36,Front Desk,Walk-in,3,Discharged
-EV0000579,ED000057,Triage,2026-03-19 12:10:34,Triage,Walk-in,3,Discharged
-EV0000580,ED000057,Doctor Consultation,2026-03-19 12:28:01,Emergency Medicine,Walk-in,3,Discharged
-EV0000581,ED000057,Laboratory Testing,2026-03-19 12:50:13,Laboratory,Walk-in,3,Discharged
-EV0000582,ED000057,Reassessment,2026-03-19 14:26:45,Emergency Medicine,Walk-in,3,Discharged
-EV0000583,ED000057,Discharge,2026-03-19 14:56:30,Emergency Medicine,Walk-in,3,Discharged
-EV0000584,ED000061,Registration,2026-03-20 18:19:37,Front Desk,Walk-in,2,Admitted
-EV0000585,ED000061,Triage,2026-03-20 18:21:22,Triage,Walk-in,2,Admitted
-EV0000586,ED000061,Doctor Consultation,2026-03-20 18:40:59,Emergency Medicine,Walk-in,2,Admitted
-EV0000587,ED000061,Laboratory Testing,2026-03-20 18:44:55,Laboratory,Walk-in,2,Admitted
-EV0000588,ED000061,Laboratory Testing,2026-03-20 18:51:59,Laboratory,Walk-in,2,Admitted
-EV0000589,ED000061,Imaging,2026-03-20 19:29:52,Radiology,Walk-in,2,Admitted
-EV0000590,ED000061,Treatment,2026-03-20 19:33:44,Emergency Medicine,Walk-in,2,Admitted
-EV0000591,ED000061,Reassessment,2026-03-20 20:47:11,Emergency Medicine,Walk-in,2,Admitted
-EV0000592,ED000061,Hospital Admission,2026-03-20 21:27:08,Inpatient Admissions,Walk-in,2,Admitted
-EV0000593,ED000079,Registration,2026-03-20 22:25:49,Front Desk,Ambulance,3,Discharged
-EV0000594,ED000079,Triage,2026-03-20 22:31:08,Triage,Ambulance,3,Discharged
-EV0000595,ED000079,Doctor Consultation,2026-03-20 23:30:39,Emergency Medicine,Ambulance,3,Discharged
-EV0000596,ED000079,Laboratory Testing,2026-03-20 23:42:31,Laboratory,Ambulance,3,Discharged
-EV0000597,ED000079,Treatment,2026-03-20 23:55:40,Emergency Medicine,Ambulance,3,Discharged
-EV0000598,ED000079,Reassessment,2026-03-21 00:41:47,Emergency Medicine,Ambulance,3,Discharged
-EV0000599,ED000079,Discharge,2026-03-21 01:16:36,Emergency Medicine,Ambulance,3,Discharged
-EV0000600,ED000039,Registration,2026-03-21 15:41:35,Front Desk,Walk-in,4,Discharged
-EV0000601,ED000039,Triage,2026-03-21 15:56:52,Triage,Walk-in,4,Discharged
-EV0000602,ED000039,Doctor Consultation,2026-03-21 16:11:54,Emergency Medicine,Walk-in,4,Discharged
-EV0000603,ED000039,Discharge,2026-03-21 16:37:15,Emergency Medicine,Walk-in,4,Discharged
-EV0000604,ED000003,Registration,2026-03-24 13:16:08,Front Desk,Ambulance,2,Admitted
-EV0000605,ED000003,Triage,2026-03-24 13:18:34,Triage,Ambulance,2,Admitted
-EV0000606,ED000003,Doctor Consultation,2026-03-24 13:28:17,Emergency Medicine,Ambulance,2,Admitted
-EV0000607,ED000003,Imaging,2026-03-24 13:54:45,Radiology,Ambulance,2,Admitted
-EV0000608,ED000003,Laboratory Testing,2026-03-24 14:04:50,Laboratory,Ambulance,2,Admitted
-EV0000609,ED000003,Treatment,2026-03-24 14:17:31,Emergency Medicine,Ambulance,2,Admitted
-EV0000610,ED000003,Reassessment,2026-03-24 14:35:52,Emergency Medicine,Ambulance,2,Admitted
-EV0000611,ED000003,Hospital Admission,2026-03-24 16:00:25,Inpatient Admissions,Ambulance,2,Admitted
-EV0000612,ED000070,Registration,2026-03-24 23:41:26,Front Desk,Ambulance,3,Admitted
-EV0000613,ED000070,Triage,2026-03-24 23:44:24,Triage,Ambulance,3,Admitted
-EV0000614,ED000070,Doctor Consultation,2026-03-25 00:02:52,Emergency Medicine,Ambulance,3,Admitted
-EV0000615,ED000070,Treatment,2026-03-25 00:16:14,Emergency Medicine,Ambulance,3,Admitted
-EV0000616,ED000070,Reassessment,2026-03-25 00:51:29,Emergency Medicine,Ambulance,3,Admitted
-EV0000617,ED000070,Reassessment,2026-03-25 01:26:24,Emergency Medicine,Ambulance,3,Admitted
-EV0000618,ED000070,Hospital Admission,2026-03-25 02:19:18,Inpatient Admissions,Ambulance,3,Admitted
-EV0000619,ED000013,Registration,2026-03-27 22:43:47,Front Desk,Walk-in,5,Discharged
-EV0000620,ED000013,Triage,2026-03-27 23:13:15,Triage,Walk-in,5,Discharged
-EV0000621,ED000013,Doctor Consultation,2026-03-27 23:46:37,Emergency Medicine,Walk-in,5,Discharged
-EV0000622,ED000013,Reassessment,2026-03-28 00:37:08,Emergency Medicine,Walk-in,5,Discharged
-EV0000623,ED000013,Reassessment,2026-03-28 01:57:56,Emergency Medicine,Walk-in,5,Discharged
-EV0000624,ED000013,Discharge,2026-03-28 02:33:08,Emergency Medicine,Walk-in,5,Discharged
-EV0000625,ED000077,Registration,2026-03-28 12:58:11,Front Desk,Ambulance,3,Discharged
-EV0000626,ED000077,Triage,2026-03-28 13:03:41,Triage,Ambulance,3,Discharged
-EV0000627,ED000077,Doctor Consultation,2026-03-28 13:44:14,Emergency Medicine,Ambulance,3,Discharged
-EV0000628,ED000077,Laboratory Testing,2026-03-28 13:58:35,Laboratory,Ambulance,3,Discharged
-EV0000629,ED000077,Laboratory Testing,2026-03-28 14:15:13,Laboratory,Ambulance,3,Discharged
-EV0000630,ED000077,Imaging,2026-03-28 14:29:28,Radiology,Ambulance,3,Discharged
-EV0000631,ED000064,Registration,2026-03-28 14:57:25,Front Desk,Walk-in,4,Discharged
-EV0000632,ED000077,Treatment,2026-03-28 15:04:58,Emergency Medicine,Ambulance,3,Discharged
-EV0000633,ED000064,Triage,2026-03-28 15:12:26,Triage,Walk-in,4,Discharged
-EV0000634,ED000077,Reassessment,2026-03-28 15:25:21,Emergency Medicine,Ambulance,3,Discharged
-EV0000635,ED000064,Doctor Consultation,2026-03-28 15:33:36,Emergency Medicine,Walk-in,4,Discharged
-EV0000636,ED000045,Registration,2026-03-28 15:50:40,Front Desk,Ambulance,5,Discharged
-EV0000637,ED000077,Discharge,2026-03-28 15:51:34,Emergency Medicine,Ambulance,3,Discharged
-EV0000638,ED000045,Triage,2026-03-28 16:04:24,Triage,Ambulance,5,Discharged
-EV0000639,ED000064,Reassessment,2026-03-28 16:12:45,Emergency Medicine,Walk-in,4,Discharged
-EV0000640,ED000045,Doctor Consultation,2026-03-28 16:27:53,Emergency Medicine,Ambulance,5,Discharged
-EV0000641,ED000064,Reassessment,2026-03-28 16:44:53,Emergency Medicine,Walk-in,4,Discharged
-EV0000642,ED000064,Discharge,2026-03-28 17:03:33,Emergency Medicine,Walk-in,4,Discharged
-EV0000643,ED000063,Registration,2026-03-28 18:46:43,Front Desk,Walk-in,5,Discharged
-EV0000644,ED000063,Triage,2026-03-28 19:04:37,Triage,Walk-in,5,Discharged
-EV0000645,ED000063,Doctor Consultation,2026-03-28 20:05:01,Emergency Medicine,Walk-in,5,Discharged
-EV0000646,ED000063,Reassessment,2026-03-28 20:38:15,Emergency Medicine,Walk-in,5,Discharged
-EV0000647,ED000063,Discharge,2026-03-28 21:07:37,Emergency Medicine,Walk-in,5,Discharged
-EV0000648,ED000045,Reassessment,2026-03-28 22:03:10,Emergency Medicine,Ambulance,5,Discharged
-EV0000649,ED000045,Discharge,2026-03-28 23:03:47,Emergency Medicine,Ambulance,5,Discharged
-EV0000650,ED000023,Registration,2026-03-29 03:09:51,Front Desk,Walk-in,2,Admitted
-EV0000651,ED000023,Triage,2026-03-29 03:14:10,Triage,Walk-in,2,Admitted
-EV0000652,ED000023,Doctor Consultation,2026-03-29 03:49:06,Emergency Medicine,Walk-in,2,Admitted
-EV0000653,ED000023,Imaging,2026-03-29 04:09:47,Radiology,Walk-in,2,Admitted
-EV0000654,ED000023,Triage,2026-03-29 04:13:55,Triage,Walk-in,2,Admitted
-EV0000655,ED000023,Doctor Consultation,2026-03-29 04:25:23,Emergency Medicine,Walk-in,2,Admitted
-EV0000656,ED000023,Laboratory Testing,2026-03-29 04:38:25,Laboratory,Walk-in,2,Admitted
-EV0000657,ED000023,Treatment,2026-03-29 04:43:52,Emergency Medicine,Walk-in,2,Admitted
-EV0000658,ED000023,Treatment,2026-03-29 04:52:41,Emergency Medicine,Walk-in,2,Admitted
-EV0000659,ED000023,Reassessment,2026-03-29 05:15:36,Emergency Medicine,Walk-in,2,Admitted
-EV0000660,ED000023,Hospital Admission,2026-03-29 05:27:16,Inpatient Admissions,Walk-in,2,Admitted
-EV0000661,ED000052,Registration,2026-03-29 13:44:30,Front Desk,Walk-in,3,Discharged
-EV0000662,ED000052,Triage,2026-03-29 13:59:04,Triage,Walk-in,3,Discharged
-EV0000663,ED000052,Doctor Consultation,2026-03-29 14:31:58,Emergency Medicine,Walk-in,3,Discharged
-EV0000664,ED000052,Laboratory Testing,2026-03-29 15:39:14,Laboratory,Walk-in,3,Discharged
-EV0000665,ED000052,Treatment,2026-03-29 15:54:59,Emergency Medicine,Walk-in,3,Discharged
-EV0000666,ED000052,Reassessment,2026-03-29 16:50:11,Emergency Medicine,Walk-in,3,Discharged
-EV0000667,ED000052,Discharge,2026-03-29 17:04:27,Emergency Medicine,Walk-in,3,Discharged
-EV0000668,ED000038,Registration,2026-03-29 21:04:05,Front Desk,Ambulance,2,Admitted
-EV0000669,ED000038,Triage,2026-03-29 21:11:23,Triage,Ambulance,2,Admitted
-EV0000670,ED000038,Doctor Consultation,2026-03-29 21:32:49,Emergency Medicine,Ambulance,2,Admitted
-EV0000671,ED000038,Laboratory Testing,2026-03-29 21:41:16,Laboratory,Ambulance,2,Admitted
-EV0000672,ED000038,Imaging,2026-03-29 21:51:34,Radiology,Ambulance,2,Admitted
-EV0000673,ED000038,Treatment,2026-03-29 22:00:07,Emergency Medicine,Ambulance,2,Admitted
-EV0000674,ED000038,Reassessment,2026-03-29 22:22:15,Emergency Medicine,Ambulance,2,Admitted
-EV0000675,ED000038,Hospital Admission,2026-03-29 22:59:11,Inpatient Admissions,Ambulance,2,Admitted
-EV0000676,ED000021,Registration,2026-03-30 13:45:31,Front Desk,Walk-in,5,Discharged
-EV0000677,ED000021,Triage,2026-03-30 13:56:59,Triage,Walk-in,5,Discharged
-EV0000678,ED000021,Doctor Consultation,2026-03-30 14:33:46,Emergency Medicine,Walk-in,5,Discharged
-EV0000679,ED000021,Imaging,2026-03-30 14:57:08,Radiology,Walk-in,5,Discharged
-EV0000680,ED000021,Treatment,2026-03-30 15:14:37,Emergency Medicine,Walk-in,5,Discharged
-EV0000681,ED000021,Reassessment,2026-03-30 16:19:36,Emergency Medicine,Walk-in,5,Discharged
-EV0000682,ED000082,Registration,2026-03-30 16:36:50,Front Desk,Ambulance,3,Discharged
-EV0000683,ED000082,Triage,2026-03-30 16:42:26,Triage,Ambulance,3,Discharged
-EV0000684,ED000021,Discharge,2026-03-30 16:55:00,Emergency Medicine,Walk-in,5,Discharged
-EV0000685,ED000082,Doctor Consultation,2026-03-30 17:42:17,Emergency Medicine,Ambulance,3,Discharged
-EV0000686,ED000082,Laboratory Testing,2026-03-30 17:51:38,Laboratory,Ambulance,3,Discharged
-EV0000687,ED000082,Treatment,2026-03-30 18:09:29,Emergency Medicine,Ambulance,3,Discharged
-EV0000688,ED000082,Treatment,2026-03-30 18:30:41,Emergency Medicine,Ambulance,3,Discharged
-EV0000689,ED000082,Reassessment,2026-03-30 20:05:47,Emergency Medicine,Ambulance,3,Discharged
-EV0000690,ED000082,Discharge,2026-03-30 20:40:09,Emergency Medicine,Ambulance,3,Discharged
+event_id,case_id,activity,timestamp,department,event_sequence,resource_role,resource_id,event_detail,arrival_mode,age_group,gender,chief_complaint,triage_level,disposition
+EV0000001,ED000023,Registration,2025-01-18 15:46:08,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,18-34,Male,Abdominal pain,3,Discharged
+EV0000002,ED000023,Triage,2025-01-18 15:59:36,Triage,2,Triage Nurse,TRN07,Initial triage,Walk-in,18-34,Male,Abdominal pain,3,Discharged
+EV0000003,ED000023,Doctor Consultation,2025-01-18 16:23:25,Emergency Medicine,3,ED Physician,DOC09,Initial consultation,Walk-in,18-34,Male,Abdominal pain,3,Discharged
+EV0000004,ED000023,Laboratory Testing,2025-01-18 16:56:41,Laboratory,4,Lab Technician,LAB05,Urinalysis,Walk-in,18-34,Male,Abdominal pain,3,Discharged
+EV0000005,ED000023,Laboratory Testing,2025-01-18 17:02:46,Laboratory,5,Lab Technician,LAB08,Cardiac markers,Walk-in,18-34,Male,Abdominal pain,3,Discharged
+EV0000006,ED000023,Treatment,2025-01-18 17:23:25,Emergency Medicine,6,ED Nurse,NUR02,Splinting or casting,Walk-in,18-34,Male,Abdominal pain,3,Discharged
+EV0000007,ED000023,Reassessment,2025-01-18 17:44:05,Emergency Medicine,7,ED Nurse,NUR01,Pain recheck,Walk-in,18-34,Male,Abdominal pain,3,Discharged
+EV0000008,ED000023,Discharge,2025-01-18 18:10:33,Emergency Medicine,8,ED Physician,DOC11,Home with follow-up appointment,Walk-in,18-34,Male,Abdominal pain,3,Discharged
+EV0000009,ED000008,Registration,2025-01-21 20:13:43,Front Desk,1,Registration Clerk,REG02,Standard registration,Transfer,50-64,Male,Chest pain,3,Admitted
+EV0000010,ED000008,Triage,2025-01-21 20:23:42,Triage,2,Triage Nurse,TRN09,Initial triage,Transfer,50-64,Male,Chest pain,3,Admitted
+EV0000011,ED000008,Doctor Consultation,2025-01-21 21:31:49,Emergency Medicine,3,ED Physician,DOC10,Initial consultation,Transfer,50-64,Male,Chest pain,3,Admitted
+EV0000012,ED000008,Imaging,2025-01-21 21:54:43,Radiology,4,Radiographer,RAD02,Ultrasound,Transfer,50-64,Male,Chest pain,3,Admitted
+EV0000013,ED000008,Laboratory Testing,2025-01-21 22:23:29,Laboratory,5,Lab Technician,LAB02,Blood culture,Transfer,50-64,Male,Chest pain,3,Admitted
+EV0000014,ED000008,Laboratory Testing,2025-01-21 22:28:56,Laboratory,6,Lab Technician,LAB08,Cardiac markers,Transfer,50-64,Male,Chest pain,3,Admitted
+EV0000015,ED000008,Treatment,2025-01-21 22:35:33,Emergency Medicine,7,ED Nurse,NUR04,Medication administered,Transfer,50-64,Male,Chest pain,3,Admitted
+EV0000016,ED000008,Hospital Admission,2025-01-21 22:51:50,Inpatient Admissions,8,Admissions Officer,ADM03,General Ward,Transfer,50-64,Male,Chest pain,3,Admitted
+EV0000017,ED000043,Registration,2025-01-27 15:10:33,Front Desk,1,Registration Clerk,REG06,Standard registration,Ambulance,0-17,Female,Injury or fracture,4,Discharged
+EV0000018,ED000043,Triage,2025-01-27 15:34:40,Triage,2,Triage Nurse,TRN07,Initial triage,Ambulance,0-17,Female,Injury or fracture,4,Discharged
+EV0000019,ED000043,Doctor Consultation,2025-01-27 15:49:17,Emergency Medicine,3,ED Physician,DOC01,Initial consultation,Ambulance,0-17,Female,Injury or fracture,4,Discharged
+EV0000020,ED000043,Imaging,2025-01-27 16:37:17,Radiology,4,Radiographer,RAD02,X-Ray,Ambulance,0-17,Female,Injury or fracture,4,Discharged
+EV0000021,ED000043,Reassessment,2025-01-27 17:18:45,Emergency Medicine,5,ED Nurse,NUR12,Vitals recheck,Ambulance,0-17,Female,Injury or fracture,4,Discharged
+EV0000022,ED000043,Discharge,2025-01-27 17:41:50,Emergency Medicine,6,ED Physician,DOC08,Home with follow-up appointment,Ambulance,0-17,Female,Injury or fracture,4,Discharged
+EV0000023,ED000050,Registration,2025-01-30 15:26:35,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,50-64,Female,Injury or fracture,3,Discharged
+EV0000024,ED000050,Triage,2025-01-30 15:31:52,Triage,2,Triage Nurse,TRN04,Initial triage,Walk-in,50-64,Female,Injury or fracture,3,Discharged
+EV0000025,ED000050,Doctor Consultation,2025-01-30 16:00:49,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Walk-in,50-64,Female,Injury or fracture,3,Discharged
+EV0000026,ED000050,Treatment,2025-01-30 16:19:50,Emergency Medicine,4,ED Nurse,NUR05,Splinting or casting,Walk-in,50-64,Female,Injury or fracture,3,Discharged
+EV0000027,ED000050,Discharge,2025-01-30 16:56:12,Emergency Medicine,5,ED Physician,DOC02,Home with instructions,Walk-in,50-64,Female,Injury or fracture,3,Discharged
+EV0000028,ED000059,Registration,2025-02-02 15:51:55,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000029,ED000059,Triage,2025-02-02 15:57:17,Triage,2,Triage Nurse,TRN08,Initial triage,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000030,ED000059,Doctor Consultation,2025-02-02 16:07:45,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000031,ED000059,Imaging,2025-02-02 16:39:47,Radiology,4,Radiographer,RAD05,X-Ray,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000032,ED000059,Laboratory Testing,2025-02-02 16:57:48,Laboratory,5,Lab Technician,LAB06,Blood culture,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000033,ED000059,Treatment,2025-02-02 17:23:33,Emergency Medicine,6,ED Nurse,NUR12,Wound care,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000034,ED000059,Reassessment,2025-02-02 19:18:01,Emergency Medicine,7,ED Nurse,NUR11,Vitals recheck,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000035,ED000059,Discharge,2025-02-02 19:38:16,Emergency Medicine,8,ED Physician,DOC02,Home with instructions,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000036,ED000076,Registration,2025-02-04 05:35:25,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,65+,Female,Other,3,Admitted
+EV0000037,ED000076,Triage,2025-02-04 05:41:55,Triage,2,Triage Nurse,TRN08,Initial triage,Walk-in,65+,Female,Other,3,Admitted
+EV0000038,ED000076,Doctor Consultation,2025-02-04 06:39:37,Emergency Medicine,3,ED Physician,DOC07,Initial consultation,Walk-in,65+,Female,Other,3,Admitted
+EV0000039,ED000076,Laboratory Testing,2025-02-04 06:53:08,Laboratory,4,Lab Technician,LAB02,Blood panel,Walk-in,65+,Female,Other,3,Admitted
+EV0000040,ED000076,Imaging,2025-02-04 07:24:58,Radiology,5,Radiographer,RAD03,Ultrasound,Walk-in,65+,Female,Other,3,Admitted
+EV0000041,ED000076,Treatment,2025-02-04 07:33:18,Emergency Medicine,6,ED Nurse,NUR10,Oxygen therapy,Walk-in,65+,Female,Other,3,Admitted
+EV0000042,ED000076,Reassessment,2025-02-04 08:11:58,Emergency Medicine,7,ED Nurse,NUR07,Vitals recheck,Walk-in,65+,Female,Other,3,Admitted
+EV0000043,ED000076,Hospital Admission,2025-02-04 09:39:49,Inpatient Admissions,8,Admissions Officer,ADM04,ICU,Walk-in,65+,Female,Other,3,Admitted
+EV0000044,ED000035,Registration,2025-02-04 22:34:32,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,65+,Male,Chest pain,3,Admitted
+EV0000045,ED000035,Triage,2025-02-04 22:43:10,Triage,2,Triage Nurse,TRN08,Initial triage,Walk-in,65+,Male,Chest pain,3,Admitted
+EV0000046,ED000035,Doctor Consultation,2025-02-04 22:59:25,Emergency Medicine,3,ED Physician,DOC06,Initial consultation,Walk-in,65+,Male,Chest pain,3,Admitted
+EV0000047,ED000035,Laboratory Testing,2025-02-04 23:28:35,Laboratory,4,Lab Technician,LAB02,Cardiac markers,Walk-in,65+,Male,Chest pain,3,Admitted
+EV0000048,ED000035,Treatment,2025-02-04 23:37:48,Emergency Medicine,5,ED Nurse,NUR06,Nebulisation,Walk-in,65+,Male,Chest pain,3,Admitted
+EV0000049,ED000035,Reassessment,2025-02-05 00:13:17,Emergency Medicine,6,ED Nurse,NUR11,Vitals recheck,Walk-in,65+,Male,Chest pain,3,Admitted
+EV0000050,ED000035,Hospital Admission,2025-02-05 01:54:37,Inpatient Admissions,7,Admissions Officer,ADM03,General Ward,Walk-in,65+,Male,Chest pain,3,Admitted
+EV0000051,ED000068,Registration,2025-02-05 20:55:18,Front Desk,1,Registration Clerk,REG03,Standard registration,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000052,ED000068,Triage,2025-02-05 21:01:02,Triage,2,Triage Nurse,TRN01,Initial triage,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000053,ED000068,Doctor Consultation,2025-02-05 21:29:57,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000054,ED000068,Imaging,2025-02-05 22:09:18,Radiology,4,Radiographer,RAD03,CT Scan,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000055,ED000068,Discharge,2025-02-05 22:33:40,Emergency Medicine,5,ED Physician,DOC04,Home with follow-up appointment,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000056,ED000048,Registration,2025-02-05 23:30:02,Front Desk,1,Registration Clerk,REG03,Standard registration,Walk-in,35-49,Male,Fever or infection,2,Admitted
+EV0000057,ED000048,Triage,2025-02-05 23:32:53,Triage,2,Triage Nurse,TRN07,Initial triage,Walk-in,35-49,Male,Fever or infection,2,Admitted
+EV0000058,ED000048,Doctor Consultation,2025-02-05 23:38:12,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Walk-in,35-49,Male,Fever or infection,2,Admitted
+EV0000059,ED000048,Imaging,2025-02-05 23:48:55,Radiology,4,Radiographer,RAD06,Ultrasound,Walk-in,35-49,Male,Fever or infection,2,Admitted
+EV0000060,ED000048,Triage,2025-02-05 23:52:31,Triage,5,Triage Nurse,TRN04,Re-triage: imaging request form incomplete,Walk-in,35-49,Male,Fever or infection,2,Admitted
+EV0000061,ED000048,Doctor Consultation,2025-02-06 00:07:47,Emergency Medicine,6,ED Physician,DOC07,Follow-up consultation,Walk-in,35-49,Male,Fever or infection,2,Admitted
+EV0000062,ED000048,Laboratory Testing,2025-02-06 00:19:27,Laboratory,7,Lab Technician,LAB04,Blood culture,Walk-in,35-49,Male,Fever or infection,2,Admitted
+EV0000063,ED000048,Treatment,2025-02-06 00:25:42,Emergency Medicine,8,ED Nurse,NUR12,IV fluids,Walk-in,35-49,Male,Fever or infection,2,Admitted
+EV0000064,ED000048,Hospital Admission,2025-02-06 03:37:29,Inpatient Admissions,9,Admissions Officer,ADM01,ICU,Walk-in,35-49,Male,Fever or infection,2,Admitted
+EV0000065,ED000064,Registration,2025-02-06 09:05:46,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000066,ED000064,Triage,2025-02-06 09:08:06,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000067,ED000064,Doctor Consultation,2025-02-06 09:31:44,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000068,ED000064,Laboratory Testing,2025-02-06 09:36:56,Laboratory,4,Lab Technician,LAB01,Urinalysis,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000069,ED000064,Laboratory Testing,2025-02-06 09:45:14,Laboratory,5,Lab Technician,LAB03,Blood culture,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000070,ED000064,Imaging,2025-02-06 10:03:09,Radiology,6,Radiographer,RAD02,X-Ray,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000071,ED000064,Treatment,2025-02-06 10:11:38,Emergency Medicine,7,ED Nurse,NUR07,Wound care,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000072,ED000064,Reassessment,2025-02-06 10:41:25,Emergency Medicine,8,ED Nurse,NUR11,Vitals recheck,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000073,ED000064,Reassessment,2025-02-06 10:51:51,Emergency Medicine,9,ED Nurse,NUR12,Response to treatment,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000074,ED000064,Hospital Admission,2025-02-06 11:40:39,Inpatient Admissions,10,Admissions Officer,ADM02,General Ward,Walk-in,50-64,Male,Injury or fracture,2,Admitted
+EV0000075,ED000042,Registration,2025-02-07 12:28:48,Front Desk,1,Registration Clerk,REG05,Emergency registration,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000076,ED000042,Triage,2025-02-07 12:30:42,Triage,2,Triage Nurse,TRN02,Initial triage,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000077,ED000042,Doctor Consultation,2025-02-07 12:34:48,Emergency Medicine,3,ED Physician,DOC06,Initial consultation,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000078,ED000042,Laboratory Testing,2025-02-07 12:39:07,Laboratory,4,Lab Technician,LAB03,Urinalysis,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000079,ED000042,Imaging,2025-02-07 12:46:03,Radiology,5,Radiographer,RAD01,X-Ray,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000080,ED000042,Triage,2025-02-07 12:47:03,Triage,6,Triage Nurse,TRN08,Re-triage: missing intake paperwork,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000081,ED000042,Doctor Consultation,2025-02-07 12:52:11,Emergency Medicine,7,ED Physician,DOC10,Follow-up consultation,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000082,ED000042,Treatment,2025-02-07 12:56:12,Emergency Medicine,8,ED Nurse,NUR06,Oxygen therapy,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000083,ED000042,Reassessment,2025-02-07 13:12:40,Emergency Medicine,9,ED Nurse,NUR12,Response to treatment,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000084,ED000042,Hospital Admission,2025-02-07 13:16:35,Inpatient Admissions,10,Admissions Officer,ADM03,ICU,Walk-in,35-49,Male,Fever or infection,1,Admitted
+EV0000085,ED000098,Registration,2025-02-09 14:17:13,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000086,ED000098,Triage,2025-02-09 14:25:05,Triage,2,Triage Nurse,TRN02,Initial triage,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000087,ED000098,Doctor Consultation,2025-02-09 15:34:46,Emergency Medicine,3,ED Physician,DOC06,Initial consultation,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000088,ED000098,Reassessment,2025-02-09 17:07:40,Emergency Medicine,4,ED Nurse,NUR08,Pain recheck,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000089,ED000098,Reassessment,2025-02-09 17:49:44,Emergency Medicine,5,ED Nurse,NUR14,Pain recheck,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000090,ED000098,Discharge,2025-02-09 18:30:09,Emergency Medicine,6,ED Physician,DOC11,Home with instructions,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000091,ED000099,Registration,2025-02-13 09:38:30,Front Desk,1,Registration Clerk,REG04,Standard registration,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000092,ED000099,Triage,2025-02-13 09:50:41,Triage,2,Triage Nurse,TRN03,Initial triage,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000093,ED000099,Doctor Consultation,2025-02-13 10:36:02,Emergency Medicine,3,ED Physician,DOC03,Initial consultation,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000094,ED000099,Treatment,2025-02-13 10:56:07,Emergency Medicine,4,ED Nurse,NUR08,Oxygen therapy,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000095,ED000099,Discharge,2025-02-13 11:23:46,Emergency Medicine,5,ED Physician,DOC07,Home with instructions,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000096,ED000078,Registration,2025-02-16 10:24:03,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,65+,Male,Abdominal pain,3,Discharged
+EV0000097,ED000078,Triage,2025-02-16 10:29:53,Triage,2,Triage Nurse,TRN04,Initial triage,Walk-in,65+,Male,Abdominal pain,3,Discharged
+EV0000098,ED000078,Doctor Consultation,2025-02-16 11:14:50,Emergency Medicine,3,ED Physician,DOC07,Initial consultation,Walk-in,65+,Male,Abdominal pain,3,Discharged
+EV0000099,ED000078,Laboratory Testing,2025-02-16 11:36:35,Laboratory,4,Lab Technician,LAB01,Blood culture,Walk-in,65+,Male,Abdominal pain,3,Discharged
+EV0000100,ED000078,Treatment,2025-02-16 12:17:23,Emergency Medicine,5,ED Nurse,NUR10,IV fluids,Walk-in,65+,Male,Abdominal pain,3,Discharged
+EV0000101,ED000078,Discharge,2025-02-16 12:31:02,Emergency Medicine,6,ED Physician,DOC05,Home with follow-up appointment,Walk-in,65+,Male,Abdominal pain,3,Discharged
+EV0000102,ED000027,Registration,2025-02-17 12:47:47,Front Desk,1,Registration Clerk,REG03,Standard registration,Walk-in,18-34,Female,Abdominal pain,3,Discharged
+EV0000103,ED000027,Triage,2025-02-17 13:02:24,Triage,2,Triage Nurse,TRN10,Initial triage,Walk-in,18-34,Female,Abdominal pain,3,Discharged
+EV0000104,ED000100,Registration,2025-02-17 13:08:57,Front Desk,1,Registration Clerk,REG05,Standard registration,Ambulance,0-17,Male,Minor wound or rash,4,Discharged
+EV0000105,ED000100,Triage,2025-02-17 13:19:42,Triage,2,Triage Nurse,TRN07,Initial triage,Ambulance,0-17,Male,Minor wound or rash,4,Discharged
+EV0000106,ED000100,Doctor Consultation,2025-02-17 14:06:52,Emergency Medicine,3,ED Physician,DOC01,Initial consultation,Ambulance,0-17,Male,Minor wound or rash,4,Discharged
+EV0000107,ED000100,Treatment,2025-02-17 14:33:06,Emergency Medicine,4,ED Nurse,NUR13,Splinting or casting,Ambulance,0-17,Male,Minor wound or rash,4,Discharged
+EV0000108,ED000027,Doctor Consultation,2025-02-17 14:44:40,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Walk-in,18-34,Female,Abdominal pain,3,Discharged
+EV0000109,ED000027,Laboratory Testing,2025-02-17 14:56:46,Laboratory,4,Lab Technician,LAB07,Blood panel,Walk-in,18-34,Female,Abdominal pain,3,Discharged
+EV0000110,ED000027,Imaging,2025-02-17 15:18:57,Radiology,5,Radiographer,RAD02,X-Ray,Walk-in,18-34,Female,Abdominal pain,3,Discharged
+EV0000111,ED000027,Triage,2025-02-17 15:26:11,Triage,6,Triage Nurse,TRN06,Re-triage: imaging request form incomplete,Walk-in,18-34,Female,Abdominal pain,3,Discharged
+EV0000112,ED000027,Doctor Consultation,2025-02-17 15:45:53,Emergency Medicine,7,ED Physician,DOC10,Follow-up consultation,Walk-in,18-34,Female,Abdominal pain,3,Discharged
+EV0000113,ED000100,Reassessment,2025-02-17 15:57:16,Emergency Medicine,5,ED Nurse,NUR10,Response to treatment,Ambulance,0-17,Male,Minor wound or rash,4,Discharged
+EV0000114,ED000027,Reassessment,2025-02-17 16:10:17,Emergency Medicine,8,ED Nurse,NUR09,Response to treatment,Walk-in,18-34,Female,Abdominal pain,3,Discharged
+EV0000115,ED000100,Discharge,2025-02-17 16:33:40,Emergency Medicine,6,ED Physician,DOC05,Home with instructions,Ambulance,0-17,Male,Minor wound or rash,4,Discharged
+EV0000116,ED000027,Discharge,2025-02-17 16:43:07,Emergency Medicine,9,ED Physician,DOC01,Home with follow-up appointment,Walk-in,18-34,Female,Abdominal pain,3,Discharged
+EV0000117,ED000095,Registration,2025-02-20 09:37:31,Front Desk,1,Registration Clerk,REG03,Standard registration,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000118,ED000095,Triage,2025-02-20 09:44:40,Triage,2,Triage Nurse,TRN04,Initial triage,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000119,ED000095,Doctor Consultation,2025-02-20 10:00:05,Emergency Medicine,3,ED Physician,DOC04,Initial consultation,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000120,ED000095,Treatment,2025-02-20 10:14:45,Emergency Medicine,4,ED Nurse,NUR10,Nebulisation,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000121,ED000095,Reassessment,2025-02-20 10:46:53,Emergency Medicine,5,ED Nurse,NUR10,Response to treatment,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000122,ED000095,Reassessment,2025-02-20 11:29:17,Emergency Medicine,6,ED Nurse,NUR07,Vitals recheck,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000123,ED000095,Discharge,2025-02-20 11:42:15,Emergency Medicine,7,ED Physician,DOC07,Home with instructions,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000124,ED000069,Registration,2025-02-23 09:15:26,Front Desk,1,Registration Clerk,REG04,Emergency registration,Transfer,35-49,Male,Abdominal pain,1,Admitted
+EV0000125,ED000069,Triage,2025-02-23 09:16:28,Triage,2,Triage Nurse,TRN01,Initial triage,Transfer,35-49,Male,Abdominal pain,1,Admitted
+EV0000126,ED000069,Doctor Consultation,2025-02-23 09:23:57,Emergency Medicine,3,ED Physician,DOC06,Initial consultation,Transfer,35-49,Male,Abdominal pain,1,Admitted
+EV0000127,ED000069,Imaging,2025-02-23 09:29:09,Radiology,4,Radiographer,RAD05,X-Ray,Transfer,35-49,Male,Abdominal pain,1,Admitted
+EV0000128,ED000069,Laboratory Testing,2025-02-23 09:30:52,Laboratory,5,Lab Technician,LAB07,Urinalysis,Transfer,35-49,Male,Abdominal pain,1,Admitted
+EV0000129,ED000069,Laboratory Testing,2025-02-23 09:33:48,Laboratory,6,Lab Technician,LAB06,Blood culture,Transfer,35-49,Male,Abdominal pain,1,Admitted
+EV0000130,ED000069,Treatment,2025-02-23 09:39:32,Emergency Medicine,7,ED Nurse,NUR06,Splinting or casting,Transfer,35-49,Male,Abdominal pain,1,Admitted
+EV0000131,ED000069,Hospital Admission,2025-02-23 09:48:50,Inpatient Admissions,8,Admissions Officer,ADM02,ICU,Transfer,35-49,Male,Abdominal pain,1,Admitted
+EV0000132,ED000058,Registration,2025-02-23 10:58:05,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,18-34,Female,Breathing difficulty,4,Discharged
+EV0000133,ED000058,Triage,2025-02-23 11:27:53,Triage,2,Triage Nurse,TRN06,Initial triage,Walk-in,18-34,Female,Breathing difficulty,4,Discharged
+EV0000134,ED000058,Doctor Consultation,2025-02-23 11:59:46,Emergency Medicine,3,ED Physician,DOC04,Initial consultation,Walk-in,18-34,Female,Breathing difficulty,4,Discharged
+EV0000135,ED000058,Treatment,2025-02-23 12:19:48,Emergency Medicine,4,ED Nurse,NUR02,Splinting or casting,Walk-in,18-34,Female,Breathing difficulty,4,Discharged
+EV0000136,ED000058,Reassessment,2025-02-23 13:38:43,Emergency Medicine,5,ED Nurse,NUR02,Pain recheck,Walk-in,18-34,Female,Breathing difficulty,4,Discharged
+EV0000137,ED000058,Reassessment,2025-02-23 14:03:19,Emergency Medicine,6,ED Nurse,NUR02,Response to treatment,Walk-in,18-34,Female,Breathing difficulty,4,Discharged
+EV0000138,ED000058,Discharge,2025-02-23 14:53:05,Emergency Medicine,7,ED Physician,DOC09,Home with instructions,Walk-in,18-34,Female,Breathing difficulty,4,Discharged
+EV0000139,ED000073,Registration,2025-02-26 19:55:23,Front Desk,1,Registration Clerk,REG01,Emergency registration,Walk-in,0-17,Female,Abdominal pain,1,Discharged
+EV0000140,ED000073,Triage,2025-02-26 19:56:49,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,0-17,Female,Abdominal pain,1,Discharged
+EV0000141,ED000073,Doctor Consultation,2025-02-26 20:07:31,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Walk-in,0-17,Female,Abdominal pain,1,Discharged
+EV0000142,ED000073,Imaging,2025-02-26 20:15:45,Radiology,4,Radiographer,RAD05,Ultrasound,Walk-in,0-17,Female,Abdominal pain,1,Discharged
+EV0000143,ED000073,Laboratory Testing,2025-02-26 20:18:27,Laboratory,5,Lab Technician,LAB05,Urinalysis,Walk-in,0-17,Female,Abdominal pain,1,Discharged
+EV0000144,ED000073,Treatment,2025-02-26 20:22:57,Emergency Medicine,6,ED Nurse,NUR14,Oxygen therapy,Walk-in,0-17,Female,Abdominal pain,1,Discharged
+EV0000145,ED000073,Treatment,2025-02-26 20:24:40,Emergency Medicine,7,ED Nurse,NUR08,Medication administered,Walk-in,0-17,Female,Abdominal pain,1,Discharged
+EV0000146,ED000073,Reassessment,2025-02-26 20:31:17,Emergency Medicine,8,ED Nurse,NUR06,Pain recheck,Walk-in,0-17,Female,Abdominal pain,1,Discharged
+EV0000147,ED000073,Discharge,2025-02-26 20:45:36,Emergency Medicine,9,ED Physician,DOC08,Home with instructions,Walk-in,0-17,Female,Abdominal pain,1,Discharged
+EV0000148,ED000004,Registration,2025-03-07 16:35:10,Front Desk,1,Registration Clerk,REG03,Standard registration,Walk-in,65+,Male,Minor wound or rash,2,Discharged
+EV0000149,ED000004,Triage,2025-03-07 16:39:24,Triage,2,Triage Nurse,TRN04,Initial triage,Walk-in,65+,Male,Minor wound or rash,2,Discharged
+EV0000150,ED000004,Doctor Consultation,2025-03-07 17:13:58,Emergency Medicine,3,ED Physician,DOC07,Initial consultation,Walk-in,65+,Male,Minor wound or rash,2,Discharged
+EV0000151,ED000004,Imaging,2025-03-07 17:27:24,Radiology,4,Radiographer,RAD01,X-Ray,Walk-in,65+,Male,Minor wound or rash,2,Discharged
+EV0000152,ED000004,Treatment,2025-03-07 17:35:47,Emergency Medicine,5,ED Nurse,NUR01,IV fluids,Walk-in,65+,Male,Minor wound or rash,2,Discharged
+EV0000153,ED000004,Discharge,2025-03-07 17:50:53,Emergency Medicine,6,ED Physician,DOC02,Home with follow-up appointment,Walk-in,65+,Male,Minor wound or rash,2,Discharged
+EV0000154,ED000013,Registration,2025-03-07 23:34:01,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,50-64,Male,Minor wound or rash,3,Discharged
+EV0000155,ED000013,Triage,2025-03-07 23:44:07,Triage,2,Triage Nurse,TRN02,Initial triage,Walk-in,50-64,Male,Minor wound or rash,3,Discharged
+EV0000156,ED000013,Doctor Consultation,2025-03-08 00:25:36,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Walk-in,50-64,Male,Minor wound or rash,3,Discharged
+EV0000157,ED000013,Treatment,2025-03-08 00:35:58,Emergency Medicine,4,ED Nurse,NUR06,Medication administered,Walk-in,50-64,Male,Minor wound or rash,3,Discharged
+EV0000158,ED000013,Discharge,2025-03-08 00:59:32,Emergency Medicine,5,ED Physician,DOC07,Home with instructions,Walk-in,50-64,Male,Minor wound or rash,3,Discharged
+EV0000159,ED000007,Registration,2025-03-10 10:56:06,Front Desk,1,Registration Clerk,REG06,Standard registration,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000160,ED000007,Triage,2025-03-10 11:04:37,Triage,2,Triage Nurse,TRN10,Initial triage,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000161,ED000007,Doctor Consultation,2025-03-10 11:26:51,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000162,ED000007,Treatment,2025-03-10 11:44:23,Emergency Medicine,4,ED Nurse,NUR08,Wound care,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000163,ED000007,Reassessment,2025-03-10 12:03:41,Emergency Medicine,5,ED Nurse,NUR05,Vitals recheck,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000164,ED000007,Discharge,2025-03-10 12:33:00,Emergency Medicine,6,ED Physician,DOC12,Home with instructions,Ambulance,65+,Female,Abdominal pain,3,Discharged
+EV0000165,ED000062,Registration,2025-03-11 22:50:26,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,50-64,Male,Breathing difficulty,3,Discharged
+EV0000166,ED000062,Triage,2025-03-11 22:54:14,Triage,2,Triage Nurse,TRN04,Initial triage,Walk-in,50-64,Male,Breathing difficulty,3,Discharged
+EV0000167,ED000062,Doctor Consultation,2025-03-12 00:14:36,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Walk-in,50-64,Male,Breathing difficulty,3,Discharged
+EV0000168,ED000062,Laboratory Testing,2025-03-12 00:23:16,Laboratory,4,Lab Technician,LAB07,Blood culture,Walk-in,50-64,Male,Breathing difficulty,3,Discharged
+EV0000169,ED000062,Treatment,2025-03-12 00:36:40,Emergency Medicine,5,ED Nurse,NUR13,IV fluids,Walk-in,50-64,Male,Breathing difficulty,3,Discharged
+EV0000170,ED000062,Discharge,2025-03-12 00:54:35,Emergency Medicine,6,ED Physician,DOC12,Home with follow-up appointment,Walk-in,50-64,Male,Breathing difficulty,3,Discharged
+EV0000171,ED000081,Registration,2025-03-12 23:21:26,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,65+,Male,Other,5,Discharged
+EV0000172,ED000081,Triage,2025-03-12 23:31:33,Triage,2,Triage Nurse,TRN08,Initial triage,Walk-in,65+,Male,Other,5,Discharged
+EV0000173,ED000081,Doctor Consultation,2025-03-12 23:51:19,Emergency Medicine,3,ED Physician,DOC03,Initial consultation,Walk-in,65+,Male,Other,5,Discharged
+EV0000174,ED000081,Treatment,2025-03-13 00:15:38,Emergency Medicine,4,ED Nurse,NUR13,IV fluids,Walk-in,65+,Male,Other,5,Discharged
+EV0000175,ED000081,Treatment,2025-03-13 00:28:28,Emergency Medicine,5,ED Nurse,NUR07,Splinting or casting,Walk-in,65+,Male,Other,5,Discharged
+EV0000176,ED000081,Discharge,2025-03-13 01:01:50,Emergency Medicine,6,ED Physician,DOC01,Home with instructions,Walk-in,65+,Male,Other,5,Discharged
+EV0000177,ED000060,Registration,2025-03-13 08:53:28,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,50-64,Female,Injury or fracture,3,Admitted
+EV0000178,ED000060,Triage,2025-03-13 08:57:52,Triage,2,Triage Nurse,TRN01,Initial triage,Walk-in,50-64,Female,Injury or fracture,3,Admitted
+EV0000179,ED000060,Doctor Consultation,2025-03-13 09:32:11,Emergency Medicine,3,ED Physician,DOC07,Initial consultation,Walk-in,50-64,Female,Injury or fracture,3,Admitted
+EV0000180,ED000060,Imaging,2025-03-13 10:39:14,Radiology,4,Radiographer,RAD04,X-Ray,Walk-in,50-64,Female,Injury or fracture,3,Admitted
+EV0000181,ED000060,Reassessment,2025-03-13 11:18:04,Emergency Medicine,5,ED Nurse,NUR08,Pain recheck,Walk-in,50-64,Female,Injury or fracture,3,Admitted
+EV0000182,ED000060,Hospital Admission,2025-03-13 11:45:20,Inpatient Admissions,6,Admissions Officer,ADM02,General Ward,Walk-in,50-64,Female,Injury or fracture,3,Admitted
+EV0000183,ED000049,Registration,2025-03-13 14:18:14,Front Desk,1,Registration Clerk,REG06,Standard registration,Ambulance,0-17,Male,Injury or fracture,4,Discharged
+EV0000184,ED000049,Triage,2025-03-13 14:30:22,Triage,2,Triage Nurse,TRN06,Initial triage,Ambulance,0-17,Male,Injury or fracture,4,Discharged
+EV0000185,ED000049,Doctor Consultation,2025-03-13 15:10:36,Emergency Medicine,3,ED Physician,DOC09,Initial consultation,Ambulance,0-17,Male,Injury or fracture,4,Discharged
+EV0000186,ED000049,Laboratory Testing,2025-03-13 16:17:25,Laboratory,4,Lab Technician,LAB07,Blood culture,Ambulance,0-17,Male,Injury or fracture,4,Discharged
+EV0000187,ED000049,Discharge,2025-03-13 16:35:22,Emergency Medicine,5,ED Physician,DOC11,Home with follow-up appointment,Ambulance,0-17,Male,Injury or fracture,4,Discharged
+EV0000188,ED000006,Registration,2025-03-22 03:32:05,Front Desk,1,Registration Clerk,REG02,Standard registration,Ambulance,50-64,Male,Headache or dizziness,3,Admitted
+EV0000189,ED000006,Triage,2025-03-22 03:45:32,Triage,2,Triage Nurse,TRN10,Initial triage,Ambulance,50-64,Male,Headache or dizziness,3,Admitted
+EV0000190,ED000006,Doctor Consultation,2025-03-22 04:03:54,Emergency Medicine,3,ED Physician,DOC10,Initial consultation,Ambulance,50-64,Male,Headache or dizziness,3,Admitted
+EV0000191,ED000006,Imaging,2025-03-22 04:36:27,Radiology,4,Radiographer,RAD03,X-Ray,Ambulance,50-64,Male,Headache or dizziness,3,Admitted
+EV0000192,ED000006,Laboratory Testing,2025-03-22 05:01:57,Laboratory,5,Lab Technician,LAB07,Urinalysis,Ambulance,50-64,Male,Headache or dizziness,3,Admitted
+EV0000193,ED000006,Laboratory Testing,2025-03-22 05:26:37,Laboratory,6,Lab Technician,LAB06,Blood panel,Ambulance,50-64,Male,Headache or dizziness,3,Admitted
+EV0000194,ED000006,Treatment,2025-03-22 05:42:32,Emergency Medicine,7,ED Nurse,NUR09,Medication administered,Ambulance,50-64,Male,Headache or dizziness,3,Admitted
+EV0000195,ED000006,Hospital Admission,2025-03-22 06:42:57,Inpatient Admissions,8,Admissions Officer,ADM03,Observation Unit,Ambulance,50-64,Male,Headache or dizziness,3,Admitted
+EV0000196,ED000086,Registration,2025-03-22 14:30:54,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,0-17,Male,Abdominal pain,4,Discharged
+EV0000197,ED000086,Triage,2025-03-22 14:41:12,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,0-17,Male,Abdominal pain,4,Discharged
+EV0000198,ED000086,Doctor Consultation,2025-03-22 15:06:17,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Walk-in,0-17,Male,Abdominal pain,4,Discharged
+EV0000199,ED000086,Reassessment,2025-03-22 15:32:32,Emergency Medicine,4,ED Nurse,NUR02,Pain recheck,Walk-in,0-17,Male,Abdominal pain,4,Discharged
+EV0000200,ED000086,Discharge,2025-03-22 16:01:35,Emergency Medicine,5,ED Physician,DOC02,Home with follow-up appointment,Walk-in,0-17,Male,Abdominal pain,4,Discharged
+EV0000201,ED000040,Registration,2025-03-28 15:37:09,Front Desk,1,Registration Clerk,REG02,Standard registration,Ambulance,50-64,Female,Other,4,Discharged
+EV0000202,ED000040,Triage,2025-03-28 15:54:04,Triage,2,Triage Nurse,TRN10,Initial triage,Ambulance,50-64,Female,Other,4,Discharged
+EV0000203,ED000040,Doctor Consultation,2025-03-28 17:00:33,Emergency Medicine,3,ED Physician,DOC04,Initial consultation,Ambulance,50-64,Female,Other,4,Discharged
+EV0000204,ED000040,Treatment,2025-03-28 17:29:25,Emergency Medicine,4,ED Nurse,NUR11,IV fluids,Ambulance,50-64,Female,Other,4,Discharged
+EV0000205,ED000040,Reassessment,2025-03-28 18:21:08,Emergency Medicine,5,ED Nurse,NUR05,Response to treatment,Ambulance,50-64,Female,Other,4,Discharged
+EV0000206,ED000040,Discharge,2025-03-28 19:30:27,Emergency Medicine,6,ED Physician,DOC11,Home with instructions,Ambulance,50-64,Female,Other,4,Discharged
+EV0000207,ED000001,Registration,2025-04-12 17:44:34,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000208,ED000001,Triage,2025-04-12 17:50:22,Triage,2,Triage Nurse,TRN01,Initial triage,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000209,ED000001,Doctor Consultation,2025-04-12 18:52:50,Emergency Medicine,3,ED Physician,DOC07,Initial consultation,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000210,ED000001,Imaging,2025-04-12 19:25:59,Radiology,4,Radiographer,RAD03,X-Ray,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000211,ED000001,Treatment,2025-04-12 19:42:35,Emergency Medicine,5,ED Nurse,NUR06,Oxygen therapy,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000212,ED000001,Reassessment,2025-04-12 20:32:09,Emergency Medicine,6,ED Nurse,NUR07,Vitals recheck,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000213,ED000001,Reassessment,2025-04-12 21:43:19,Emergency Medicine,7,ED Nurse,NUR10,Pain recheck,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000214,ED000001,Discharge,2025-04-12 22:24:00,Emergency Medicine,8,ED Physician,DOC01,Home with follow-up appointment,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000215,ED000093,Registration,2025-04-16 14:44:56,Front Desk,1,Registration Clerk,REG06,Standard registration,Transfer,65+,Female,Breathing difficulty,2,Discharged
+EV0000216,ED000093,Triage,2025-04-16 14:52:44,Triage,2,Triage Nurse,TRN02,Initial triage,Transfer,65+,Female,Breathing difficulty,2,Discharged
+EV0000217,ED000093,Doctor Consultation,2025-04-16 15:16:21,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Transfer,65+,Female,Breathing difficulty,2,Discharged
+EV0000218,ED000093,Imaging,2025-04-16 15:34:32,Radiology,4,Radiographer,RAD01,X-Ray,Transfer,65+,Female,Breathing difficulty,2,Discharged
+EV0000219,ED000093,Triage,2025-04-16 15:41:36,Triage,5,Triage Nurse,TRN10,Re-triage: imaging request form incomplete,Transfer,65+,Female,Breathing difficulty,2,Discharged
+EV0000220,ED000093,Doctor Consultation,2025-04-16 16:17:20,Emergency Medicine,6,ED Physician,DOC08,Follow-up consultation,Transfer,65+,Female,Breathing difficulty,2,Discharged
+EV0000221,ED000093,Laboratory Testing,2025-04-16 16:29:30,Laboratory,7,Lab Technician,LAB01,Blood culture,Transfer,65+,Female,Breathing difficulty,2,Discharged
+EV0000222,ED000093,Treatment,2025-04-16 16:39:49,Emergency Medicine,8,ED Nurse,NUR11,Nebulisation,Transfer,65+,Female,Breathing difficulty,2,Discharged
+EV0000223,ED000093,Discharge,2025-04-16 16:58:45,Emergency Medicine,9,ED Physician,DOC10,Home with instructions,Transfer,65+,Female,Breathing difficulty,2,Discharged
+EV0000224,ED000028,Registration,2025-04-21 11:29:21,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,50-64,Male,Chest pain,4,Discharged
+EV0000225,ED000028,Triage,2025-04-21 11:36:19,Triage,2,Triage Nurse,TRN10,Initial triage,Walk-in,50-64,Male,Chest pain,4,Discharged
+EV0000226,ED000028,Doctor Consultation,2025-04-21 13:22:39,Emergency Medicine,3,ED Physician,DOC03,Initial consultation,Walk-in,50-64,Male,Chest pain,4,Discharged
+EV0000227,ED000028,Imaging,2025-04-21 13:40:43,Radiology,4,Radiographer,RAD06,X-Ray,Walk-in,50-64,Male,Chest pain,4,Discharged
+EV0000228,ED000028,Laboratory Testing,2025-04-21 14:04:36,Laboratory,5,Lab Technician,LAB08,Blood culture,Walk-in,50-64,Male,Chest pain,4,Discharged
+EV0000229,ED000028,Treatment,2025-04-21 14:13:24,Emergency Medicine,6,ED Nurse,NUR02,Wound care,Walk-in,50-64,Male,Chest pain,4,Discharged
+EV0000230,ED000028,Reassessment,2025-04-21 15:00:25,Emergency Medicine,7,ED Nurse,NUR11,Response to treatment,Walk-in,50-64,Male,Chest pain,4,Discharged
+EV0000231,ED000028,Discharge,2025-04-21 15:31:48,Emergency Medicine,8,ED Physician,DOC01,Home with instructions,Walk-in,50-64,Male,Chest pain,4,Discharged
+EV0000232,ED000094,Registration,2025-04-23 07:25:50,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,65+,Female,Breathing difficulty,4,Discharged
+EV0000233,ED000094,Triage,2025-04-23 07:32:15,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,65+,Female,Breathing difficulty,4,Discharged
+EV0000234,ED000094,Doctor Consultation,2025-04-23 09:51:57,Emergency Medicine,3,ED Physician,DOC06,Initial consultation,Walk-in,65+,Female,Breathing difficulty,4,Discharged
+EV0000235,ED000094,Laboratory Testing,2025-04-23 10:29:45,Laboratory,4,Lab Technician,LAB01,Blood panel,Walk-in,65+,Female,Breathing difficulty,4,Discharged
+EV0000236,ED000094,Reassessment,2025-04-23 11:28:35,Emergency Medicine,5,ED Nurse,NUR09,Vitals recheck,Walk-in,65+,Female,Breathing difficulty,4,Discharged
+EV0000237,ED000094,Reassessment,2025-04-23 11:51:58,Emergency Medicine,6,ED Nurse,NUR12,Pain recheck,Walk-in,65+,Female,Breathing difficulty,4,Discharged
+EV0000238,ED000094,Discharge,2025-04-23 12:38:09,Emergency Medicine,7,ED Physician,DOC03,Home with instructions,Walk-in,65+,Female,Breathing difficulty,4,Discharged
+EV0000239,ED000053,Registration,2025-04-26 10:52:54,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,0-17,Female,Abdominal pain,4,Discharged
+EV0000240,ED000053,Triage,2025-04-26 11:19:15,Triage,2,Triage Nurse,TRN01,Initial triage,Walk-in,0-17,Female,Abdominal pain,4,Discharged
+EV0000241,ED000053,Doctor Consultation,2025-04-26 11:42:26,Emergency Medicine,3,ED Physician,DOC09,Initial consultation,Walk-in,0-17,Female,Abdominal pain,4,Discharged
+EV0000242,ED000053,Treatment,2025-04-26 12:00:51,Emergency Medicine,4,ED Nurse,NUR12,Medication administered,Walk-in,0-17,Female,Abdominal pain,4,Discharged
+EV0000243,ED000053,Discharge,2025-04-26 12:39:59,Emergency Medicine,5,ED Physician,DOC02,Home with follow-up appointment,Walk-in,0-17,Female,Abdominal pain,4,Discharged
+EV0000244,ED000077,Registration,2025-04-27 07:47:28,Front Desk,1,Registration Clerk,REG03,Standard registration,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000245,ED000077,Triage,2025-04-27 07:54:52,Triage,2,Triage Nurse,TRN02,Initial triage,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000246,ED000077,Doctor Consultation,2025-04-27 08:25:08,Emergency Medicine,3,ED Physician,DOC07,Initial consultation,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000247,ED000077,Laboratory Testing,2025-04-27 09:26:32,Laboratory,4,Lab Technician,LAB06,Blood panel,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000248,ED000077,Treatment,2025-04-27 09:46:20,Emergency Medicine,5,ED Nurse,NUR05,Nebulisation,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000249,ED000077,Reassessment,2025-04-27 10:38:45,Emergency Medicine,6,ED Nurse,NUR14,Response to treatment,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000250,ED000077,Reassessment,2025-04-27 12:01:17,Emergency Medicine,7,ED Nurse,NUR08,Vitals recheck,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000251,ED000077,Discharge,2025-04-27 12:12:07,Emergency Medicine,8,ED Physician,DOC09,Home with instructions,Ambulance,65+,Female,Abdominal pain,4,Discharged
+EV0000252,ED000014,Registration,2025-05-07 09:01:39,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,65+,Female,Minor wound or rash,4,Admitted
+EV0000253,ED000014,Triage,2025-05-07 09:08:26,Triage,2,Triage Nurse,TRN02,Initial triage,Walk-in,65+,Female,Minor wound or rash,4,Admitted
+EV0000254,ED000014,Doctor Consultation,2025-05-07 09:57:55,Emergency Medicine,3,ED Physician,DOC12,Initial consultation,Walk-in,65+,Female,Minor wound or rash,4,Admitted
+EV0000255,ED000014,Treatment,2025-05-07 10:11:55,Emergency Medicine,4,ED Nurse,NUR10,Oxygen therapy,Walk-in,65+,Female,Minor wound or rash,4,Admitted
+EV0000256,ED000014,Reassessment,2025-05-07 11:25:06,Emergency Medicine,5,ED Nurse,NUR05,Vitals recheck,Walk-in,65+,Female,Minor wound or rash,4,Admitted
+EV0000257,ED000014,Reassessment,2025-05-07 14:07:30,Emergency Medicine,6,ED Nurse,NUR10,Response to treatment,Walk-in,65+,Female,Minor wound or rash,4,Admitted
+EV0000258,ED000014,Hospital Admission,2025-05-07 16:40:16,Inpatient Admissions,7,Admissions Officer,ADM02,General Ward,Walk-in,65+,Female,Minor wound or rash,4,Admitted
+EV0000259,ED000084,Registration,2025-05-16 13:06:52,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,0-17,Female,Fever or infection,5,Discharged
+EV0000260,ED000084,Triage,2025-05-16 13:15:08,Triage,2,Triage Nurse,TRN07,Initial triage,Walk-in,0-17,Female,Fever or infection,5,Discharged
+EV0000261,ED000084,Doctor Consultation,2025-05-16 14:23:59,Emergency Medicine,3,ED Physician,DOC01,Initial consultation,Walk-in,0-17,Female,Fever or infection,5,Discharged
+EV0000262,ED000084,Laboratory Testing,2025-05-16 15:00:11,Laboratory,4,Lab Technician,LAB08,Cardiac markers,Walk-in,0-17,Female,Fever or infection,5,Discharged
+EV0000263,ED000084,Reassessment,2025-05-16 16:29:24,Emergency Medicine,5,ED Nurse,NUR07,Pain recheck,Walk-in,0-17,Female,Fever or infection,5,Discharged
+EV0000264,ED000084,Discharge,2025-05-16 17:34:02,Emergency Medicine,6,ED Physician,DOC07,Home with follow-up appointment,Walk-in,0-17,Female,Fever or infection,5,Discharged
+EV0000265,ED000003,Registration,2025-05-17 18:21:07,Front Desk,1,Registration Clerk,REG03,Standard registration,Walk-in,18-34,Male,Fever or infection,4,Discharged
+EV0000266,ED000003,Triage,2025-05-17 18:30:30,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,18-34,Male,Fever or infection,4,Discharged
+EV0000267,ED000003,Doctor Consultation,2025-05-17 19:16:24,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Walk-in,18-34,Male,Fever or infection,4,Discharged
+EV0000268,ED000003,Laboratory Testing,2025-05-17 19:32:30,Laboratory,4,Lab Technician,LAB04,Urinalysis,Walk-in,18-34,Male,Fever or infection,4,Discharged
+EV0000269,ED000003,Reassessment,2025-05-17 20:17:02,Emergency Medicine,5,ED Nurse,NUR13,Response to treatment,Walk-in,18-34,Male,Fever or infection,4,Discharged
+EV0000270,ED000003,Discharge,2025-05-17 21:36:34,Emergency Medicine,6,ED Physician,DOC08,Home with instructions,Walk-in,18-34,Male,Fever or infection,4,Discharged
+EV0000271,ED000036,Registration,2025-05-20 07:23:27,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,50-64,Male,Injury or fracture,3,Discharged
+EV0000272,ED000036,Triage,2025-05-20 07:31:23,Triage,2,Triage Nurse,TRN09,Initial triage,Walk-in,50-64,Male,Injury or fracture,3,Discharged
+EV0000273,ED000036,Doctor Consultation,2025-05-20 07:58:19,Emergency Medicine,3,ED Physician,DOC07,Initial consultation,Walk-in,50-64,Male,Injury or fracture,3,Discharged
+EV0000274,ED000036,Imaging,2025-05-20 08:10:24,Radiology,4,Radiographer,RAD02,X-Ray,Walk-in,50-64,Male,Injury or fracture,3,Discharged
+EV0000275,ED000036,Treatment,2025-05-20 08:23:05,Emergency Medicine,5,ED Nurse,NUR11,Wound care,Walk-in,50-64,Male,Injury or fracture,3,Discharged
+EV0000276,ED000036,Reassessment,2025-05-20 08:47:18,Emergency Medicine,6,ED Nurse,NUR07,Vitals recheck,Walk-in,50-64,Male,Injury or fracture,3,Discharged
+EV0000277,ED000036,Discharge,2025-05-20 09:19:25,Emergency Medicine,7,ED Physician,DOC01,Home with follow-up appointment,Walk-in,50-64,Male,Injury or fracture,3,Discharged
+EV0000278,ED000070,Registration,2025-06-05 19:44:38,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,50-64,Female,Chest pain,3,Admitted
+EV0000279,ED000070,Triage,2025-06-05 19:47:26,Triage,2,Triage Nurse,TRN06,Initial triage,Walk-in,50-64,Female,Chest pain,3,Admitted
+EV0000280,ED000070,Doctor Consultation,2025-06-05 20:18:42,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,50-64,Female,Chest pain,3,Admitted
+EV0000281,ED000070,Laboratory Testing,2025-06-05 20:28:52,Laboratory,4,Lab Technician,LAB08,Urinalysis,Walk-in,50-64,Female,Chest pain,3,Admitted
+EV0000282,ED000070,Treatment,2025-06-05 20:48:51,Emergency Medicine,5,ED Nurse,NUR01,Medication administered,Walk-in,50-64,Female,Chest pain,3,Admitted
+EV0000283,ED000070,Reassessment,2025-06-05 21:16:52,Emergency Medicine,6,ED Nurse,NUR11,Vitals recheck,Walk-in,50-64,Female,Chest pain,3,Admitted
+EV0000284,ED000070,Hospital Admission,2025-06-05 22:24:08,Inpatient Admissions,7,Admissions Officer,ADM01,ICU,Walk-in,50-64,Female,Chest pain,3,Admitted
+EV0000285,ED000075,Registration,2025-06-07 18:30:31,Front Desk,1,Registration Clerk,REG06,Standard registration,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000286,ED000075,Triage,2025-06-07 18:32:47,Triage,2,Triage Nurse,TRN07,Initial triage,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000287,ED000075,Doctor Consultation,2025-06-07 18:46:30,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000288,ED000075,Imaging,2025-06-07 19:00:29,Radiology,4,Radiographer,RAD03,CT Scan,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000289,ED000075,Triage,2025-06-07 19:01:58,Triage,5,Triage Nurse,TRN02,Re-triage: missing intake paperwork,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000290,ED000075,Doctor Consultation,2025-06-07 19:14:17,Emergency Medicine,6,ED Physician,DOC10,Follow-up consultation,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000291,ED000075,Laboratory Testing,2025-06-07 19:22:04,Laboratory,7,Lab Technician,LAB07,Blood culture,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000292,ED000075,Treatment,2025-06-07 19:40:04,Emergency Medicine,8,ED Nurse,NUR04,Splinting or casting,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000293,ED000075,Treatment,2025-06-07 19:45:42,Emergency Medicine,9,ED Nurse,NUR14,Nebulisation,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000294,ED000075,Discharge,2025-06-07 19:58:37,Emergency Medicine,10,ED Physician,DOC10,Home with instructions,Walk-in,35-49,Female,Chest pain,2,Discharged
+EV0000295,ED000054,Registration,2025-06-11 00:13:37,Front Desk,1,Registration Clerk,REG02,Standard registration,Ambulance,65+,Female,Minor wound or rash,3,Admitted
+EV0000296,ED000054,Triage,2025-06-11 00:30:36,Triage,2,Triage Nurse,TRN07,Initial triage,Ambulance,65+,Female,Minor wound or rash,3,Admitted
+EV0000297,ED000054,Doctor Consultation,2025-06-11 01:36:18,Emergency Medicine,3,ED Physician,DOC10,Initial consultation,Ambulance,65+,Female,Minor wound or rash,3,Admitted
+EV0000298,ED000054,Treatment,2025-06-11 01:42:17,Emergency Medicine,4,ED Nurse,NUR06,Splinting or casting,Ambulance,65+,Female,Minor wound or rash,3,Admitted
+EV0000299,ED000054,Reassessment,2025-06-11 02:36:35,Emergency Medicine,5,ED Nurse,NUR12,Response to treatment,Ambulance,65+,Female,Minor wound or rash,3,Admitted
+EV0000300,ED000054,Reassessment,2025-06-11 03:10:08,Emergency Medicine,6,ED Nurse,NUR04,Vitals recheck,Ambulance,65+,Female,Minor wound or rash,3,Admitted
+EV0000301,ED000054,Hospital Admission,2025-06-11 03:39:37,Inpatient Admissions,7,Admissions Officer,ADM04,Observation Unit,Ambulance,65+,Female,Minor wound or rash,3,Admitted
+EV0000302,ED000065,Registration,2025-06-12 07:55:53,Front Desk,1,Registration Clerk,REG05,Standard registration,Transfer,18-34,Female,Minor wound or rash,3,Admitted
+EV0000303,ED000065,Triage,2025-06-12 08:02:46,Triage,2,Triage Nurse,TRN03,Initial triage,Transfer,18-34,Female,Minor wound or rash,3,Admitted
+EV0000304,ED000065,Doctor Consultation,2025-06-12 08:21:54,Emergency Medicine,3,ED Physician,DOC01,Initial consultation,Transfer,18-34,Female,Minor wound or rash,3,Admitted
+EV0000305,ED000065,Treatment,2025-06-12 08:35:10,Emergency Medicine,4,ED Nurse,NUR12,Oxygen therapy,Transfer,18-34,Female,Minor wound or rash,3,Admitted
+EV0000306,ED000065,Hospital Admission,2025-06-12 10:11:50,Inpatient Admissions,5,Admissions Officer,ADM04,General Ward,Transfer,18-34,Female,Minor wound or rash,3,Admitted
+EV0000307,ED000038,Registration,2025-06-13 16:45:04,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000308,ED000038,Triage,2025-06-13 17:01:48,Triage,2,Triage Nurse,TRN03,Initial triage,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000309,ED000038,Doctor Consultation,2025-06-13 18:46:09,Emergency Medicine,3,ED Physician,DOC09,Initial consultation,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000310,ED000038,Treatment,2025-06-13 19:17:23,Emergency Medicine,4,ED Nurse,NUR08,IV fluids,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000311,ED000038,Discharge,2025-06-13 19:45:45,Emergency Medicine,5,ED Physician,DOC08,Home with follow-up appointment,Walk-in,18-34,Male,Breathing difficulty,5,Discharged
+EV0000312,ED000046,Registration,2025-06-21 10:41:34,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,0-17,Male,Headache or dizziness,4,Discharged
+EV0000313,ED000046,Triage,2025-06-21 10:51:07,Triage,2,Triage Nurse,TRN09,Initial triage,Walk-in,0-17,Male,Headache or dizziness,4,Discharged
+EV0000314,ED000046,Doctor Consultation,2025-06-21 11:34:47,Emergency Medicine,3,ED Physician,DOC02,Initial consultation,Walk-in,0-17,Male,Headache or dizziness,4,Discharged
+EV0000315,ED000046,Imaging,2025-06-21 11:57:30,Radiology,4,Radiographer,RAD06,X-Ray,Walk-in,0-17,Male,Headache or dizziness,4,Discharged
+EV0000316,ED000046,Triage,2025-06-21 12:01:14,Triage,5,Triage Nurse,TRN05,Re-triage: missing intake paperwork,Walk-in,0-17,Male,Headache or dizziness,4,Discharged
+EV0000317,ED000046,Doctor Consultation,2025-06-21 13:03:58,Emergency Medicine,6,ED Physician,DOC11,Follow-up consultation,Walk-in,0-17,Male,Headache or dizziness,4,Discharged
+EV0000318,ED000046,Discharge,2025-06-21 13:36:56,Emergency Medicine,7,ED Physician,DOC11,Home with instructions,Walk-in,0-17,Male,Headache or dizziness,4,Discharged
+EV0000319,ED000015,Registration,2025-06-24 00:26:52,Front Desk,1,Registration Clerk,REG04,Standard registration,Ambulance,50-64,Male,Chest pain,4,Discharged
+EV0000320,ED000015,Triage,2025-06-24 00:47:22,Triage,2,Triage Nurse,TRN03,Initial triage,Ambulance,50-64,Male,Chest pain,4,Discharged
+EV0000321,ED000015,Doctor Consultation,2025-06-24 01:22:49,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Ambulance,50-64,Male,Chest pain,4,Discharged
+EV0000322,ED000015,Laboratory Testing,2025-06-24 01:32:06,Laboratory,4,Lab Technician,LAB08,Blood culture,Ambulance,50-64,Male,Chest pain,4,Discharged
+EV0000323,ED000015,Treatment,2025-06-24 01:47:58,Emergency Medicine,5,ED Nurse,NUR05,Wound care,Ambulance,50-64,Male,Chest pain,4,Discharged
+EV0000324,ED000015,Reassessment,2025-06-24 02:19:44,Emergency Medicine,6,ED Nurse,NUR10,Response to treatment,Ambulance,50-64,Male,Chest pain,4,Discharged
+EV0000325,ED000015,Discharge,2025-06-24 02:48:56,Emergency Medicine,7,ED Physician,DOC06,Home with instructions,Ambulance,50-64,Male,Chest pain,4,Discharged
+EV0000326,ED000009,Registration,2025-06-26 17:20:27,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,35-49,Male,Minor wound or rash,2,Discharged
+EV0000327,ED000009,Triage,2025-06-26 17:26:33,Triage,2,Triage Nurse,TRN01,Initial triage,Walk-in,35-49,Male,Minor wound or rash,2,Discharged
+EV0000328,ED000009,Doctor Consultation,2025-06-26 18:11:45,Emergency Medicine,3,ED Physician,DOC12,Initial consultation,Walk-in,35-49,Male,Minor wound or rash,2,Discharged
+EV0000329,ED000009,Reassessment,2025-06-26 18:23:18,Emergency Medicine,4,ED Nurse,NUR11,Pain recheck,Walk-in,35-49,Male,Minor wound or rash,2,Discharged
+EV0000330,ED000009,Discharge,2025-06-26 18:40:24,Emergency Medicine,5,ED Physician,DOC02,Home with follow-up appointment,Walk-in,35-49,Male,Minor wound or rash,2,Discharged
+EV0000331,ED000029,Registration,2025-07-01 04:55:47,Front Desk,1,Registration Clerk,REG01,Standard registration,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000332,ED000029,Triage,2025-07-01 05:03:00,Triage,2,Triage Nurse,TRN02,Initial triage,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000333,ED000029,Doctor Consultation,2025-07-01 06:27:15,Emergency Medicine,3,ED Physician,DOC10,Initial consultation,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000334,ED000029,Laboratory Testing,2025-07-01 06:43:10,Laboratory,4,Lab Technician,LAB05,Blood panel,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000335,ED000029,Imaging,2025-07-01 07:10:02,Radiology,5,Radiographer,RAD03,X-Ray,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000336,ED000029,Triage,2025-07-01 07:21:51,Triage,6,Triage Nurse,TRN10,Re-triage: missing intake paperwork,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000337,ED000029,Doctor Consultation,2025-07-01 08:10:17,Emergency Medicine,7,ED Physician,DOC03,Follow-up consultation,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000338,ED000029,Treatment,2025-07-01 08:15:51,Emergency Medicine,8,ED Nurse,NUR09,Oxygen therapy,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000339,ED000029,Reassessment,2025-07-01 08:25:38,Emergency Medicine,9,ED Nurse,NUR06,Response to treatment,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000340,ED000029,Discharge,2025-07-01 08:45:02,Emergency Medicine,10,ED Physician,DOC03,Home with follow-up appointment,Transfer,65+,Female,Abdominal pain,3,Discharged
+EV0000341,ED000057,Registration,2025-07-04 17:51:34,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,50-64,Male,Headache or dizziness,5,Discharged
+EV0000342,ED000057,Triage,2025-07-04 18:05:13,Triage,2,Triage Nurse,TRN04,Initial triage,Walk-in,50-64,Male,Headache or dizziness,5,Discharged
+EV0000343,ED000057,Doctor Consultation,2025-07-04 19:12:43,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Walk-in,50-64,Male,Headache or dizziness,5,Discharged
+EV0000344,ED000057,Reassessment,2025-07-04 20:30:57,Emergency Medicine,4,ED Nurse,NUR11,Response to treatment,Walk-in,50-64,Male,Headache or dizziness,5,Discharged
+EV0000345,ED000057,Discharge,2025-07-04 20:49:24,Emergency Medicine,5,ED Physician,DOC02,Home with instructions,Walk-in,50-64,Male,Headache or dizziness,5,Discharged
+EV0000346,ED000032,Registration,2025-07-05 10:13:21,Front Desk,1,Registration Clerk,REG04,Standard registration,Ambulance,18-34,Male,Minor wound or rash,4,Discharged
+EV0000347,ED000032,Triage,2025-07-05 10:20:10,Triage,2,Triage Nurse,TRN02,Initial triage,Ambulance,18-34,Male,Minor wound or rash,4,Discharged
+EV0000348,ED000032,Doctor Consultation,2025-07-05 11:06:27,Emergency Medicine,3,ED Physician,DOC12,Initial consultation,Ambulance,18-34,Male,Minor wound or rash,4,Discharged
+EV0000349,ED000032,Reassessment,2025-07-05 11:31:47,Emergency Medicine,4,ED Nurse,NUR03,Response to treatment,Ambulance,18-34,Male,Minor wound or rash,4,Discharged
+EV0000350,ED000032,Discharge,2025-07-05 12:00:25,Emergency Medicine,5,ED Physician,DOC12,Home with follow-up appointment,Ambulance,18-34,Male,Minor wound or rash,4,Discharged
+EV0000351,ED000061,Registration,2025-07-07 14:48:02,Front Desk,1,Registration Clerk,REG06,Standard registration,Walk-in,18-34,Male,Abdominal pain,4,Discharged
+EV0000352,ED000061,Triage,2025-07-07 14:57:47,Triage,2,Triage Nurse,TRN07,Initial triage,Walk-in,18-34,Male,Abdominal pain,4,Discharged
+EV0000353,ED000061,Doctor Consultation,2025-07-07 16:03:32,Emergency Medicine,3,ED Physician,DOC01,Initial consultation,Walk-in,18-34,Male,Abdominal pain,4,Discharged
+EV0000354,ED000061,Imaging,2025-07-07 16:40:02,Radiology,4,Radiographer,RAD01,X-Ray,Walk-in,18-34,Male,Abdominal pain,4,Discharged
+EV0000355,ED000061,Triage,2025-07-07 16:43:11,Triage,5,Triage Nurse,TRN10,Re-triage: consent form incomplete,Walk-in,18-34,Male,Abdominal pain,4,Discharged
+EV0000356,ED000061,Doctor Consultation,2025-07-07 18:41:15,Emergency Medicine,6,ED Physician,DOC07,Follow-up consultation,Walk-in,18-34,Male,Abdominal pain,4,Discharged
+EV0000357,ED000061,Discharge,2025-07-07 19:04:32,Emergency Medicine,7,ED Physician,DOC04,Home with follow-up appointment,Walk-in,18-34,Male,Abdominal pain,4,Discharged
+EV0000358,ED000041,Registration,2025-07-09 14:06:20,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000359,ED000041,Triage,2025-07-09 14:14:01,Triage,2,Triage Nurse,TRN04,Initial triage,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000360,ED000041,Doctor Consultation,2025-07-09 14:37:57,Emergency Medicine,3,ED Physician,DOC09,Initial consultation,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000361,ED000041,Laboratory Testing,2025-07-09 14:53:45,Laboratory,4,Lab Technician,LAB08,Blood panel,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000362,ED000041,Reassessment,2025-07-09 15:13:42,Emergency Medicine,5,ED Nurse,NUR08,Vitals recheck,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000363,ED000041,Discharge,2025-07-09 15:30:50,Emergency Medicine,6,ED Physician,DOC01,Home with instructions,Walk-in,35-49,Male,Abdominal pain,3,Discharged
+EV0000364,ED000079,Registration,2025-07-11 15:38:38,Front Desk,1,Registration Clerk,REG03,Standard registration,Ambulance,50-64,Female,Minor wound or rash,3,Admitted
+EV0000365,ED000079,Triage,2025-07-11 15:45:13,Triage,2,Triage Nurse,TRN02,Initial triage,Ambulance,50-64,Female,Minor wound or rash,3,Admitted
+EV0000366,ED000079,Doctor Consultation,2025-07-11 16:12:56,Emergency Medicine,3,ED Physician,DOC06,Initial consultation,Ambulance,50-64,Female,Minor wound or rash,3,Admitted
+EV0000367,ED000079,Treatment,2025-07-11 16:35:45,Emergency Medicine,4,ED Nurse,NUR12,Nebulisation,Ambulance,50-64,Female,Minor wound or rash,3,Admitted
+EV0000368,ED000079,Reassessment,2025-07-11 17:07:06,Emergency Medicine,5,ED Nurse,NUR13,Vitals recheck,Ambulance,50-64,Female,Minor wound or rash,3,Admitted
+EV0000369,ED000079,Hospital Admission,2025-07-11 19:17:44,Inpatient Admissions,6,Admissions Officer,ADM03,Surgical Ward,Ambulance,50-64,Female,Minor wound or rash,3,Admitted
+EV0000370,ED000020,Registration,2025-07-16 09:38:32,Front Desk,1,Registration Clerk,REG06,Emergency registration,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000371,ED000020,Triage,2025-07-16 09:39:32,Triage,2,Triage Nurse,TRN07,Initial triage,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000372,ED000020,Doctor Consultation,2025-07-16 09:42:45,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000373,ED000020,Laboratory Testing,2025-07-16 09:48:37,Laboratory,4,Lab Technician,LAB05,Blood culture,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000374,ED000020,Imaging,2025-07-16 09:59:11,Radiology,5,Radiographer,RAD04,X-Ray,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000375,ED000020,Triage,2025-07-16 10:00:56,Triage,6,Triage Nurse,TRN08,Re-triage: imaging request form incomplete,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000376,ED000020,Doctor Consultation,2025-07-16 10:05:27,Emergency Medicine,7,ED Physician,DOC07,Follow-up consultation,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000377,ED000020,Treatment,2025-07-16 10:13:04,Emergency Medicine,8,ED Nurse,NUR07,Nebulisation,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000378,ED000020,Reassessment,2025-07-16 10:32:03,Emergency Medicine,9,ED Nurse,NUR03,Pain recheck,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000379,ED000020,Discharge,2025-07-16 10:41:08,Emergency Medicine,10,ED Physician,DOC02,Home with follow-up appointment,Ambulance,0-17,Female,Abdominal pain,1,Discharged
+EV0000380,ED000082,Registration,2025-07-16 14:19:10,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,18-34,Female,Chest pain,4,Discharged
+EV0000381,ED000082,Triage,2025-07-16 14:34:37,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,18-34,Female,Chest pain,4,Discharged
+EV0000382,ED000082,Doctor Consultation,2025-07-16 15:16:00,Emergency Medicine,3,ED Physician,DOC09,Initial consultation,Walk-in,18-34,Female,Chest pain,4,Discharged
+EV0000383,ED000082,Treatment,2025-07-16 15:21:38,Emergency Medicine,4,ED Nurse,NUR03,Wound care,Walk-in,18-34,Female,Chest pain,4,Discharged
+EV0000384,ED000082,Reassessment,2025-07-16 16:32:24,Emergency Medicine,5,ED Nurse,NUR13,Pain recheck,Walk-in,18-34,Female,Chest pain,4,Discharged
+EV0000385,ED000082,Reassessment,2025-07-16 16:51:39,Emergency Medicine,6,ED Nurse,NUR02,Pain recheck,Walk-in,18-34,Female,Chest pain,4,Discharged
+EV0000386,ED000082,Discharge,2025-07-16 18:09:18,Emergency Medicine,7,ED Physician,DOC07,Home with follow-up appointment,Walk-in,18-34,Female,Chest pain,4,Discharged
+EV0000387,ED000071,Registration,2025-07-22 13:24:43,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,0-17,Male,Injury or fracture,5,Discharged
+EV0000388,ED000071,Triage,2025-07-22 13:33:06,Triage,2,Triage Nurse,TRN03,Initial triage,Walk-in,0-17,Male,Injury or fracture,5,Discharged
+EV0000389,ED000071,Doctor Consultation,2025-07-22 14:07:39,Emergency Medicine,3,ED Physician,DOC03,Initial consultation,Walk-in,0-17,Male,Injury or fracture,5,Discharged
+EV0000390,ED000071,Imaging,2025-07-22 14:40:40,Radiology,4,Radiographer,RAD04,Ultrasound,Walk-in,0-17,Male,Injury or fracture,5,Discharged
+EV0000391,ED000071,Treatment,2025-07-22 15:02:43,Emergency Medicine,5,ED Nurse,NUR07,Medication administered,Walk-in,0-17,Male,Injury or fracture,5,Discharged
+EV0000392,ED000071,Discharge,2025-07-22 15:33:36,Emergency Medicine,6,ED Physician,DOC09,Home with instructions,Walk-in,0-17,Male,Injury or fracture,5,Discharged
+EV0000393,ED000019,Registration,2025-07-26 20:52:00,Front Desk,1,Registration Clerk,REG06,Standard registration,Ambulance,50-64,Male,Injury or fracture,2,Discharged
+EV0000394,ED000019,Triage,2025-07-26 20:59:12,Triage,2,Triage Nurse,TRN01,Initial triage,Ambulance,50-64,Male,Injury or fracture,2,Discharged
+EV0000395,ED000019,Doctor Consultation,2025-07-26 21:09:46,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Ambulance,50-64,Male,Injury or fracture,2,Discharged
+EV0000396,ED000019,Imaging,2025-07-26 21:33:14,Radiology,4,Radiographer,RAD02,X-Ray,Ambulance,50-64,Male,Injury or fracture,2,Discharged
+EV0000397,ED000019,Treatment,2025-07-26 21:38:02,Emergency Medicine,5,ED Nurse,NUR12,Splinting or casting,Ambulance,50-64,Male,Injury or fracture,2,Discharged
+EV0000398,ED000019,Discharge,2025-07-26 21:52:09,Emergency Medicine,6,ED Physician,DOC03,Home with instructions,Ambulance,50-64,Male,Injury or fracture,2,Discharged
+EV0000399,ED000005,Registration,2025-07-30 13:46:03,Front Desk,1,Registration Clerk,REG06,Standard registration,Ambulance,65+,Female,Abdominal pain,2,Admitted
+EV0000400,ED000005,Triage,2025-07-30 13:51:51,Triage,2,Triage Nurse,TRN01,Initial triage,Ambulance,65+,Female,Abdominal pain,2,Admitted
+EV0000401,ED000005,Doctor Consultation,2025-07-30 14:06:53,Emergency Medicine,3,ED Physician,DOC02,Initial consultation,Ambulance,65+,Female,Abdominal pain,2,Admitted
+EV0000402,ED000005,Laboratory Testing,2025-07-30 14:14:32,Laboratory,4,Lab Technician,LAB08,Urinalysis,Ambulance,65+,Female,Abdominal pain,2,Admitted
+EV0000403,ED000005,Imaging,2025-07-30 14:28:12,Radiology,5,Radiographer,RAD02,Ultrasound,Ambulance,65+,Female,Abdominal pain,2,Admitted
+EV0000404,ED000005,Treatment,2025-07-30 14:38:09,Emergency Medicine,6,ED Nurse,NUR01,IV fluids,Ambulance,65+,Female,Abdominal pain,2,Admitted
+EV0000405,ED000005,Treatment,2025-07-30 14:42:26,Emergency Medicine,7,ED Nurse,NUR04,Splinting or casting,Ambulance,65+,Female,Abdominal pain,2,Admitted
+EV0000406,ED000005,Reassessment,2025-07-30 15:15:16,Emergency Medicine,8,ED Nurse,NUR01,Pain recheck,Ambulance,65+,Female,Abdominal pain,2,Admitted
+EV0000407,ED000005,Hospital Admission,2025-07-30 15:25:03,Inpatient Admissions,9,Admissions Officer,ADM04,ICU,Ambulance,65+,Female,Abdominal pain,2,Admitted
+EV0000408,ED000085,Registration,2025-08-13 08:24:49,Front Desk,1,Registration Clerk,REG03,Standard registration,Walk-in,35-49,Female,Minor wound or rash,3,Discharged
+EV0000409,ED000085,Triage,2025-08-13 08:40:50,Triage,2,Triage Nurse,TRN03,Initial triage,Walk-in,35-49,Female,Minor wound or rash,3,Discharged
+EV0000410,ED000085,Doctor Consultation,2025-08-13 09:14:39,Emergency Medicine,3,ED Physician,DOC07,Initial consultation,Walk-in,35-49,Female,Minor wound or rash,3,Discharged
+EV0000411,ED000085,Treatment,2025-08-13 09:28:51,Emergency Medicine,4,ED Nurse,NUR11,Wound care,Walk-in,35-49,Female,Minor wound or rash,3,Discharged
+EV0000412,ED000085,Reassessment,2025-08-13 10:13:02,Emergency Medicine,5,ED Nurse,NUR12,Response to treatment,Walk-in,35-49,Female,Minor wound or rash,3,Discharged
+EV0000413,ED000085,Discharge,2025-08-13 11:01:40,Emergency Medicine,6,ED Physician,DOC12,Home with follow-up appointment,Walk-in,35-49,Female,Minor wound or rash,3,Discharged
+EV0000414,ED000031,Registration,2025-08-13 23:33:33,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,50-64,Male,Injury or fracture,3,Admitted
+EV0000415,ED000031,Triage,2025-08-13 23:38:33,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,50-64,Male,Injury or fracture,3,Admitted
+EV0000416,ED000031,Doctor Consultation,2025-08-13 23:59:29,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Walk-in,50-64,Male,Injury or fracture,3,Admitted
+EV0000417,ED000031,Laboratory Testing,2025-08-14 00:29:16,Laboratory,4,Lab Technician,LAB06,Blood panel,Walk-in,50-64,Male,Injury or fracture,3,Admitted
+EV0000418,ED000031,Treatment,2025-08-14 00:40:02,Emergency Medicine,5,ED Nurse,NUR07,Wound care,Walk-in,50-64,Male,Injury or fracture,3,Admitted
+EV0000419,ED000031,Reassessment,2025-08-14 01:02:42,Emergency Medicine,6,ED Nurse,NUR11,Pain recheck,Walk-in,50-64,Male,Injury or fracture,3,Admitted
+EV0000420,ED000031,Hospital Admission,2025-08-14 01:18:51,Inpatient Admissions,7,Admissions Officer,ADM01,General Ward,Walk-in,50-64,Male,Injury or fracture,3,Admitted
+EV0000421,ED000092,Registration,2025-08-17 09:41:39,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,18-34,Female,Injury or fracture,4,Discharged
+EV0000422,ED000092,Triage,2025-08-17 09:59:24,Triage,2,Triage Nurse,TRN02,Initial triage,Walk-in,18-34,Female,Injury or fracture,4,Discharged
+EV0000423,ED000092,Doctor Consultation,2025-08-17 10:34:38,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,18-34,Female,Injury or fracture,4,Discharged
+EV0000424,ED000092,Reassessment,2025-08-17 10:53:31,Emergency Medicine,4,ED Nurse,NUR13,Pain recheck,Walk-in,18-34,Female,Injury or fracture,4,Discharged
+EV0000425,ED000092,Discharge,2025-08-17 11:26:50,Emergency Medicine,5,ED Physician,DOC08,Home with instructions,Walk-in,18-34,Female,Injury or fracture,4,Discharged
+EV0000426,ED000025,Registration,2025-08-21 06:13:41,Front Desk,1,Registration Clerk,REG06,Emergency registration,Ambulance,18-34,Female,Other,1,Discharged
+EV0000427,ED000025,Triage,2025-08-21 06:15:25,Triage,2,Triage Nurse,TRN06,Initial triage,Ambulance,18-34,Female,Other,1,Discharged
+EV0000428,ED000025,Doctor Consultation,2025-08-21 06:20:35,Emergency Medicine,3,ED Physician,DOC10,Initial consultation,Ambulance,18-34,Female,Other,1,Discharged
+EV0000429,ED000025,Laboratory Testing,2025-08-21 06:25:03,Laboratory,4,Lab Technician,LAB04,Cardiac markers,Ambulance,18-34,Female,Other,1,Discharged
+EV0000430,ED000025,Treatment,2025-08-21 06:34:11,Emergency Medicine,5,ED Nurse,NUR10,IV fluids,Ambulance,18-34,Female,Other,1,Discharged
+EV0000431,ED000025,Treatment,2025-08-21 06:38:10,Emergency Medicine,6,ED Nurse,NUR14,IV fluids,Ambulance,18-34,Female,Other,1,Discharged
+EV0000432,ED000025,Reassessment,2025-08-21 06:42:35,Emergency Medicine,7,ED Nurse,NUR13,Vitals recheck,Ambulance,18-34,Female,Other,1,Discharged
+EV0000433,ED000025,Discharge,2025-08-21 06:47:59,Emergency Medicine,8,ED Physician,DOC05,Home with instructions,Ambulance,18-34,Female,Other,1,Discharged
+EV0000434,ED000087,Registration,2025-08-22 22:23:52,Front Desk,1,Registration Clerk,REG01,Emergency registration,Ambulance,35-49,Female,Breathing difficulty,1,Admitted
+EV0000435,ED000087,Triage,2025-08-22 22:24:52,Triage,2,Triage Nurse,TRN10,Initial triage,Ambulance,35-49,Female,Breathing difficulty,1,Admitted
+EV0000436,ED000087,Doctor Consultation,2025-08-22 22:31:19,Emergency Medicine,3,ED Physician,DOC12,Initial consultation,Ambulance,35-49,Female,Breathing difficulty,1,Admitted
+EV0000437,ED000087,Imaging,2025-08-22 22:37:03,Radiology,4,Radiographer,RAD06,X-Ray,Ambulance,35-49,Female,Breathing difficulty,1,Admitted
+EV0000438,ED000087,Laboratory Testing,2025-08-22 22:38:50,Laboratory,5,Lab Technician,LAB05,Cardiac markers,Ambulance,35-49,Female,Breathing difficulty,1,Admitted
+EV0000439,ED000087,Treatment,2025-08-22 22:42:25,Emergency Medicine,6,ED Nurse,NUR03,Splinting or casting,Ambulance,35-49,Female,Breathing difficulty,1,Admitted
+EV0000440,ED000087,Reassessment,2025-08-22 22:44:34,Emergency Medicine,7,ED Nurse,NUR12,Pain recheck,Ambulance,35-49,Female,Breathing difficulty,1,Admitted
+EV0000441,ED000087,Hospital Admission,2025-08-22 22:48:48,Inpatient Admissions,8,Admissions Officer,ADM02,ICU,Ambulance,35-49,Female,Breathing difficulty,1,Admitted
+EV0000442,ED000024,Registration,2025-08-26 21:19:41,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000443,ED000024,Triage,2025-08-26 21:26:26,Triage,2,Triage Nurse,TRN09,Initial triage,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000444,ED000024,Doctor Consultation,2025-08-26 21:49:20,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000445,ED000024,Treatment,2025-08-26 22:10:31,Emergency Medicine,4,ED Nurse,NUR12,Medication administered,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000446,ED000024,Reassessment,2025-08-27 00:54:40,Emergency Medicine,5,ED Nurse,NUR14,Pain recheck,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000447,ED000024,Discharge,2025-08-27 03:40:09,Emergency Medicine,6,ED Physician,DOC05,Home with instructions,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000448,ED000022,Registration,2025-08-27 20:43:34,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000449,ED000022,Triage,2025-08-27 20:53:25,Triage,2,Triage Nurse,TRN07,Initial triage,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000450,ED000022,Doctor Consultation,2025-08-27 21:31:01,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000451,ED000022,Reassessment,2025-08-27 22:01:28,Emergency Medicine,4,ED Nurse,NUR11,Response to treatment,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000452,ED000022,Discharge,2025-08-27 23:55:49,Emergency Medicine,5,ED Physician,DOC05,Home with follow-up appointment,Walk-in,18-34,Female,Fever or infection,4,Discharged
+EV0000453,ED000033,Registration,2025-08-29 20:12:23,Front Desk,1,Registration Clerk,REG06,Standard registration,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000454,ED000033,Triage,2025-08-29 20:22:19,Triage,2,Triage Nurse,TRN07,Initial triage,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000455,ED000033,Doctor Consultation,2025-08-29 21:08:03,Emergency Medicine,3,ED Physician,DOC03,Initial consultation,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000456,ED000033,Imaging,2025-08-29 21:33:50,Radiology,4,Radiographer,RAD06,X-Ray,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000457,ED000033,Treatment,2025-08-29 22:02:11,Emergency Medicine,5,ED Nurse,NUR02,Wound care,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000458,ED000033,Reassessment,2025-08-29 22:48:53,Emergency Medicine,6,ED Nurse,NUR14,Pain recheck,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000459,ED000033,Discharge,2025-08-29 23:49:58,Emergency Medicine,7,ED Physician,DOC07,Home with instructions,Walk-in,50-64,Female,Injury or fracture,4,Discharged
+EV0000460,ED000080,Registration,2025-09-01 21:42:22,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,50-64,Male,Other,3,Discharged
+EV0000461,ED000080,Triage,2025-09-01 21:48:52,Triage,2,Triage Nurse,TRN09,Initial triage,Walk-in,50-64,Male,Other,3,Discharged
+EV0000462,ED000080,Doctor Consultation,2025-09-01 22:13:11,Emergency Medicine,3,ED Physician,DOC03,Initial consultation,Walk-in,50-64,Male,Other,3,Discharged
+EV0000463,ED000080,Laboratory Testing,2025-09-01 22:55:36,Laboratory,4,Lab Technician,LAB03,Cardiac markers,Walk-in,50-64,Male,Other,3,Discharged
+EV0000464,ED000080,Treatment,2025-09-01 23:13:23,Emergency Medicine,5,ED Nurse,NUR04,Nebulisation,Walk-in,50-64,Male,Other,3,Discharged
+EV0000465,ED000080,Reassessment,2025-09-02 00:30:45,Emergency Medicine,6,ED Nurse,NUR06,Pain recheck,Walk-in,50-64,Male,Other,3,Discharged
+EV0000466,ED000080,Discharge,2025-09-02 00:49:26,Emergency Medicine,7,ED Physician,DOC02,Home with instructions,Walk-in,50-64,Male,Other,3,Discharged
+EV0000467,ED000074,Registration,2025-09-03 18:36:41,Front Desk,1,Registration Clerk,REG06,Standard registration,Ambulance,18-34,Male,Injury or fracture,3,Admitted
+EV0000468,ED000074,Triage,2025-09-03 18:41:53,Triage,2,Triage Nurse,TRN01,Initial triage,Ambulance,18-34,Male,Injury or fracture,3,Admitted
+EV0000469,ED000074,Doctor Consultation,2025-09-03 19:07:33,Emergency Medicine,3,ED Physician,DOC02,Initial consultation,Ambulance,18-34,Male,Injury or fracture,3,Admitted
+EV0000470,ED000074,Imaging,2025-09-03 19:27:41,Radiology,4,Radiographer,RAD05,Ultrasound,Ambulance,18-34,Male,Injury or fracture,3,Admitted
+EV0000471,ED000074,Triage,2025-09-03 19:42:32,Triage,5,Triage Nurse,TRN10,Re-triage: imaging request form incomplete,Ambulance,18-34,Male,Injury or fracture,3,Admitted
+EV0000472,ED000074,Doctor Consultation,2025-09-03 20:33:12,Emergency Medicine,6,ED Physician,DOC11,Follow-up consultation,Ambulance,18-34,Male,Injury or fracture,3,Admitted
+EV0000473,ED000074,Treatment,2025-09-03 20:44:10,Emergency Medicine,7,ED Nurse,NUR12,Oxygen therapy,Ambulance,18-34,Male,Injury or fracture,3,Admitted
+EV0000474,ED000051,Registration,2025-09-03 21:44:38,Front Desk,1,Registration Clerk,REG06,Standard registration,Walk-in,50-64,Male,Breathing difficulty,5,Discharged
+EV0000475,ED000051,Triage,2025-09-03 21:59:16,Triage,2,Triage Nurse,TRN07,Initial triage,Walk-in,50-64,Male,Breathing difficulty,5,Discharged
+EV0000476,ED000074,Reassessment,2025-09-03 22:17:24,Emergency Medicine,8,ED Nurse,NUR05,Response to treatment,Ambulance,18-34,Male,Injury or fracture,3,Admitted
+EV0000477,ED000051,Doctor Consultation,2025-09-03 22:46:49,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,50-64,Male,Breathing difficulty,5,Discharged
+EV0000478,ED000074,Hospital Admission,2025-09-03 23:02:04,Inpatient Admissions,9,Admissions Officer,ADM01,General Ward,Ambulance,18-34,Male,Injury or fracture,3,Admitted
+EV0000479,ED000051,Imaging,2025-09-03 23:16:23,Radiology,4,Radiographer,RAD04,X-Ray,Walk-in,50-64,Male,Breathing difficulty,5,Discharged
+EV0000480,ED000051,Reassessment,2025-09-04 02:20:48,Emergency Medicine,5,ED Nurse,NUR13,Pain recheck,Walk-in,50-64,Male,Breathing difficulty,5,Discharged
+EV0000481,ED000051,Discharge,2025-09-04 03:26:45,Emergency Medicine,6,ED Physician,DOC07,Home with instructions,Walk-in,50-64,Male,Breathing difficulty,5,Discharged
+EV0000482,ED000097,Registration,2025-09-05 22:02:14,Front Desk,1,Registration Clerk,REG04,Standard registration,Ambulance,35-49,Male,Minor wound or rash,3,Admitted
+EV0000483,ED000097,Triage,2025-09-05 22:08:05,Triage,2,Triage Nurse,TRN04,Initial triage,Ambulance,35-49,Male,Minor wound or rash,3,Admitted
+EV0000484,ED000097,Doctor Consultation,2025-09-05 23:15:36,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Ambulance,35-49,Male,Minor wound or rash,3,Admitted
+EV0000485,ED000097,Treatment,2025-09-05 23:33:09,Emergency Medicine,4,ED Nurse,NUR12,Wound care,Ambulance,35-49,Male,Minor wound or rash,3,Admitted
+EV0000486,ED000097,Reassessment,2025-09-06 00:21:26,Emergency Medicine,5,ED Nurse,NUR07,Response to treatment,Ambulance,35-49,Male,Minor wound or rash,3,Admitted
+EV0000487,ED000097,Hospital Admission,2025-09-06 01:05:44,Inpatient Admissions,6,Admissions Officer,ADM01,General Ward,Ambulance,35-49,Male,Minor wound or rash,3,Admitted
+EV0000488,ED000052,Registration,2025-09-08 22:41:47,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000489,ED000052,Triage,2025-09-08 22:50:57,Triage,2,Triage Nurse,TRN06,Initial triage,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000490,ED000052,Doctor Consultation,2025-09-08 23:04:25,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000491,ED000052,Imaging,2025-09-08 23:48:43,Radiology,4,Radiographer,RAD01,Ultrasound,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000492,ED000052,Triage,2025-09-09 00:07:54,Triage,5,Triage Nurse,TRN07,Re-triage: missing intake paperwork,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000493,ED000052,Doctor Consultation,2025-09-09 01:00:27,Emergency Medicine,6,ED Physician,DOC03,Follow-up consultation,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000494,ED000052,Laboratory Testing,2025-09-09 01:20:00,Laboratory,7,Lab Technician,LAB08,Blood culture,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000495,ED000052,Treatment,2025-09-09 01:38:02,Emergency Medicine,8,ED Nurse,NUR12,Wound care,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000496,ED000052,Reassessment,2025-09-09 02:32:47,Emergency Medicine,9,ED Nurse,NUR09,Response to treatment,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000497,ED000052,Discharge,2025-09-09 03:42:59,Emergency Medicine,10,ED Physician,DOC03,Home with instructions,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000498,ED000088,Registration,2025-09-16 07:31:00,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,65+,Female,Minor wound or rash,3,Discharged
+EV0000499,ED000088,Triage,2025-09-16 07:43:35,Triage,2,Triage Nurse,TRN07,Initial triage,Walk-in,65+,Female,Minor wound or rash,3,Discharged
+EV0000500,ED000088,Doctor Consultation,2025-09-16 08:52:17,Emergency Medicine,3,ED Physician,DOC09,Initial consultation,Walk-in,65+,Female,Minor wound or rash,3,Discharged
+EV0000501,ED000088,Laboratory Testing,2025-09-16 09:16:41,Laboratory,4,Lab Technician,LAB03,Blood panel,Walk-in,65+,Female,Minor wound or rash,3,Discharged
+EV0000502,ED000088,Treatment,2025-09-16 09:28:27,Emergency Medicine,5,ED Nurse,NUR06,Oxygen therapy,Walk-in,65+,Female,Minor wound or rash,3,Discharged
+EV0000503,ED000088,Reassessment,2025-09-16 10:47:02,Emergency Medicine,6,ED Nurse,NUR10,Response to treatment,Walk-in,65+,Female,Minor wound or rash,3,Discharged
+EV0000504,ED000088,Discharge,2025-09-16 11:21:06,Emergency Medicine,7,ED Physician,DOC06,Home with follow-up appointment,Walk-in,65+,Female,Minor wound or rash,3,Discharged
+EV0000505,ED000091,Registration,2025-09-21 07:02:27,Front Desk,1,Registration Clerk,REG03,Standard registration,Ambulance,65+,Male,Fever or infection,3,Discharged
+EV0000506,ED000091,Triage,2025-09-21 07:10:54,Triage,2,Triage Nurse,TRN10,Initial triage,Ambulance,65+,Male,Fever or infection,3,Discharged
+EV0000507,ED000091,Doctor Consultation,2025-09-21 07:31:00,Emergency Medicine,3,ED Physician,DOC01,Initial consultation,Ambulance,65+,Male,Fever or infection,3,Discharged
+EV0000508,ED000091,Laboratory Testing,2025-09-21 07:43:53,Laboratory,4,Lab Technician,LAB01,Cardiac markers,Ambulance,65+,Male,Fever or infection,3,Discharged
+EV0000509,ED000091,Treatment,2025-09-21 07:58:36,Emergency Medicine,5,ED Nurse,NUR06,IV fluids,Ambulance,65+,Male,Fever or infection,3,Discharged
+EV0000510,ED000091,Reassessment,2025-09-21 09:00:00,Emergency Medicine,6,ED Nurse,NUR04,Vitals recheck,Ambulance,65+,Male,Fever or infection,3,Discharged
+EV0000511,ED000091,Reassessment,2025-09-21 09:44:10,Emergency Medicine,7,ED Nurse,NUR03,Pain recheck,Ambulance,65+,Male,Fever or infection,3,Discharged
+EV0000512,ED000091,Discharge,2025-09-21 10:10:45,Emergency Medicine,8,ED Physician,DOC06,Home with instructions,Ambulance,65+,Male,Fever or infection,3,Discharged
+EV0000513,ED000026,Registration,2025-09-24 10:41:01,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,50-64,Male,Headache or dizziness,4,Discharged
+EV0000514,ED000026,Triage,2025-09-24 10:50:42,Triage,2,Triage Nurse,TRN08,Initial triage,Walk-in,50-64,Male,Headache or dizziness,4,Discharged
+EV0000515,ED000026,Doctor Consultation,2025-09-24 11:41:57,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,50-64,Male,Headache or dizziness,4,Discharged
+EV0000516,ED000026,Laboratory Testing,2025-09-24 12:15:34,Laboratory,4,Lab Technician,LAB06,Blood culture,Walk-in,50-64,Male,Headache or dizziness,4,Discharged
+EV0000517,ED000026,Treatment,2025-09-24 12:33:12,Emergency Medicine,5,ED Nurse,NUR02,Nebulisation,Walk-in,50-64,Male,Headache or dizziness,4,Discharged
+EV0000518,ED000026,Discharge,2025-09-24 12:45:40,Emergency Medicine,6,ED Physician,DOC09,Home with follow-up appointment,Walk-in,50-64,Male,Headache or dizziness,4,Discharged
+EV0000519,ED000045,Registration,2025-09-29 09:14:03,Front Desk,1,Registration Clerk,REG01,Standard registration,Ambulance,0-17,Male,Fever or infection,2,Discharged
+EV0000520,ED000045,Triage,2025-09-29 09:17:07,Triage,2,Triage Nurse,TRN02,Initial triage,Ambulance,0-17,Male,Fever or infection,2,Discharged
+EV0000521,ED000045,Doctor Consultation,2025-09-29 09:38:50,Emergency Medicine,3,ED Physician,DOC09,Initial consultation,Ambulance,0-17,Male,Fever or infection,2,Discharged
+EV0000522,ED000045,Laboratory Testing,2025-09-29 10:08:50,Laboratory,4,Lab Technician,LAB08,Blood culture,Ambulance,0-17,Male,Fever or infection,2,Discharged
+EV0000523,ED000045,Treatment,2025-09-29 10:21:33,Emergency Medicine,5,ED Nurse,NUR05,Wound care,Ambulance,0-17,Male,Fever or infection,2,Discharged
+EV0000524,ED000045,Reassessment,2025-09-29 10:37:21,Emergency Medicine,6,ED Nurse,NUR13,Vitals recheck,Ambulance,0-17,Male,Fever or infection,2,Discharged
+EV0000525,ED000045,Reassessment,2025-09-29 11:01:52,Emergency Medicine,7,ED Nurse,NUR12,Response to treatment,Ambulance,0-17,Male,Fever or infection,2,Discharged
+EV0000526,ED000045,Discharge,2025-09-29 11:25:07,Emergency Medicine,8,ED Physician,DOC03,Home with follow-up appointment,Ambulance,0-17,Male,Fever or infection,2,Discharged
+EV0000527,ED000021,Registration,2025-10-01 12:20:40,Front Desk,1,Registration Clerk,REG06,Standard registration,Ambulance,35-49,Male,Injury or fracture,2,Discharged
+EV0000528,ED000063,Registration,2025-10-01 12:27:52,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,18-34,Male,Injury or fracture,4,Discharged
+EV0000529,ED000021,Triage,2025-10-01 12:28:19,Triage,2,Triage Nurse,TRN09,Initial triage,Ambulance,35-49,Male,Injury or fracture,2,Discharged
+EV0000530,ED000063,Triage,2025-10-01 12:38:11,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,18-34,Male,Injury or fracture,4,Discharged
+EV0000531,ED000063,Doctor Consultation,2025-10-01 13:08:48,Emergency Medicine,3,ED Physician,DOC10,Initial consultation,Walk-in,18-34,Male,Injury or fracture,4,Discharged
+EV0000532,ED000063,Reassessment,2025-10-01 13:19:02,Emergency Medicine,4,ED Nurse,NUR05,Vitals recheck,Walk-in,18-34,Male,Injury or fracture,4,Discharged
+EV0000533,ED000021,Doctor Consultation,2025-10-01 14:04:49,Emergency Medicine,3,ED Physician,DOC04,Initial consultation,Ambulance,35-49,Male,Injury or fracture,2,Discharged
+EV0000534,ED000021,Laboratory Testing,2025-10-01 14:19:21,Laboratory,4,Lab Technician,LAB02,Blood panel,Ambulance,35-49,Male,Injury or fracture,2,Discharged
+EV0000535,ED000063,Reassessment,2025-10-01 14:23:19,Emergency Medicine,5,ED Nurse,NUR06,Response to treatment,Walk-in,18-34,Male,Injury or fracture,4,Discharged
+EV0000536,ED000021,Imaging,2025-10-01 14:32:09,Radiology,5,Radiographer,RAD01,X-Ray,Ambulance,35-49,Male,Injury or fracture,2,Discharged
+EV0000537,ED000021,Treatment,2025-10-01 14:42:53,Emergency Medicine,6,ED Nurse,NUR06,Splinting or casting,Ambulance,35-49,Male,Injury or fracture,2,Discharged
+EV0000538,ED000021,Discharge,2025-10-01 14:49:25,Emergency Medicine,7,ED Physician,DOC10,Home with follow-up appointment,Ambulance,35-49,Male,Injury or fracture,2,Discharged
+EV0000539,ED000063,Discharge,2025-10-01 15:12:32,Emergency Medicine,6,ED Physician,DOC07,Home with follow-up appointment,Walk-in,18-34,Male,Injury or fracture,4,Discharged
+EV0000540,ED000096,Registration,2025-10-03 09:46:56,Front Desk,1,Registration Clerk,REG06,Standard registration,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000541,ED000096,Triage,2025-10-03 09:50:23,Triage,2,Triage Nurse,TRN01,Initial triage,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000542,ED000096,Doctor Consultation,2025-10-03 11:05:32,Emergency Medicine,3,ED Physician,DOC10,Initial consultation,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000543,ED000096,Imaging,2025-10-03 11:38:38,Radiology,4,Radiographer,RAD02,X-Ray,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000544,ED000096,Treatment,2025-10-03 11:43:55,Emergency Medicine,5,ED Nurse,NUR12,Wound care,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000545,ED000096,Discharge,2025-10-03 11:57:14,Emergency Medicine,6,ED Physician,DOC02,Home with instructions,Walk-in,18-34,Male,Injury or fracture,3,Discharged
+EV0000546,ED000012,Registration,2025-10-04 05:09:14,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,35-49,Female,Abdominal pain,4,Discharged
+EV0000547,ED000012,Triage,2025-10-04 05:27:33,Triage,2,Triage Nurse,TRN02,Initial triage,Walk-in,35-49,Female,Abdominal pain,4,Discharged
+EV0000548,ED000012,Doctor Consultation,2025-10-04 06:07:27,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Walk-in,35-49,Female,Abdominal pain,4,Discharged
+EV0000549,ED000012,Treatment,2025-10-04 06:25:15,Emergency Medicine,4,ED Nurse,NUR07,Splinting or casting,Walk-in,35-49,Female,Abdominal pain,4,Discharged
+EV0000550,ED000012,Reassessment,2025-10-04 08:46:52,Emergency Medicine,5,ED Nurse,NUR12,Vitals recheck,Walk-in,35-49,Female,Abdominal pain,4,Discharged
+EV0000551,ED000012,Discharge,2025-10-04 09:06:16,Emergency Medicine,6,ED Physician,DOC07,Home with instructions,Walk-in,35-49,Female,Abdominal pain,4,Discharged
+EV0000552,ED000010,Registration,2025-10-08 19:19:18,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,18-34,Female,Injury or fracture,3,Admitted
+EV0000553,ED000010,Triage,2025-10-08 19:26:13,Triage,2,Triage Nurse,TRN06,Initial triage,Walk-in,18-34,Female,Injury or fracture,3,Admitted
+EV0000554,ED000010,Doctor Consultation,2025-10-08 19:59:01,Emergency Medicine,3,ED Physician,DOC04,Initial consultation,Walk-in,18-34,Female,Injury or fracture,3,Admitted
+EV0000555,ED000010,Treatment,2025-10-08 20:14:43,Emergency Medicine,4,ED Nurse,NUR13,Nebulisation,Walk-in,18-34,Female,Injury or fracture,3,Admitted
+EV0000556,ED000010,Reassessment,2025-10-08 20:56:29,Emergency Medicine,5,ED Nurse,NUR06,Vitals recheck,Walk-in,18-34,Female,Injury or fracture,3,Admitted
+EV0000557,ED000010,Hospital Admission,2025-10-09 00:40:25,Inpatient Admissions,6,Admissions Officer,ADM03,General Ward,Walk-in,18-34,Female,Injury or fracture,3,Admitted
+EV0000558,ED000018,Registration,2025-10-19 21:28:07,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,18-34,Female,Headache or dizziness,4,Discharged
+EV0000559,ED000018,Triage,2025-10-19 21:45:56,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,18-34,Female,Headache or dizziness,4,Discharged
+EV0000560,ED000018,Doctor Consultation,2025-10-19 22:31:28,Emergency Medicine,3,ED Physician,DOC02,Initial consultation,Walk-in,18-34,Female,Headache or dizziness,4,Discharged
+EV0000561,ED000018,Imaging,2025-10-19 23:54:53,Radiology,4,Radiographer,RAD06,X-Ray,Walk-in,18-34,Female,Headache or dizziness,4,Discharged
+EV0000562,ED000018,Laboratory Testing,2025-10-20 00:15:25,Laboratory,5,Lab Technician,LAB01,Cardiac markers,Walk-in,18-34,Female,Headache or dizziness,4,Discharged
+EV0000563,ED000018,Treatment,2025-10-20 00:41:07,Emergency Medicine,6,ED Nurse,NUR03,Splinting or casting,Walk-in,18-34,Female,Headache or dizziness,4,Discharged
+EV0000564,ED000018,Treatment,2025-10-20 01:01:11,Emergency Medicine,7,ED Nurse,NUR05,Medication administered,Walk-in,18-34,Female,Headache or dizziness,4,Discharged
+EV0000565,ED000018,Reassessment,2025-10-20 03:09:56,Emergency Medicine,8,ED Nurse,NUR14,Pain recheck,Walk-in,18-34,Female,Headache or dizziness,4,Discharged
+EV0000566,ED000018,Discharge,2025-10-20 04:19:22,Emergency Medicine,9,ED Physician,DOC07,Home with instructions,Walk-in,18-34,Female,Headache or dizziness,4,Discharged
+EV0000567,ED000072,Registration,2025-11-02 09:57:51,Front Desk,1,Registration Clerk,REG03,Standard registration,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000568,ED000072,Triage,2025-11-02 10:09:26,Triage,2,Triage Nurse,TRN04,Initial triage,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000569,ED000072,Doctor Consultation,2025-11-02 11:06:08,Emergency Medicine,3,ED Physician,DOC12,Initial consultation,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000570,ED000072,Treatment,2025-11-02 11:35:05,Emergency Medicine,4,ED Nurse,NUR14,Medication administered,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000571,ED000072,Reassessment,2025-11-02 11:58:01,Emergency Medicine,5,ED Nurse,NUR13,Response to treatment,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000572,ED000072,Reassessment,2025-11-02 14:27:27,Emergency Medicine,6,ED Nurse,NUR10,Vitals recheck,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000573,ED000072,Discharge,2025-11-02 15:45:53,Emergency Medicine,7,ED Physician,DOC03,Home with instructions,Walk-in,65+,Male,Chest pain,4,Discharged
+EV0000574,ED000037,Registration,2025-11-08 17:28:02,Front Desk,1,Registration Clerk,REG02,Standard registration,Walk-in,65+,Male,Injury or fracture,4,Admitted
+EV0000575,ED000037,Triage,2025-11-08 17:36:40,Triage,2,Triage Nurse,TRN10,Initial triage,Walk-in,65+,Male,Injury or fracture,4,Admitted
+EV0000576,ED000037,Doctor Consultation,2025-11-08 18:18:35,Emergency Medicine,3,ED Physician,DOC08,Initial consultation,Walk-in,65+,Male,Injury or fracture,4,Admitted
+EV0000577,ED000037,Treatment,2025-11-08 18:51:42,Emergency Medicine,4,ED Nurse,NUR09,Wound care,Walk-in,65+,Male,Injury or fracture,4,Admitted
+EV0000578,ED000037,Reassessment,2025-11-08 19:30:14,Emergency Medicine,5,ED Nurse,NUR04,Vitals recheck,Walk-in,65+,Male,Injury or fracture,4,Admitted
+EV0000579,ED000037,Reassessment,2025-11-08 20:34:27,Emergency Medicine,6,ED Nurse,NUR02,Pain recheck,Walk-in,65+,Male,Injury or fracture,4,Admitted
+EV0000580,ED000037,Hospital Admission,2025-11-08 23:57:24,Inpatient Admissions,7,Admissions Officer,ADM02,Observation Unit,Walk-in,65+,Male,Injury or fracture,4,Admitted
+EV0000581,ED000089,Registration,2025-11-16 17:43:22,Front Desk,1,Registration Clerk,REG06,Standard registration,Ambulance,35-49,Female,Injury or fracture,3,Discharged
+EV0000582,ED000089,Triage,2025-11-16 17:46:03,Triage,2,Triage Nurse,TRN03,Initial triage,Ambulance,35-49,Female,Injury or fracture,3,Discharged
+EV0000583,ED000089,Doctor Consultation,2025-11-16 18:21:30,Emergency Medicine,3,ED Physician,DOC06,Initial consultation,Ambulance,35-49,Female,Injury or fracture,3,Discharged
+EV0000584,ED000089,Treatment,2025-11-16 18:53:23,Emergency Medicine,4,ED Nurse,NUR09,Splinting or casting,Ambulance,35-49,Female,Injury or fracture,3,Discharged
+EV0000585,ED000089,Reassessment,2025-11-16 21:50:18,Emergency Medicine,5,ED Nurse,NUR12,Pain recheck,Ambulance,35-49,Female,Injury or fracture,3,Discharged
+EV0000586,ED000089,Discharge,2025-11-16 23:32:30,Emergency Medicine,6,ED Physician,DOC09,Home with instructions,Ambulance,35-49,Female,Injury or fracture,3,Discharged
+EV0000587,ED000030,Registration,2025-11-18 11:28:04,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,50-64,Female,Headache or dizziness,4,Discharged
+EV0000588,ED000030,Triage,2025-11-18 11:37:45,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,50-64,Female,Headache or dizziness,4,Discharged
+EV0000589,ED000030,Doctor Consultation,2025-11-18 12:30:21,Emergency Medicine,3,ED Physician,DOC02,Initial consultation,Walk-in,50-64,Female,Headache or dizziness,4,Discharged
+EV0000590,ED000030,Treatment,2025-11-18 12:44:50,Emergency Medicine,4,ED Nurse,NUR01,Wound care,Walk-in,50-64,Female,Headache or dizziness,4,Discharged
+EV0000591,ED000030,Reassessment,2025-11-18 13:50:56,Emergency Medicine,5,ED Nurse,NUR08,Response to treatment,Walk-in,50-64,Female,Headache or dizziness,4,Discharged
+EV0000592,ED000030,Discharge,2025-11-18 14:31:35,Emergency Medicine,6,ED Physician,DOC01,Home with instructions,Walk-in,50-64,Female,Headache or dizziness,4,Discharged
+EV0000593,ED000002,Registration,2025-11-22 08:46:15,Front Desk,1,Registration Clerk,REG02,Standard registration,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000594,ED000002,Triage,2025-11-22 08:50:04,Triage,2,Triage Nurse,TRN09,Initial triage,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000595,ED000002,Doctor Consultation,2025-11-22 09:01:29,Emergency Medicine,3,ED Physician,DOC01,Initial consultation,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000596,ED000002,Imaging,2025-11-22 09:13:34,Radiology,4,Radiographer,RAD02,Ultrasound,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000597,ED000002,Triage,2025-11-22 09:18:28,Triage,5,Triage Nurse,TRN04,Re-triage: consent form incomplete,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000598,ED000002,Doctor Consultation,2025-11-22 09:23:26,Emergency Medicine,6,ED Physician,DOC08,Follow-up consultation,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000599,ED000002,Treatment,2025-11-22 09:28:41,Emergency Medicine,7,ED Nurse,NUR12,Oxygen therapy,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000600,ED000002,Reassessment,2025-11-22 09:52:07,Emergency Medicine,8,ED Nurse,NUR07,Response to treatment,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000601,ED000002,Reassessment,2025-11-22 10:09:37,Emergency Medicine,9,ED Nurse,NUR03,Response to treatment,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000602,ED000002,Hospital Admission,2025-11-22 10:38:48,Inpatient Admissions,10,Admissions Officer,ADM01,ICU,Ambulance,50-64,Male,Minor wound or rash,2,Admitted
+EV0000603,ED000017,Registration,2025-11-23 20:31:06,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000604,ED000017,Triage,2025-11-23 20:35:36,Triage,2,Triage Nurse,TRN08,Initial triage,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000605,ED000017,Doctor Consultation,2025-11-23 20:52:45,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000606,ED000017,Imaging,2025-11-23 21:08:57,Radiology,4,Radiographer,RAD02,X-Ray,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000607,ED000017,Laboratory Testing,2025-11-23 21:26:44,Laboratory,5,Lab Technician,LAB04,Blood culture,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000608,ED000017,Laboratory Testing,2025-11-23 21:35:59,Laboratory,6,Lab Technician,LAB07,Cardiac markers,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000609,ED000017,Treatment,2025-11-23 21:43:58,Emergency Medicine,7,ED Nurse,NUR12,IV fluids,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000610,ED000017,Treatment,2025-11-23 21:47:34,Emergency Medicine,8,ED Nurse,NUR03,Medication administered,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000611,ED000017,Reassessment,2025-11-23 22:10:29,Emergency Medicine,9,ED Nurse,NUR04,Pain recheck,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000612,ED000017,Hospital Admission,2025-11-23 23:11:56,Inpatient Admissions,10,Admissions Officer,ADM04,ICU,Walk-in,50-64,Male,Breathing difficulty,2,Admitted
+EV0000613,ED000039,Registration,2025-11-25 05:29:43,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,35-49,Male,Chest pain,5,Discharged
+EV0000614,ED000039,Triage,2025-11-25 05:33:44,Triage,2,Triage Nurse,TRN09,Initial triage,Walk-in,35-49,Male,Chest pain,5,Discharged
+EV0000615,ED000039,Doctor Consultation,2025-11-25 06:36:19,Emergency Medicine,3,ED Physician,DOC03,Initial consultation,Walk-in,35-49,Male,Chest pain,5,Discharged
+EV0000616,ED000039,Reassessment,2025-11-25 07:03:54,Emergency Medicine,4,ED Nurse,NUR01,Vitals recheck,Walk-in,35-49,Male,Chest pain,5,Discharged
+EV0000617,ED000039,Discharge,2025-11-25 07:42:14,Emergency Medicine,5,ED Physician,DOC03,Home with instructions,Walk-in,35-49,Male,Chest pain,5,Discharged
+EV0000618,ED000056,Registration,2025-11-30 23:08:19,Front Desk,1,Registration Clerk,REG03,Standard registration,Walk-in,50-64,Female,Fever or infection,3,Admitted
+EV0000619,ED000056,Triage,2025-11-30 23:19:00,Triage,2,Triage Nurse,TRN08,Initial triage,Walk-in,50-64,Female,Fever or infection,3,Admitted
+EV0000620,ED000056,Doctor Consultation,2025-12-01 00:28:08,Emergency Medicine,3,ED Physician,DOC12,Initial consultation,Walk-in,50-64,Female,Fever or infection,3,Admitted
+EV0000621,ED000056,Laboratory Testing,2025-12-01 00:56:45,Laboratory,4,Lab Technician,LAB05,Blood culture,Walk-in,50-64,Female,Fever or infection,3,Admitted
+EV0000622,ED000056,Treatment,2025-12-01 01:01:21,Emergency Medicine,5,ED Nurse,NUR01,Nebulisation,Walk-in,50-64,Female,Fever or infection,3,Admitted
+EV0000623,ED000056,Reassessment,2025-12-01 01:36:16,Emergency Medicine,6,ED Nurse,NUR08,Pain recheck,Walk-in,50-64,Female,Fever or infection,3,Admitted
+EV0000624,ED000056,Hospital Admission,2025-12-01 02:50:03,Inpatient Admissions,7,Admissions Officer,ADM03,General Ward,Walk-in,50-64,Female,Fever or infection,3,Admitted
+EV0000625,ED000011,Registration,2025-12-02 17:57:48,Front Desk,1,Registration Clerk,REG01,Standard registration,Walk-in,18-34,Female,Abdominal pain,4,Discharged
+EV0000626,ED000011,Triage,2025-12-02 18:11:55,Triage,2,Triage Nurse,TRN09,Initial triage,Walk-in,18-34,Female,Abdominal pain,4,Discharged
+EV0000627,ED000011,Doctor Consultation,2025-12-02 18:53:48,Emergency Medicine,3,ED Physician,DOC02,Initial consultation,Walk-in,18-34,Female,Abdominal pain,4,Discharged
+EV0000628,ED000011,Treatment,2025-12-02 19:09:57,Emergency Medicine,4,ED Nurse,NUR11,Oxygen therapy,Walk-in,18-34,Female,Abdominal pain,4,Discharged
+EV0000629,ED000011,Reassessment,2025-12-02 20:28:32,Emergency Medicine,5,ED Nurse,NUR09,Pain recheck,Walk-in,18-34,Female,Abdominal pain,4,Discharged
+EV0000630,ED000011,Discharge,2025-12-02 21:29:22,Emergency Medicine,6,ED Physician,DOC03,Home with follow-up appointment,Walk-in,18-34,Female,Abdominal pain,4,Discharged
+EV0000631,ED000066,Registration,2025-12-15 16:19:44,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,35-49,Male,Injury or fracture,4,Discharged
+EV0000632,ED000044,Registration,2025-12-15 16:44:16,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,50-64,Female,Abdominal pain,3,Discharged
+EV0000633,ED000044,Triage,2025-12-15 16:50:05,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,50-64,Female,Abdominal pain,3,Discharged
+EV0000634,ED000066,Triage,2025-12-15 16:57:18,Triage,2,Triage Nurse,TRN01,Initial triage,Walk-in,35-49,Male,Injury or fracture,4,Discharged
+EV0000635,ED000066,Doctor Consultation,2025-12-15 17:13:42,Emergency Medicine,3,ED Physician,DOC01,Initial consultation,Walk-in,35-49,Male,Injury or fracture,4,Discharged
+EV0000636,ED000066,Treatment,2025-12-15 17:24:03,Emergency Medicine,4,ED Nurse,NUR12,Medication administered,Walk-in,35-49,Male,Injury or fracture,4,Discharged
+EV0000637,ED000044,Doctor Consultation,2025-12-15 17:27:53,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,50-64,Female,Abdominal pain,3,Discharged
+EV0000638,ED000066,Discharge,2025-12-15 18:04:00,Emergency Medicine,5,ED Physician,DOC06,Home with instructions,Walk-in,35-49,Male,Injury or fracture,4,Discharged
+EV0000639,ED000044,Imaging,2025-12-15 18:33:52,Radiology,4,Radiographer,RAD06,CT Scan,Walk-in,50-64,Female,Abdominal pain,3,Discharged
+EV0000640,ED000044,Laboratory Testing,2025-12-15 18:49:35,Laboratory,5,Lab Technician,LAB05,Cardiac markers,Walk-in,50-64,Female,Abdominal pain,3,Discharged
+EV0000641,ED000044,Treatment,2025-12-15 18:55:05,Emergency Medicine,6,ED Nurse,NUR07,Splinting or casting,Walk-in,50-64,Female,Abdominal pain,3,Discharged
+EV0000642,ED000044,Discharge,2025-12-15 19:31:12,Emergency Medicine,7,ED Physician,DOC05,Home with follow-up appointment,Walk-in,50-64,Female,Abdominal pain,3,Discharged
+EV0000643,ED000047,Registration,2025-12-18 13:57:56,Front Desk,1,Registration Clerk,REG06,Standard registration,Walk-in,65+,Female,Other,3,Discharged
+EV0000644,ED000047,Triage,2025-12-18 14:14:49,Triage,2,Triage Nurse,TRN05,Initial triage,Walk-in,65+,Female,Other,3,Discharged
+EV0000645,ED000047,Doctor Consultation,2025-12-18 14:44:11,Emergency Medicine,3,ED Physician,DOC03,Initial consultation,Walk-in,65+,Female,Other,3,Discharged
+EV0000646,ED000047,Imaging,2025-12-18 15:13:10,Radiology,4,Radiographer,RAD05,X-Ray,Walk-in,65+,Female,Other,3,Discharged
+EV0000647,ED000047,Triage,2025-12-18 15:37:33,Triage,5,Triage Nurse,TRN04,Re-triage: consent form incomplete,Walk-in,65+,Female,Other,3,Discharged
+EV0000648,ED000047,Doctor Consultation,2025-12-18 16:32:57,Emergency Medicine,6,ED Physician,DOC02,Follow-up consultation,Walk-in,65+,Female,Other,3,Discharged
+EV0000649,ED000047,Laboratory Testing,2025-12-18 16:53:53,Laboratory,7,Lab Technician,LAB06,Blood panel,Walk-in,65+,Female,Other,3,Discharged
+EV0000650,ED000047,Treatment,2025-12-18 17:02:31,Emergency Medicine,8,ED Nurse,NUR03,Wound care,Walk-in,65+,Female,Other,3,Discharged
+EV0000651,ED000047,Reassessment,2025-12-18 18:19:25,Emergency Medicine,9,ED Nurse,NUR11,Vitals recheck,Walk-in,65+,Female,Other,3,Discharged
+EV0000652,ED000047,Reassessment,2025-12-18 19:21:19,Emergency Medicine,10,ED Nurse,NUR09,Pain recheck,Walk-in,65+,Female,Other,3,Discharged
+EV0000653,ED000047,Discharge,2025-12-18 20:01:53,Emergency Medicine,11,ED Physician,DOC09,Home with instructions,Walk-in,65+,Female,Other,3,Discharged
+EV0000654,ED000016,Registration,2025-12-20 13:45:31,Front Desk,1,Registration Clerk,REG04,Standard registration,Ambulance,18-34,Male,Injury or fracture,3,Discharged
+EV0000655,ED000016,Triage,2025-12-20 13:56:04,Triage,2,Triage Nurse,TRN04,Initial triage,Ambulance,18-34,Male,Injury or fracture,3,Discharged
+EV0000656,ED000016,Doctor Consultation,2025-12-20 14:26:47,Emergency Medicine,3,ED Physician,DOC11,Initial consultation,Ambulance,18-34,Male,Injury or fracture,3,Discharged
+EV0000657,ED000016,Laboratory Testing,2025-12-20 14:49:37,Laboratory,4,Lab Technician,LAB06,Blood culture,Ambulance,18-34,Male,Injury or fracture,3,Discharged
+EV0000658,ED000016,Laboratory Testing,2025-12-20 15:05:27,Laboratory,5,Lab Technician,LAB05,Cardiac markers,Ambulance,18-34,Male,Injury or fracture,3,Discharged
+EV0000659,ED000016,Treatment,2025-12-20 15:11:59,Emergency Medicine,6,ED Nurse,NUR06,IV fluids,Ambulance,18-34,Male,Injury or fracture,3,Discharged
+EV0000660,ED000016,Discharge,2025-12-20 15:42:34,Emergency Medicine,7,ED Physician,DOC12,Home with instructions,Ambulance,18-34,Male,Injury or fracture,3,Discharged
+EV0000661,ED000090,Registration,2025-12-20 18:13:48,Front Desk,1,Registration Clerk,REG05,Standard registration,Walk-in,65+,Male,Breathing difficulty,3,Discharged
+EV0000662,ED000090,Triage,2025-12-20 18:26:39,Triage,2,Triage Nurse,TRN04,Initial triage,Walk-in,65+,Male,Breathing difficulty,3,Discharged
+EV0000663,ED000090,Doctor Consultation,2025-12-20 19:03:38,Emergency Medicine,3,ED Physician,DOC12,Initial consultation,Walk-in,65+,Male,Breathing difficulty,3,Discharged
+EV0000664,ED000090,Laboratory Testing,2025-12-20 19:15:15,Laboratory,4,Lab Technician,LAB07,Blood culture,Walk-in,65+,Male,Breathing difficulty,3,Discharged
+EV0000665,ED000090,Treatment,2025-12-20 19:25:57,Emergency Medicine,5,ED Nurse,NUR11,Wound care,Walk-in,65+,Male,Breathing difficulty,3,Discharged
+EV0000666,ED000090,Discharge,2025-12-20 19:58:26,Emergency Medicine,6,ED Physician,DOC08,Home with follow-up appointment,Walk-in,65+,Male,Breathing difficulty,3,Discharged
+EV0000667,ED000083,Registration,2025-12-22 17:00:19,Front Desk,1,Registration Clerk,REG04,Standard registration,Transfer,18-34,Male,Chest pain,3,Discharged
+EV0000668,ED000083,Triage,2025-12-22 17:12:22,Triage,2,Triage Nurse,TRN05,Initial triage,Transfer,18-34,Male,Chest pain,3,Discharged
+EV0000669,ED000083,Doctor Consultation,2025-12-22 18:05:45,Emergency Medicine,3,ED Physician,DOC07,Initial consultation,Transfer,18-34,Male,Chest pain,3,Discharged
+EV0000670,ED000083,Laboratory Testing,2025-12-22 18:33:12,Laboratory,4,Lab Technician,LAB02,Cardiac markers,Transfer,18-34,Male,Chest pain,3,Discharged
+EV0000671,ED000083,Treatment,2025-12-22 18:44:03,Emergency Medicine,5,ED Nurse,NUR05,Oxygen therapy,Transfer,18-34,Male,Chest pain,3,Discharged
+EV0000672,ED000083,Reassessment,2025-12-22 20:09:26,Emergency Medicine,6,ED Nurse,NUR07,Pain recheck,Transfer,18-34,Male,Chest pain,3,Discharged
+EV0000673,ED000083,Reassessment,2025-12-22 20:27:53,Emergency Medicine,7,ED Nurse,NUR04,Response to treatment,Transfer,18-34,Male,Chest pain,3,Discharged
+EV0000674,ED000083,Discharge,2025-12-22 21:11:25,Emergency Medicine,8,ED Physician,DOC01,Home with instructions,Transfer,18-34,Male,Chest pain,3,Discharged
+EV0000675,ED000034,Registration,2025-12-23 19:48:45,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,18-34,Male,Injury or fracture,5,Discharged
+EV0000676,ED000034,Triage,2025-12-23 20:00:13,Triage,2,Triage Nurse,TRN02,Initial triage,Walk-in,18-34,Male,Injury or fracture,5,Discharged
+EV0000677,ED000034,Doctor Consultation,2025-12-23 21:03:58,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,18-34,Male,Injury or fracture,5,Discharged
+EV0000678,ED000034,Treatment,2025-12-23 21:21:22,Emergency Medicine,4,ED Nurse,NUR04,Splinting or casting,Walk-in,18-34,Male,Injury or fracture,5,Discharged
+EV0000679,ED000034,Discharge,2025-12-23 22:12:48,Emergency Medicine,5,ED Physician,DOC02,Home with instructions,Walk-in,18-34,Male,Injury or fracture,5,Discharged
+EV0000680,ED000055,Registration,2025-12-31 18:09:47,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000681,ED000055,Triage,2025-12-31 18:16:29,Triage,2,Triage Nurse,TRN01,Initial triage,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000682,ED000055,Doctor Consultation,2025-12-31 19:36:02,Emergency Medicine,3,ED Physician,DOC05,Initial consultation,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000683,ED000055,Laboratory Testing,2025-12-31 19:53:31,Laboratory,4,Lab Technician,LAB07,Blood panel,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000684,ED000055,Laboratory Testing,2025-12-31 20:04:10,Laboratory,5,Lab Technician,LAB02,Cardiac markers,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000685,ED000055,Imaging,2025-12-31 20:25:37,Radiology,6,Radiographer,RAD06,Ultrasound,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000686,ED000055,Treatment,2025-12-31 20:41:46,Emergency Medicine,7,ED Nurse,NUR07,Medication administered,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000687,ED000055,Reassessment,2025-12-31 21:05:15,Emergency Medicine,8,ED Nurse,NUR08,Vitals recheck,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000688,ED000055,Reassessment,2025-12-31 21:23:18,Emergency Medicine,9,ED Nurse,NUR07,Pain recheck,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000689,ED000055,Discharge,2025-12-31 21:47:56,Emergency Medicine,10,ED Physician,DOC05,Home with follow-up appointment,Walk-in,18-34,Male,Headache or dizziness,3,Discharged
+EV0000690,ED000067,Registration,2025-12-31 23:40:04,Front Desk,1,Registration Clerk,REG04,Standard registration,Walk-in,50-64,Male,Abdominal pain,4,Discharged
+EV0000691,ED000067,Triage,2025-12-31 23:49:51,Triage,2,Triage Nurse,TRN08,Initial triage,Walk-in,50-64,Male,Abdominal pain,4,Discharged
+EV0000692,ED000067,Doctor Consultation,2026-01-01 01:00:46,Emergency Medicine,3,ED Physician,DOC03,Initial consultation,Walk-in,50-64,Male,Abdominal pain,4,Discharged
+EV0000693,ED000067,Treatment,2026-01-01 01:16:11,Emergency Medicine,4,ED Nurse,NUR10,Nebulisation,Walk-in,50-64,Male,Abdominal pain,4,Discharged
+EV0000694,ED000067,Reassessment,2026-01-01 02:26:10,Emergency Medicine,5,ED Nurse,NUR09,Vitals recheck,Walk-in,50-64,Male,Abdominal pain,4,Discharged
+EV0000695,ED000067,Reassessment,2026-01-01 02:57:46,Emergency Medicine,6,ED Nurse,NUR07,Vitals recheck,Walk-in,50-64,Male,Abdominal pain,4,Discharged
+EV0000696,ED000067,Discharge,2026-01-01 03:53:09,Emergency Medicine,7,ED Physician,DOC04,Home with instructions,Walk-in,50-64,Male,Abdominal pain,4,Discharged

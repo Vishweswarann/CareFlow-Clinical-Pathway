@@ -1,99 +1,109 @@
+"""Automated checks for the synthetic ED event-log generator. Run with: pytest -v"""
+
+import sys
 from datetime import datetime
+from pathlib import Path
 
-from src.generate_ehr_events import generate_events
+import pytest
 
-def create_test_data(encounters=10, seed=42):
-    """Generate a small dataset for testing."""
-    return generate_events(
-        n_encounters=encounters,
-        seed=seed,
-        start_date=datetime(2025, 1, 1),
-        days=30,
-    )
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from generate_ehr_events import (  # noqa: E402
+    ACTIVITY_DEPARTMENT, COLUMNS, generate_events,
+)
 
-def test_required_columns_exist():
-    df = create_test_data()
-
-    expected_columns = [
-        "event_id",
-        "case_id",
-        "activity",
-        "timestamp",
-        "department",
-        "arrival_mode",
-        "triage_level",
-        "disposition",
-    ]
-
-    assert list(df.columns) == expected_columns
+START = datetime(2025, 1, 1)
+CASE_ATTRIBUTES = ["arrival_mode", "age_group", "gender", "chief_complaint",
+                   "triage_level", "disposition"]
 
 
-def test_encounter_count():
-    df = create_test_data(encounters=10)
+@pytest.fixture(scope="module")
+def df():
+    return generate_events(n_encounters=300, seed=42, start_date=START, days=365)
 
-    assert df["case_id"].nunique() == 10
+
+def test_columns_and_order(df):
+    assert list(df.columns) == COLUMNS
 
 
-def test_event_ids_are_unique():
-    df = create_test_data()
+def test_encounter_count(df):
+    assert df["case_id"].nunique() == 300
 
+
+def test_no_missing_values(df):
+    assert not df.isna().any().any()
+    for column in df.columns:
+        assert not (df[column].astype(str).str.strip() == "").any()
+
+
+def test_event_ids_are_unique(df):
     assert df["event_id"].is_unique
 
 
-def test_required_fields_have_no_missing_values():
-    df = create_test_data()
-
-    assert not df.isnull().any().any()
-
-
-def test_timestamps_are_datetime_values():
-    df = create_test_data()
-
-    assert df["timestamp"].notna().all()
-    assert df["timestamp"].map(
-        lambda value: isinstance(value, datetime)
-    ).all()
+def test_timestamps_strictly_increase_within_each_case(df):
+    for _, case in df.groupby("case_id"):
+        stamps = case.sort_values("event_sequence")["timestamp"]
+        assert stamps.is_monotonic_increasing and stamps.is_unique
 
 
-def test_events_are_sorted_by_timestamp():
-    df = create_test_data()
-
-    timestamps = df["timestamp"].tolist()
-
-    assert timestamps == sorted(timestamps)
+def test_event_sequence_is_1_to_n_per_case(df):
+    for _, case in df.groupby("case_id"):
+        assert sorted(case["event_sequence"]) == list(range(1, len(case) + 1))
 
 
-def test_each_encounter_has_one_final_event():
-    df = create_test_data()
-
-    terminal_activities = {"Discharge", "Hospital Admission"}
-
-    for case_id, group in df.groupby("case_id"):
-        terminal_rows = group[
-            group["activity"].isin(terminal_activities)
-        ]
-
-        # Every encounter must have exactly one terminal event.
-        assert len(terminal_rows) == 1, (
-            f"{case_id} does not have exactly one terminal event"
-        )
-
-        # The terminal event must be the last event in that encounter.
-        last_event = group.sort_values("timestamp").iloc[-1]
-
-        assert last_event["activity"] in terminal_activities
+def test_encounter_attributes_are_constant_within_a_case(df):
+    assert (df.groupby("case_id")[CASE_ATTRIBUTES].nunique() == 1).all().all()
 
 
-def test_same_seed_produces_same_data():
-    df1 = create_test_data(encounters=10, seed=42)
-    df2 = create_test_data(encounters=10, seed=42)
+def test_every_case_starts_with_registration_then_triage(df):
+    ordered = df.sort_values(["case_id", "event_sequence"])
+    first_two = ordered.groupby("case_id")["activity"].apply(lambda s: tuple(s.iloc[:2]))
+    assert (first_two == ("Registration", "Triage")).all()
 
-    assert df1.equals(df2)
+
+def test_last_event_matches_disposition_and_is_the_only_final_event(df):
+    ordered = df.sort_values(["case_id", "event_sequence"])
+    last = ordered.groupby("case_id").tail(1)
+    expected = last["disposition"].map({"Admitted": "Hospital Admission", "Discharged": "Discharge"})
+    assert (last["activity"] == expected).all()
+    finals = df[df["activity"].isin(["Discharge", "Hospital Admission"])]
+    assert finals["case_id"].is_unique
 
 
-def test_different_seeds_produce_different_data():
-    df1 = create_test_data(encounters=10, seed=42)
-    df2 = create_test_data(encounters=10, seed=99)
+def test_department_matches_activity(df):
+    assert (df["department"] == df["activity"].map(ACTIVITY_DEPARTMENT)).all()
 
-    assert not df1.equals(df2)
+
+def test_triage_levels_are_1_to_5(df):
+    assert set(df["triage_level"]).issubset({1, 2, 3, 4, 5})
+
+
+def test_pathways_vary_and_include_repeats_and_loopbacks(df):
+    pathways = df.sort_values(["case_id", "event_sequence"]).groupby("case_id")["activity"].apply(tuple)
+    assert pathways.nunique() > 10
+    assert (df[df["activity"] == "Triage"].groupby("case_id").size() > 1).any()   # loop-back
+    assert (df.groupby(["case_id", "activity"]).size() > 1).any()                  # repeats
+
+
+def test_same_seed_gives_identical_data():
+    a = generate_events(n_encounters=50, seed=7, start_date=START, days=30)
+    b = generate_events(n_encounters=50, seed=7, start_date=START, days=30)
+    assert a.equals(b)
+
+
+def test_different_seed_gives_different_data():
+    a = generate_events(n_encounters=50, seed=7, start_date=START, days=30)
+    b = generate_events(n_encounters=50, seed=8, start_date=START, days=30)
+    assert not a.equals(b)
+
+
+def test_target_events_never_cuts_an_encounter_in_half():
+    df = generate_events(target_events=1000, seed=1, start_date=START, days=60)
+    assert 1000 <= len(df) < 1030
+    last = df.sort_values(["case_id", "event_sequence"]).groupby("case_id").tail(1)
+    assert last["activity"].isin(["Discharge", "Hospital Admission"]).all()
+
+
+def test_must_give_a_size_limit():
+    with pytest.raises(ValueError):
+        generate_events()
