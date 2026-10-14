@@ -1,1 +1,6 @@
 .venv
+pyrightconfig.json
+data/
+google-cloud-sdk/
+data/
+
