@@ -1,0 +1,31 @@
+﻿version: 2
+
+models:
+  - name: stg_event_logs
+    description: "Standardized hospital event records for CareFlow."
+    columns:
+      - name: case_id
+        description: "Identifier for a patient encounter."
+        data_tests:
+          - not_null
+
+      - name: event_id
+        description: "Unique identifier for a hospital event."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: activity
+        description: "Hospital activity recorded for the encounter."
+        data_tests:
+          - not_null
+
+      - name: event_timestamp
+        description: "Timestamp of the hospital event."
+        data_tests:
+          - not_null
+
+      - name: department
+        description: "Hospital department associated with the event."
+        data_tests:
+          - not_null
