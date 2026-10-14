@@ -1,0 +1,21 @@
+pathway,encounter_count,percentage
+Registration -> Triage -> Doctor Consultation -> Treatment -> Reassessment -> Discharge,2442,8.5
+Registration -> Triage -> Doctor Consultation -> Reassessment -> Discharge,2278,7.93
+Registration -> Triage -> Doctor Consultation -> Laboratory Testing -> Treatment -> Reassessment -> Discharge,1496,5.21
+Registration -> Triage -> Doctor Consultation -> Treatment -> Discharge,1352,4.7
+Registration -> Triage -> Doctor Consultation -> Discharge,1176,4.09
+Registration -> Triage -> Doctor Consultation -> Laboratory Testing -> Treatment -> Discharge,760,2.64
+Registration -> Triage -> Doctor Consultation -> Imaging -> Treatment -> Reassessment -> Discharge,734,2.55
+Registration -> Triage -> Doctor Consultation -> Treatment -> Treatment -> Reassessment -> Discharge,636,2.21
+Registration -> Triage -> Doctor Consultation -> Treatment -> Reassessment -> Reassessment -> Discharge,611,2.13
+Registration -> Triage -> Doctor Consultation -> Laboratory Testing -> Treatment -> Reassessment -> Hospital Admission,604,2.1
+Registration -> Triage -> Doctor Consultation -> Laboratory Testing -> Reassessment -> Discharge,561,1.95
+Registration -> Triage -> Doctor Consultation -> Reassessment -> Reassessment -> Discharge,533,1.85
+Registration -> Triage -> Doctor Consultation -> Treatment -> Reassessment -> Hospital Admission,492,1.71
+Registration -> Triage -> Doctor Consultation -> Imaging -> Triage -> Doctor Consultation -> Treatment -> Reassessment -> Discharge,489,1.7
+Registration -> Triage -> Doctor Consultation -> Imaging -> Treatment -> Discharge,419,1.46
+Registration -> Triage -> Doctor Consultation -> Laboratory Testing -> Imaging -> Treatment -> Reassessment -> Discharge,392,1.36
+Registration -> Triage -> Doctor Consultation -> Laboratory Testing -> Treatment -> Reassessment -> Reassessment -> Discharge,379,1.32
+Registration -> Triage -> Doctor Consultation -> Laboratory Testing -> Treatment -> Treatment -> Reassessment -> Discharge,378,1.32
+Registration -> Triage -> Doctor Consultation -> Imaging -> Laboratory Testing -> Treatment -> Reassessment -> Discharge,373,1.3
+Registration -> Triage -> Doctor Consultation -> Treatment -> Treatment -> Discharge,324,1.13
