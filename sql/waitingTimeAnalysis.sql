@@ -17,7 +17,7 @@ WITH transitions AS (
       ORDER BY timestamp, event_sequence, event_id
     ) AS previous_timestamp
 
-  FROM `careflow-analytics-98234.careflow_analytics.event_logs`
+  FROM `careflow-analytics-98234.careflow_analytics.event_logs_test`
 ),
 
 elapsed_times AS (
