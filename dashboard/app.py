@@ -96,10 +96,10 @@ st.markdown(
 )
 
 # --------------------------------------------------
-# DATA LOADING
+# DATA LOADING AND VALIDATION
 # --------------------------------------------------
 def load_events(source):
-    """Load and validate CSV-uploaded or BigQuery event data."""
+    """Load and validate CSV or BigQuery event data."""
 
     if source is None:
         return None, "Select a data source to begin analysis."
@@ -112,7 +112,6 @@ def load_events(source):
     except Exception as exc:
         return None, f"Could not read the event data: {exc}"
 
-    # Support alternate timestamp naming.
     if "timestamp" not in data.columns:
         if "event_timestamp" in data.columns:
             data = data.rename(
@@ -120,8 +119,10 @@ def load_events(source):
             )
 
     required = ["case_id", "activity", "timestamp"]
+
     missing = [
-        column for column in required
+        column
+        for column in required
         if column not in data.columns
     ]
 
@@ -131,7 +132,6 @@ def load_events(source):
             + ", ".join(missing)
         )
 
-    data = data.copy()
     input_rows = len(data)
 
     data["timestamp"] = pd.to_datetime(
@@ -143,6 +143,7 @@ def load_events(source):
     data["case_id"] = (
         data["case_id"].astype("string").str.strip()
     )
+
     data["activity"] = (
         data["activity"].astype("string").str.strip()
     )
@@ -156,6 +157,7 @@ def load_events(source):
     )
 
     invalid_rows = int(invalid.sum())
+
     data = data.loc[~invalid].copy()
 
     data = data.sort_values(
@@ -233,8 +235,10 @@ def calculate_dashboard_metrics(data):
 def format_minutes(value):
     if pd.isna(value):
         return "N/A"
+
     if value >= 60:
         return f"{value / 60:,.1f} h"
+
     return f"{value:,.1f} min"
 
 
@@ -244,6 +248,7 @@ def make_chart(fig, height=390):
         height=height,
         margin=dict(l=15, r=15, t=60, b=20),
     )
+
     st.plotly_chart(fig, use_container_width=True)
 
 
@@ -289,9 +294,7 @@ with st.sidebar:
             index=0,
         )
 
-        st.caption(
-            "Loads a limited sample from BigQuery."
-        )
+        st.caption("Loads a limited sample from BigQuery.")
 
     st.divider()
     st.caption("CareFlow • Process Mining Project")
@@ -314,6 +317,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+
 # --------------------------------------------------
 # LOAD SELECTED DATA SOURCE
 # --------------------------------------------------
@@ -325,6 +329,7 @@ else:
         from bigquery_data import load_bigquery_events
 
         bigquery_data = load_bigquery_events(row_limit)
+
         loaded, error = load_events(bigquery_data)
 
     except Exception as exc:
@@ -363,9 +368,14 @@ if data.empty:
     st.error("No valid event records remain after validation.")
     st.stop()
 
+st.success(
+    f"Loaded {len(data):,} valid events from {data_source}."
+)
+
 events, transitions, transition_summary, negative_intervals = (
     calculate_dashboard_metrics(data)
 )
+
 
 # --------------------------------------------------
 # FILTERS
@@ -399,6 +409,7 @@ if filtered.empty:
 filtered_events, filtered_transitions, filtered_summary, _ = (
     calculate_dashboard_metrics(filtered)
 )
+
 
 # --------------------------------------------------
 # OVERVIEW
@@ -466,6 +477,7 @@ if page == "Overview":
             },
             color_discrete_sequence=["#3984C6"],
         )
+
         make_chart(fig)
 
     with right:
@@ -475,6 +487,7 @@ if page == "Overview":
             )
         else:
             top = filtered_summary.head(10).copy()
+
             top["transition"] = (
                 top["previous_activity"]
                 + " → "
@@ -493,6 +506,7 @@ if page == "Overview":
                 },
                 color_discrete_sequence=["#1CA58A"],
             )
+
             make_chart(fig)
 
     st.markdown(
@@ -517,7 +531,9 @@ if page == "Overview":
             "event_count": "Number of events",
         },
     )
+
     make_chart(fig, height=350)
+
 
 # --------------------------------------------------
 # ACTIVITY ANALYSIS
@@ -552,9 +568,11 @@ elif page == "Activity Analysis":
         },
         color_discrete_sequence=["#3984C6"],
     )
+
     make_chart(fig, height=500)
 
     st.markdown("### Activity summary")
+
     st.dataframe(
         activity_counts,
         use_container_width=True,
@@ -567,6 +585,7 @@ elif page == "Activity Analysis":
         file_name="careflow_activity_summary.csv",
         mime="text/csv",
     )
+
 
 # --------------------------------------------------
 # ELAPSED-TIME ANALYSIS
@@ -595,6 +614,7 @@ elif page == "Elapsed-Time Analysis":
         maximum = filtered_transitions["elapsed_minutes"].max()
 
         c1, c2, c3 = st.columns(3)
+
         c1.metric("Mean interval", format_minutes(average))
         c2.metric("Median interval", format_minutes(median))
         c3.metric("Maximum interval", format_minutes(maximum))
@@ -622,6 +642,7 @@ elif page == "Elapsed-Time Analysis":
                 },
                 color_discrete_sequence=["#1CA58A"],
             )
+
             make_chart(fig, height=500)
 
         st.markdown("### Transition statistics")
@@ -650,6 +671,7 @@ elif page == "Elapsed-Time Analysis":
             mime="text/csv",
         )
 
+
 # --------------------------------------------------
 # DATA QUALITY
 # --------------------------------------------------
@@ -660,6 +682,7 @@ elif page == "Data Quality":
     )
 
     q1, q2, q3 = st.columns(3)
+
     q1.metric("Input rows", f"{quality['input_rows']:,}")
     q2.metric("Valid rows", f"{quality['valid_rows']:,}")
     q3.metric("Invalid rows removed", f"{quality['invalid_rows']:,}")
@@ -703,18 +726,20 @@ elif page == "Data Quality":
     )
 
     st.markdown("### Event data preview")
+
     st.dataframe(
         filtered.head(100),
         use_container_width=True,
         hide_index=True,
     )
 
+
 # --------------------------------------------------
 # FOOTER
 # --------------------------------------------------
 st.divider()
+
 st.caption(
     "CareFlow Clinical Pathway Analytics • "
     "Metrics are calculated from the selected event data."
 )
-
