@@ -11,31 +11,41 @@ TABLE_ID = (
 
 
 @st.cache_data(ttl=300)
-def load_bigquery_events(limit=1000):
+def load_bigquery_events(limit=5000):
     client = bigquery.Client(project=PROJECT_ID)
 
     query = f"""
-    WITH numbered_events AS (
+    WITH sampled_events AS (
         SELECT
             case_id,
             activity,
             timestamp,
-            ROW_NUMBER() OVER (
-                PARTITION BY case_id
-                ORDER BY timestamp
-            ) AS event_number
+            event_sequence
         FROM `{TABLE_ID}`
         WHERE case_id IS NOT NULL
           AND activity IS NOT NULL
           AND timestamp IS NOT NULL
+        QUALIFY ROW_NUMBER() OVER (
+            PARTITION BY activity
+            ORDER BY FARM_FINGERPRINT(
+                CONCAT(
+                    CAST(case_id AS STRING),
+                    CAST(event_sequence AS STRING)
+                )
+            )
+        ) <= 1000
     )
     SELECT
         case_id,
         activity,
         timestamp
-    FROM numbered_events
-    WHERE event_number <= 20
-    ORDER BY case_id, timestamp
+    FROM sampled_events
+    ORDER BY FARM_FINGERPRINT(
+        CONCAT(
+            CAST(case_id AS STRING),
+            CAST(timestamp AS STRING)
+        )
+    )
     LIMIT {int(limit)}
     """
 
@@ -49,4 +59,3 @@ def load_bigquery_events(limit=1000):
     ).to_dataframe()
 
     return df
-
