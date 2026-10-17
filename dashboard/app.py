@@ -509,6 +509,108 @@ if page == "Overview":
 
             make_chart(fig)
 
+    # Department Distribution
+    st.markdown(
+        '<div class="section-heading">Department Distribution</div>',
+        unsafe_allow_html=True,
+    )
+
+    if "department" in filtered.columns:
+        department_counts = (
+            filtered["department"]
+            .fillna("Unknown")
+            .value_counts()
+            .rename_axis("department")
+            .reset_index(name="event_count")
+        )
+
+        fig = px.pie(
+            department_counts,
+            names="department",
+            values="event_count",
+            hole=0.55,
+            title="Events by Department",
+        )
+
+        fig.update_traces(
+            textposition="inside",
+            textinfo="percent+label",
+        )
+
+        make_chart(fig)
+    else:
+        st.info(
+            "Department data is unavailable for the selected data source."
+        )
+
+    # Patient Pathway Diagram
+    st.markdown(
+        '<div class="section-heading">Patient Pathway Diagram</div>',
+        unsafe_allow_html=True,
+    )
+
+    if filtered.empty:
+        st.info("No events available for the selected filters.")
+    else:
+        pathway_data = filtered.sort_values(
+            ["case_id", "timestamp"]
+        ).copy()
+
+        pathway_data["next_activity"] = (
+            pathway_data.groupby("case_id")["activity"].shift(-1)
+        )
+
+        pathway_data = pathway_data.dropna(
+            subset=["next_activity"]
+        )
+
+        if pathway_data.empty:
+            st.info(
+                "Select data containing consecutive events "
+                "to display patient pathways."
+            )
+        else:
+            pathway_counts = (
+                pathway_data.groupby(
+                    ["activity", "next_activity"]
+                )
+                .size()
+                .reset_index(name="transition_count")
+                .sort_values(
+                    "transition_count",
+                    ascending=False,
+                )
+                .head(20)
+            )
+
+            pathway_counts["transition"] = (
+                pathway_counts["activity"]
+                + " -> "
+                + pathway_counts["next_activity"]
+            )
+
+            fig = px.bar(
+                pathway_counts.sort_values("transition_count"),
+                x="transition_count",
+                y="transition",
+                orientation="h",
+                title="Most Frequently Observed Patient Transitions",
+                labels={
+                    "transition_count": "Observed transitions",
+                    "transition": "Activity transition",
+                },
+                color_discrete_sequence=["#7656B5"],
+            )
+
+            make_chart(fig, height=500)
+
+            st.caption(
+                "Shows up to 20 frequent transitions in the currently "
+                "loaded and filtered sample. These are observed "
+                "sequences, not a complete hospital workflow."
+            )
+
+    
     st.markdown(
         '<div class="section-heading">Event Timeline</div>',
         unsafe_allow_html=True,

@@ -20,6 +20,7 @@ def load_bigquery_events(limit=5000):
             case_id,
             activity,
             timestamp,
+            department,
             event_sequence
         FROM `{TABLE_ID}`
         WHERE case_id IS NOT NULL
@@ -38,7 +39,8 @@ def load_bigquery_events(limit=5000):
     SELECT
         case_id,
         activity,
-        timestamp
+        timestamp,
+        department
     FROM sampled_events
     ORDER BY FARM_FINGERPRINT(
         CONCAT(
