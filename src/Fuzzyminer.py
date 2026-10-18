@@ -5,6 +5,7 @@ import pm4py
 from google.cloud import bigquery
 from pyvis.network import Network
 from pm4py.algo.filtering.dfg import dfg_filtering
+import plotly.express as px
 
 st.set_page_config(page_title="CareFlow Process Map", layout="wide")
 st.title("CareFlow: Interactive Process Abstraction")
@@ -193,3 +194,54 @@ with open(html_file, "r", encoding="utf-8") as f:
     html_content = f.read()
 
 components.html(html_content, height=670)
+
+st.divider()
+st.subheader("Patient Timeline & Bottleneck Analysis")
+
+# 1. UI Control: Let the user declutter the chart by hiding minor tasks
+all_activities = df["activity"].unique()
+selected_activities = st.multiselect(
+    "Filter Clinical Activities (Remove noise to spot bottlenecks):",
+    all_activities,
+    default=all_activities,
+)
+
+# Apply the filter
+filtered_df = df[df["activity"].isin(selected_activities)].copy()
+
+# 2. The Magic Fix: Sort the Y-axis by when the patient first arrived!
+# This transforms the chaotic static into a clean, readable "waterfall" diagonal.
+case_starts = filtered_df.groupby("case_id")["timestamp"].min().reset_index()
+case_starts.rename(columns={"timestamp": "arrival_time"}, inplace=True)
+
+# Merge the arrival times back in and sort
+merged_df = pd.merge(filtered_df, case_starts, on="case_id")
+merged_df = merged_df.sort_values(by=["arrival_time", "timestamp"])
+
+# 3. Render the Plot
+fig = px.scatter(
+    merged_df,
+    x="timestamp",
+    y="case_id",
+    color="activity",
+    title="CareFlow Event Timeline",
+    hover_data=["activity", "timestamp"],
+)
+
+fig.update_layout(
+    yaxis=dict(
+        type="category",
+        categoryorder="trace",  # Forces Plotly to respect our arrival_time sorting
+        showticklabels=False,  # Hide the cluttered Case IDs on the left
+        title="Patients (Sorted by Arrival Time)",
+    ),
+    xaxis=dict(title="Time of Clinical Event"),
+    plot_bgcolor="white",
+    height=600,
+)
+
+fig.update_traces(
+    marker=dict(size=8, opacity=0.7, line=dict(width=1, color="DarkSlateGrey"))
+)
+
+st.plotly_chart(fig, use_container_width=True)
