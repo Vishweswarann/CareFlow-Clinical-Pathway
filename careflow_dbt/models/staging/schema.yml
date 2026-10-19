@@ -1,0 +1,32 @@
+
+version: 2
+
+models:
+  - name: stg_event_logs
+    description: "Staging view for the CareFlow synthetic hospital event log."
+    columns:
+      - name: event_id
+        description: "Unique identifier for each event."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: case_id
+        description: "Identifier for the patient journey."
+        data_tests:
+          - not_null
+
+      - name: timestamp
+        description: "Timestamp when the event occurred."
+        data_tests:
+          - not_null
+
+      - name: task_duration_minutes
+        description: "Estimated activity duration in minutes."
+        data_tests:
+          - not_null
+
+      - name: waiting_time_minutes
+        description: "Estimated waiting time in minutes."
+        data_tests:
+          - not_null
