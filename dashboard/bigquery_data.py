@@ -15,49 +15,36 @@ def load_bigquery_events(limit=5000):
     client = bigquery.Client(project=PROJECT_ID)
 
     query = f"""
-    WITH sampled_events AS (
-        SELECT
-            case_id,
-            activity,
-            timestamp,
-            department,
-            event_sequence
-        FROM `{TABLE_ID}`
-        WHERE case_id IS NOT NULL
-          AND activity IS NOT NULL
-          AND timestamp IS NOT NULL
-        QUALIFY ROW_NUMBER() OVER (
-            PARTITION BY activity
-            ORDER BY FARM_FINGERPRINT(
-                CONCAT(
-                    CAST(case_id AS STRING),
-                    CAST(event_sequence AS STRING)
-                )
-            )
-        ) <= 1000
-    )
     SELECT
         case_id,
         activity,
         timestamp,
         department
-    FROM sampled_events
+    FROM `{TABLE_ID}`
+    WHERE case_id IS NOT NULL
+      AND activity IS NOT NULL
+      AND timestamp IS NOT NULL
     ORDER BY FARM_FINGERPRINT(
         CONCAT(
             CAST(case_id AS STRING),
             CAST(timestamp AS STRING)
         )
     )
-    LIMIT {int(limit)}
+    LIMIT @row_limit
     """
 
     job_config = bigquery.QueryJobConfig(
-        maximum_bytes_billed=20_000_000
+        maximum_bytes_billed=20_000_000,
+        query_parameters=[
+            bigquery.ScalarQueryParameter(
+                "row_limit", "INT64", int(limit)
+            )
+        ],
     )
 
     df = client.query(
         query,
-        job_config=job_config
+        job_config=job_config,
     ).to_dataframe()
 
     return df
