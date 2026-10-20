@@ -46,3 +46,6 @@ Additional validation of event ordering, activity consistency, and patient-case 
 - Create reusable data-quality SQL checks.
 - Implement appropriate dbt models and tests.
 - Review and commit the completed work to the Lehana branch.
+## 7. dbt Test Execution
+
+The dbt model execution completed successfully, and 10 dbt tests passed in the configured environment.
