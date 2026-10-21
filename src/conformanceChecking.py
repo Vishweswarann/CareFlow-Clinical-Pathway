@@ -17,7 +17,6 @@ st.markdown(
     "identify where patient handoffs break down, and inspect high-frequency clinical deviations."
 )
 
-
 # ---------------------------------------------------------
 # 1. Fetch Live Data from BigQuery (Using Streamlit Secrets)
 # ---------------------------------------------------------
