@@ -194,3 +194,20 @@ The full generated dataset is excluded from normal Git tracking by the project's
 ## 10. Intended Use
 
 This dataset is intended for the CareFlow academic project, including data ingestion, transformation, process mining, operational analysis, and dashboard development.
+
+## Data Validation Summary
+
+The generated event log was checked for structural and logical consistency.
+
+The validation results reported:
+
+- 200,004 events across 28,737 encounters.
+- No missing values or exact duplicate rows.
+- No duplicate event IDs.
+- Chronological ordering and valid event sequences within encounters.
+- Consistent encounter-level attributes.
+- Valid activity-to-department mappings.
+- Correct starting and terminal activities.
+- Consistent resource roles and resource identifier prefixes.
+
+These checks validate the generated dataset against the project's implemented rules. They do not establish that the synthetic data represents real hospital populations or clinical practice.
