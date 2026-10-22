@@ -191,3 +191,18 @@ Synthetic data can support pipeline development and process-mining experiments, 
 This repository is developed collaboratively as part of the CareFlow Clinical Pathway Process Mining project.
 
 See the repository's branches and commit history for individual contributions.
+
+## Handoff to Person 2: BigQuery Ingestion
+
+The synthetic EHR event log is available at `data/ehr_events_full.csv`.
+
+The dataset contains 200,004 events across 28,737 encounters and includes 15 columns.
+
+### Next steps
+
+1. Load the CSV into a raw event-log table in Google BigQuery.
+2. Enable the header row during import.
+3. Verify the row count, column names, data types, and timestamp parsing.
+4. Preserve `case_id`, `activity`, `timestamp`, and `event_sequence` for process-mining analysis.
+
+Refer to `docs/event_schema.md` and `docs/data_dictionary.md` for the schema and column definitions.
