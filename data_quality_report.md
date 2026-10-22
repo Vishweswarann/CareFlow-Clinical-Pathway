@@ -49,3 +49,28 @@ Additional validation of event ordering, activity consistency, and patient-case 
 ## 7. dbt Test Execution
 
 The dbt model execution completed successfully, and 10 dbt tests passed in the configured environment.
+
+
+## 8. Full-Dataset Elapsed-Time Analysis
+
+The following metrics were calculated using a read-only BigQuery query on the event_logs table. Consecutive events were ordered by timestamp, with event_sequence used to break timestamp ties. Negative elapsed intervals were excluded.
+
+| Metric | Result |
+|---|---:|
+| Total events in source dataset | 200,004 |
+| Distinct cases in source dataset | 28,737 |
+| Non-negative consecutive-event intervals analyzed | 171,267 |
+| Distinct activity-transition types | 27 |
+| Mean elapsed interval | 28.86 minutes |
+| Median elapsed interval | 20.18 minutes |
+| Maximum elapsed interval | 240 minutes |
+
+### Interpretation
+
+The mean elapsed interval between consecutive recorded events was 28.86 minutes, and the median was approximately 20.18 minutes. The maximum observed interval was 240 minutes.
+
+These metrics describe elapsed time between recorded events. They should not automatically be interpreted as patient waiting times because an interval may include time spent performing an activity.
+
+### Validation Scope
+
+These results provide an additional baseline for validating the dashboard's elapsed-time analysis. The metrics are based on the full source table, whereas the dashboard may use a limited sample. The results should therefore not be expected to match exactly unless both calculations use the same records and filtering rules.
