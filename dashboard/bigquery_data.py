@@ -24,12 +24,8 @@ def load_bigquery_events(limit=5000):
     WHERE case_id IS NOT NULL
       AND activity IS NOT NULL
       AND timestamp IS NOT NULL
-    ORDER BY FARM_FINGERPRINT(
-        CONCAT(
-            CAST(case_id AS STRING),
-            CAST(timestamp AS STRING)
-        )
-    )
+    
+        
     LIMIT @row_limit
     """
 
@@ -42,9 +38,10 @@ def load_bigquery_events(limit=5000):
         ],
     )
 
-    df = client.query(
-        query,
-        job_config=job_config,
-    ).to_dataframe()
+    job = client.query(
+    query,
+    job_config=job_config,
+)
 
+df = job.result().to_dataframe()
     return df

@@ -5,6 +5,7 @@ import tempfile
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from auth import login, signup
 
 st.set_page_config(
     page_title="CareFlow | Clinical Pathway Analytics",
@@ -19,6 +20,26 @@ st.markdown(
     .stApp {background-color: #f4f7fb;}
     [data-testid="stSidebar"] {background-color: #10243a;}
     [data-testid="stSidebar"] * {color: #f4f7fb;}
+    
+/* Make sidebar buttons clearly visible */
+[data-testid="stSidebar"] button {
+    background-color: #e2e8f0 !important;
+    color: #10243a !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stSidebar"] button p,
+[data-testid="stSidebar"] button span {
+    color: #10243a !important;
+}
+
+[data-testid="stSidebar"] button:hover {
+    background-color: #cbd5e1 !important;
+    color: #10243a !important;
+}
+
     .main-title {
         font-size: 30px; font-weight: 750;
         color: #10243a; margin-bottom: 4px;
@@ -54,6 +75,67 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+
+# --------------------------------------------------
+# LOGIN AND SIGN UP
+# --------------------------------------------------
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    st.title("🏥 CareFlow")
+    st.subheader("Clinical Pathway Analytics")
+    st.write("Log in or create an account to continue.")
+
+    login_tab, signup_tab = st.tabs(["Login", "Sign Up"])
+
+    with login_tab:
+        with st.form("login_form"):
+            login_email = st.text_input("Email", key="login_email")
+            login_password = st.text_input(
+                "Password", type="password", key="login_password"
+            )
+            login_submitted = st.form_submit_button("Login")
+
+        if login_submitted:
+            if login(login_email, login_password):
+                st.session_state.authenticated = True
+                st.session_state.user_email = login_email.strip().lower()
+                st.rerun()
+            else:
+                st.error("Invalid email or password.")
+
+    with signup_tab:
+        with st.form("signup_form"):
+            signup_email = st.text_input("Email", key="signup_email")
+            signup_password = st.text_input(
+                "Password", type="password", key="signup_password"
+            )
+            confirm_password = st.text_input(
+                "Confirm password", type="password"
+            )
+            signup_submitted = st.form_submit_button("Create account")
+
+        if signup_submitted:
+            if signup_password != confirm_password:
+                st.error("Passwords do not match.")
+            else:
+                success, message = signup(signup_email, signup_password)
+                if success:
+                    st.success(message)
+                    st.info("Open the Login tab to sign in.")
+                else:
+                    st.error(message)
+
+    st.stop()
+
+# Show logout only after successful login.
+st.sidebar.write(f"Signed in as: {st.session_state.get('user_email', '')}")
+
+if st.sidebar.button("Logout"):
+    st.session_state.authenticated = False
+    st.session_state.pop("user_email", None)
+    st.rerun()
 
 # --------------------------------------------------
 # DATA LOADING AND VALIDATION
