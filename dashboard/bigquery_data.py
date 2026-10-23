@@ -20,7 +20,6 @@ def load_bigquery_events(limit=200):
         WHERE case_id IS NOT NULL
           AND activity IS NOT NULL
           AND timestamp IS NOT NULL
-        ORDER BY timestamp
         LIMIT @row_limit
     """
 
@@ -37,3 +36,4 @@ def load_bigquery_events(limit=200):
     result = job.result(timeout=60)
 
     return result.to_dataframe(create_bqstorage_client=False)
+
