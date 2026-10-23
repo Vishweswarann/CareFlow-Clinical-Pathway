@@ -2,62 +2,44 @@
 from pathlib import Path
 import pandas as pd
 
-# Project paths
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 INPUT_FILE = PROJECT_ROOT / "data" / "sample" / "ehr_events_sample.csv"
 OUTPUT_DIR = PROJECT_ROOT / "data" / "processed"
 
 
-def analyze_waiting_times():
-    # Load the synthetic EHR event log
-    df = pd.read_csv(INPUT_FILE)
-
-    required_columns = {"case_id", "activity", "timestamp"}
-    missing = required_columns - set(df.columns)
+def calculate_waiting_time_metrics(events):
+    """Calculate elapsed times between consecutive events in each case."""
+    required = {"case_id", "activity", "timestamp"}
+    missing = required - set(events.columns)
 
     if missing:
         raise ValueError(f"Missing required columns: {sorted(missing)}")
 
-    # Convert timestamps and remove rows that cannot be timed
+    df = events.copy()
     df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce")
     df = df.dropna(subset=["case_id", "activity", "timestamp"])
 
-    # Sort events within each patient case
-    df = df.sort_values(
+    sort_columns = (
         ["case_id", "timestamp", "event_id"]
         if "event_id" in df.columns
         else ["case_id", "timestamp"]
-    ).copy()
-
-    # Find the previous activity and timestamp for each case
-    df["previous_activity"] = (
-        df.groupby("case_id")["activity"].shift(1)
     )
-    df["previous_timestamp"] = (
-        df.groupby("case_id")["timestamp"].shift(1)
-    )
+    df = df.sort_values(sort_columns).copy()
 
-    # Elapsed time between consecutive events, in minutes
+    df["previous_activity"] = df.groupby("case_id")["activity"].shift(1)
+    df["previous_timestamp"] = df.groupby("case_id")["timestamp"].shift(1)
+
     df["elapsed_minutes"] = (
         df["timestamp"] - df["previous_timestamp"]
     ).dt.total_seconds() / 60
 
-    # First event in each case has no preceding event
     intervals = df.dropna(
         subset=["previous_activity", "elapsed_minutes"]
     ).copy()
 
-    # Negative intervals should be investigated, not treated as waiting time
     negative_count = int((intervals["elapsed_minutes"] < 0).sum())
-    intervals = intervals[intervals["elapsed_minutes"] >= 0]
+    intervals = intervals[intervals["elapsed_minutes"] >= 0].copy()
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
-    # Detailed event-to-event intervals
-    detail_file = OUTPUT_DIR / "event_intervals.csv"
-    intervals.to_csv(detail_file, index=False)
-
-    # Summary by activity transition
     summary = (
         intervals.groupby(
             ["previous_activity", "activity"], as_index=False
@@ -69,7 +51,22 @@ def analyze_waiting_times():
             max_elapsed_minutes=("elapsed_minutes", "max"),
         )
         .sort_values("median_elapsed_minutes", ascending=False)
+        .reset_index(drop=True)
     )
+
+    return intervals, summary, negative_count
+
+
+def analyze_waiting_times():
+    """Run the analysis on the project's sample CSV and save its outputs."""
+    df = pd.read_csv(INPUT_FILE)
+
+    intervals, summary, negative_count = calculate_waiting_time_metrics(df)
+
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    detail_file = OUTPUT_DIR / "event_intervals.csv"
+    intervals.to_csv(detail_file, index=False)
 
     summary_file = OUTPUT_DIR / "waiting_time_by_transition.csv"
     summary.to_csv(summary_file, index=False)
