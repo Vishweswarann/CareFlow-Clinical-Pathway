@@ -265,6 +265,8 @@ with st.sidebar:
     )
 
     st.divider()
+   
+   
     st.markdown("### Event Log")
 
     data_source = st.radio(
@@ -274,7 +276,7 @@ with st.sidebar:
     )
 
     uploaded_file = None
-    row_limit = 1000
+    row_limit = 200
 
     if data_source == "CSV Upload":
         uploaded_file = st.file_uploader(
@@ -285,9 +287,11 @@ with st.sidebar:
     else:
         row_limit = st.selectbox(
             "Maximum events to load",
-            [1000, 5000],
+            [200, 500, 1000],
             index=0,
         )
+
+
         st.caption("Loads a limited sample from BigQuery.")
 
     st.divider()
