@@ -296,9 +296,35 @@ if filtered.empty:
     st.warning("No records match the selected filters.")
     st.stop()
 
-filtered_events, filtered_transitions, filtered_summary, _ = (
-    calculate_dashboard_metrics(filtered)
-)
+# Calculate transitions from the complete event timeline first.
+# Then filter existing transitions without creating artificial adjacency.
+filtered_events = events[
+    events["case_id"].isin(selected_cases)
+    & events["activity"].isin(selected_activities)
+].copy()
+
+filtered_transitions = transitions[
+    transitions["case_id"].isin(selected_cases)
+    & transitions["previous_activity"].isin(selected_activities)
+    & transitions["activity"].isin(selected_activities)
+].copy()
+
+if filtered_transitions.empty:
+    filtered_summary = transition_summary.iloc[0:0].copy()
+else:
+    filtered_summary = (
+        filtered_transitions.groupby(
+            ["previous_activity", "activity"]
+        )["elapsed_minutes"]
+        .agg(
+            mean_minutes="mean",
+            median_minutes="median",
+            maximum_minutes="max",
+            count="count",
+        )
+        .reset_index()
+        .sort_values("mean_minutes", ascending=False)
+    )
 
 
 # --------------------------------------------------
