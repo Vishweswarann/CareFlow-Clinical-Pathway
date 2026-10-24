@@ -131,3 +131,7 @@ def test_sample_event_log_integrity():
 
     assert list(sample.columns) == COLUMNS
     assert sample["event_id"].is_unique
+    assert sample["timestamp"].notna().all()
+
+    timestamps = pd.to_datetime(sample["timestamp"], errors="coerce")
+    assert timestamps.notna().all()
