@@ -108,7 +108,7 @@ def test_must_give_a_size_limit():
     with pytest.raises(ValueError):
         generate_events()
 
-def test_generates_exactly_one_encounter():
+def test_single_encounter_has_complete_pathway():
     df = generate_events(
         n_encounters=1,
         seed=42,
@@ -116,9 +116,12 @@ def test_generates_exactly_one_encounter():
         days=30,
     )
 
+    activities = df["activity"].tolist()
+
+    assert activities[0] == "Registration"
+    assert activities[1] == "Triage"
+    assert activities[-1] in ["Discharge", "Hospital Admission"]
     assert df["case_id"].nunique() == 1
-    assert df["activity"].iloc[0] == "Registration"
-    assert df["activity"].iloc[-1] in ["Discharge", "Hospital Admission"]
 
 def test_sample_event_log_integrity():
     path = Path(__file__).resolve().parents[1] / "data" / "sample" / "ehr_events_sample.csv"
