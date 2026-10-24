@@ -107,3 +107,12 @@ def test_target_events_never_cuts_an_encounter_in_half():
 def test_must_give_a_size_limit():
     with pytest.raises(ValueError):
         generate_events()
+
+def test_sample_event_log_integrity():
+    path = Path(__file__).resolve().parents[1] / "data" / "sample" / "ehr_events_sample.csv"
+    import pandas as pd
+
+    sample = pd.read_csv(path)
+
+    assert list(sample.columns) == COLUMNS
+    assert sample["event_id"].is_unique
