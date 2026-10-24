@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 from google.cloud import bigquery
 from google.oauth2 import service_account
+import pm4py
 
 
 # ---------------------------------------------------------
@@ -57,6 +58,38 @@ df["duration_minutes"] = (
 valid_transitions = df[
     (df["duration_minutes"] > 0) & (df["duration_minutes"] < 1440)
 ].copy()
+
+emergency_conditions = (df["arrival_mode"] == "Ambulance") | (
+    df["triage_level"].isin([1, 2])
+)
+
+df["is_emergency"] = emergency_conditions
+
+# Separate the dataframes
+emergency_df = df[df["is_emergency"] == True]
+standard_df = df[df["is_emergency"] == False]
+
+# Convert to PM4Py event logs separately
+emergency_log = pm4py.format_dataframe(
+    emergency_df, case_id="case_id", activity_key="activity", timestamp_key="timestamp"
+)
+standard_log = pm4py.format_dataframe(
+    standard_df, case_id="case_id", activity_key="activity", timestamp_key="timestamp"
+)
+
+st.sidebar.subheader("Patient Acuity Filter")
+flow_type = st.sidebar.radio(
+    "Select Workflow Type to Audit:",
+    options=["Routine / Walk-in", "High-Acuity / Emergency", "All Cases"],
+)
+
+if flow_type == "High-Acuity / Emergency":
+    filtered_df = df[df["is_emergency"] == True]
+elif flow_type == "Routine / Walk-in":
+    filtered_df = df[df["is_emergency"] == False]
+else:
+    filtered_df = df
+
 
 # ---------------------------------------------------------
 # 3. Clinician Workload & Bottleneck Metrics
