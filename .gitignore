@@ -28,3 +28,10 @@ profiles.yml
 
 # Generated incremental-merge output
 /data/pipeline_test/merged_events.csv
+# Original source datasets - do not commit large data files
+/Sepsis Cases - Event Log_1_all/
+/data/sample/*.xes.gz
+/data/sample/*.csv
+
+# Generated enhanced dataset
+/ehr_events_enhanced.csv
