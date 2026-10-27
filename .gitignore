@@ -6,3 +6,19 @@ __pycache__/
 *.py[cod]
 .env
 profiles.yml
+
+# Generated datasets
+/ehr_events_enhanced.csv
+/ehr_events_full.csv
+/ehr_events_simulated.csv
+/data/ehr_events_full.csv
+
+# Generated pipeline outputs
+/data/pipeline_reports/
+/data/processed/
+
+# Local incremental-merge test outputs
+/data/pipeline_test/merged_events.csv
+
+# Temporary backups
+*.bak
