@@ -22,3 +22,9 @@ profiles.yml
 
 # Temporary backups
 *.bak
+
+# Generated analytics outputs
+/data/processed/
+
+# Generated incremental-merge output
+/data/pipeline_test/merged_events.csv
