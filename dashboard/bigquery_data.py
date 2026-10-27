@@ -8,13 +8,16 @@ import logging
 PROJECT_ID = "careflow-analytics-98234"
 TABLE_ID = "careflow-analytics-98234.careflow_analytics.event_logs"
 
+# Keep logs useful without exposing credentials.
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 @st.cache_resource
 def get_bigquery_client():
-    # Use the service account credentials configured in Streamlit Cloud.
+    """Create a BigQuery client using Streamlit secrets or local ADC."""
+
+    # Streamlit Cloud: use the configured service account.
     if "gcp_service_account" in st.secrets:
         credentials_info = dict(st.secrets["gcp_service_account"])
 
@@ -29,12 +32,23 @@ def get_bigquery_client():
             credentials=credentials,
         )
 
-    # Local fallback: use Google Application Default Credentials.
+    # Local development: use Google Application Default Credentials.
     return bigquery.Client(project=PROJECT_ID)
 
 
 @st.cache_data(ttl=1800)
 def load_bigquery_events(limit=200):
+    """Load a bounded, consistently ordered sample of valid events."""
+
+    # Accept only the sample sizes offered by the dashboard.
+    allowed_limits = {200, 500, 1000}
+
+    if limit not in allowed_limits:
+        raise ValueError(
+            f"Unsupported row limit: {limit}. "
+            f"Choose one of {sorted(allowed_limits)}."
+        )
+
     client = get_bigquery_client()
 
     query = f"""
@@ -47,6 +61,7 @@ def load_bigquery_events(limit=200):
         WHERE case_id IS NOT NULL
           AND activity IS NOT NULL
           AND timestamp IS NOT NULL
+        ORDER BY case_id, timestamp, event_id
         LIMIT @row_limit
     """
 
@@ -73,8 +88,10 @@ def load_bigquery_events(limit=200):
     finished = time.perf_counter()
 
     logger.info(
-        "BigQuery timings | Submit: %.2fs | Wait: %.2fs | "
-        "DataFrame: %.2fs | Total: %.2fs | Rows: %d",
+        (
+            "BigQuery timings | Submit: %.2fs | Wait: %.2fs | "
+            "DataFrame: %.2fs | Total: %.2fs | Rows: %d"
+        ),
         submitted - start,
         query_finished - submitted,
         finished - query_finished,
