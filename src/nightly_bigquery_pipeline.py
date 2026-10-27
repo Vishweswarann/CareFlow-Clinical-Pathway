@@ -124,6 +124,16 @@ def load_local_baseline(logger):
 
     return set(ids)
 
+def compare_event_ids(incoming_ids, existing_ids):
+    """Compare incoming IDs against a validated existing-ID set."""
+    incoming_ids = set(incoming_ids)
+    existing_ids = set(existing_ids)
+
+    already_present = incoming_ids & existing_ids
+    new_ids = incoming_ids - existing_ids
+
+    return already_present, new_ids
+
 
 def write_report(incoming_rows, existing_count, new_count):
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
@@ -169,8 +179,11 @@ def main():
         incoming_ids = set(df["event_id"].astype(str))
         existing_ids = load_local_baseline(logger)
 
-        new_ids = incoming_ids - existing_ids
-        already_present = len(incoming_ids & existing_ids)
+        already_present_ids, new_ids = compare_event_ids(
+            incoming_ids,
+            existing_ids,
+        )
+        already_present = len(already_present_ids)
 
         report_path = write_report(
             incoming_rows=len(df),
