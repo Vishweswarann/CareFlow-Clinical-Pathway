@@ -8,22 +8,30 @@ import logging
 PROJECT_ID = "careflow-analytics-98234"
 TABLE_ID = "careflow-analytics-98234.careflow_analytics.event_logs"
 
-# Keep logs useful without exposing credentials.
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 @st.cache_resource
 def get_bigquery_client():
-    """Create a BigQuery client using Streamlit secrets or local ADC."""
+    """
+    Use Streamlit service-account secrets when available.
+    If secrets are absent locally, fall back to Google ADC.
+    """
+    credentials_info = None
 
-    # Streamlit Cloud: use the configured service account.
-    if "gcp_service_account" in st.secrets:
-        credentials_info = dict(st.secrets["gcp_service_account"])
+    try:
+        credentials_info = st.secrets.get("gcp_service_account")
+    except Exception as exc:
+        logger.info(
+            "Streamlit secrets unavailable; trying local ADC (%s).",
+            type(exc).__name__,
+        )
 
+    if credentials_info:
         credentials = (
             service_account.Credentials.from_service_account_info(
-                credentials_info
+                dict(credentials_info)
             )
         )
 
@@ -32,24 +40,17 @@ def get_bigquery_client():
             credentials=credentials,
         )
 
-    # Local development: use Google Application Default Credentials.
     return bigquery.Client(project=PROJECT_ID)
 
 
-@st.cache_data(ttl=1800)
+@st.cache_data(ttl=1800, show_spinner=False)
 def load_bigquery_events(limit=200):
-    """Load a bounded, consistently ordered sample of valid events."""
-
-    # Accept only the sample sizes offered by the dashboard.
-    allowed_limits = {200, 500, 1000}
-
-    if limit not in allowed_limits:
-        raise ValueError(
-            f"Unsupported row limit: {limit}. "
-            f"Choose one of {sorted(allowed_limits)}."
-        )
-
+    """Load event records from BigQuery with a billing limit."""
     client = get_bigquery_client()
+
+    limit = int(limit)
+    if limit < 1 or limit > 1000:
+        raise ValueError("Limit must be between 1 and 1000.")
 
     query = f"""
         SELECT
@@ -61,7 +62,7 @@ def load_bigquery_events(limit=200):
         WHERE case_id IS NOT NULL
           AND activity IS NOT NULL
           AND timestamp IS NOT NULL
-        ORDER BY case_id, timestamp, event_id
+        ORDER BY case_id, timestamp
         LIMIT @row_limit
     """
 
@@ -71,32 +72,35 @@ def load_bigquery_events(limit=200):
             bigquery.ScalarQueryParameter(
                 "row_limit",
                 "INT64",
-                int(limit),
+                limit,
             )
         ],
     )
 
     start = time.perf_counter()
 
-    job = client.query(query, job_config=job_config)
-    submitted = time.perf_counter()
+    try:
+        job = client.query(query, job_config=job_config)
+        submitted = time.perf_counter()
 
-    result = job.result(timeout=60)
-    query_finished = time.perf_counter()
+        result = job.result(timeout=60)
+        query_finished = time.perf_counter()
 
-    df = result.to_dataframe(create_bqstorage_client=False)
-    finished = time.perf_counter()
+        df = result.to_dataframe(create_bqstorage_client=False)
+        finished = time.perf_counter()
 
-    logger.info(
-        (
+        logger.info(
             "BigQuery timings | Submit: %.2fs | Wait: %.2fs | "
-            "DataFrame: %.2fs | Total: %.2fs | Rows: %d"
-        ),
-        submitted - start,
-        query_finished - submitted,
-        finished - query_finished,
-        finished - start,
-        len(df),
-    )
+            "DataFrame: %.2fs | Total: %.2fs | Rows: %d",
+            submitted - start,
+            query_finished - submitted,
+            finished - query_finished,
+            finished - start,
+            len(df),
+        )
 
-    return df
+        return df
+
+    except Exception:
+        logger.exception("Failed to load events from BigQuery.")
+        raise
