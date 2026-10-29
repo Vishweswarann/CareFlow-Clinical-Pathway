@@ -1,9 +1,11 @@
+
 import os
 import tempfile
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from auth import login, signup
 
 st.set_page_config(
     page_title="CareFlow | Clinical Pathway Analytics",
@@ -15,29 +17,29 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    .stApp {
-        background-color: #f4f7fb;
-        color: #10243a;
-    }
+    .stApp {background-color: #f4f7fb;}
     [data-testid="stSidebar"] {background-color: #10243a;}
     [data-testid="stSidebar"] * {color: #f4f7fb;}
+    
+/* Make sidebar buttons clearly visible */
+[data-testid="stSidebar"] button {
+    background-color: #e2e8f0 !important;
+    color: #10243a !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+}
 
-    /* Keep native Streamlit text readable on the pale main background. */
-    main .stMarkdown,
-    main .stMarkdown p,
-    main .stMarkdown li,
-    main .stMarkdown h1,
-    main .stMarkdown h2,
-    main .stMarkdown h3,
-    main .stMarkdown h4,
-    main .stMarkdown h5,
-    main .stMarkdown h6 {
-        color: #10243a;
-    }
-    main [data-testid="stCaptionContainer"],
-    main [data-testid="stCaptionContainer"] p {
-        color: #475569;
-    }
+[data-testid="stSidebar"] button p,
+[data-testid="stSidebar"] button span {
+    color: #10243a !important;
+}
+
+[data-testid="stSidebar"] button:hover {
+    background-color: #cbd5e1 !important;
+    color: #10243a !important;
+}
+
     .main-title {
         font-size: 30px; font-weight: 750;
         color: #10243a; margin-bottom: 4px;
@@ -68,7 +70,7 @@ st.markdown(
         background: white; padding: 14px;
         border: 1px solid #e2e8f0; border-radius: 12px;
     }
-    /* Improve contrast on the main page, including the login screen. */
+/* Improve contrast on the main page, including the login screen. */
 main h1,
 main h2,
 main h3,
@@ -84,11 +86,87 @@ main [data-testid="stCaptionContainer"] p {
 main [data-testid="stTabs"] button {
     color: #10243a !important;
 }
+/* Make the login button label readable on its dark background. */
+main [data-testid="stFormSubmitButton"] button,
+main [data-testid="stFormSubmitButton"] button p {
+    color: #ffffff !important;
+}
+
+/* Improve contrast for the password visibility icon. */
+main [data-testid="stTextInput"] button {
+    color: #ffffff !important;
+}
+
+main [data-testid="stTextInput"] button svg {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+}
     </style>
     """,
     unsafe_allow_html=True,
 )
 
+
+# --------------------------------------------------
+# LOGIN AND SIGN UP
+# --------------------------------------------------
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    st.title("🏥 CareFlow")
+    st.subheader("Clinical Pathway Analytics")
+    st.write("Log in or create an account to continue.")
+
+    login_tab, signup_tab = st.tabs(["Login", "Sign Up"])
+
+    with login_tab:
+        with st.form("login_form"):
+            login_email = st.text_input("Email", key="login_email")
+            login_password = st.text_input(
+                "Password", type="password", key="login_password"
+            )
+            login_submitted = st.form_submit_button("Login")
+
+        if login_submitted:
+            if login(login_email, login_password):
+                st.session_state.authenticated = True
+                st.session_state.user_email = login_email.strip().lower()
+                st.rerun()
+            else:
+                st.error("Invalid email or password.")
+
+    with signup_tab:
+        with st.form("signup_form"):
+            signup_email = st.text_input("Email", key="signup_email")
+            signup_password = st.text_input(
+                "Password", type="password", key="signup_password"
+            )
+            confirm_password = st.text_input(
+                "Confirm password", type="password"
+            )
+            signup_submitted = st.form_submit_button("Create account")
+
+        if signup_submitted:
+            if signup_password != confirm_password:
+                st.error("Passwords do not match.")
+            else:
+                success, message = signup(signup_email, signup_password)
+                if success:
+                    st.success(message)
+                    st.info("Open the Login tab to sign in.")
+                else:
+                    st.error(message)
+
+    st.stop()
+
+# Show logout only after successful login.
+st.sidebar.write(f"Signed in as: {st.session_state.get('user_email', '')}")
+
+if st.sidebar.button("Logout"):
+    st.session_state.authenticated = False
+    st.session_state.pop("user_email", None)
+    st.rerun()
 
 # --------------------------------------------------
 # DATA LOADING AND VALIDATION
@@ -218,6 +296,8 @@ with st.sidebar:
     )
 
     st.divider()
+   
+   
     st.markdown("### Event Log")
 
     data_source = st.radio(
@@ -227,7 +307,7 @@ with st.sidebar:
     )
 
     uploaded_file = None
-    row_limit = 1000
+    row_limit = 200
 
     if data_source == "CSV Upload":
         uploaded_file = st.file_uploader(
@@ -238,9 +318,11 @@ with st.sidebar:
     else:
         row_limit = st.selectbox(
             "Maximum events to load",
-            [1000, 5000],
+            [200, 500, 1000],
             index=0,
         )
+
+
         st.caption("Loads a limited sample from BigQuery.")
 
     st.divider()
@@ -331,9 +413,35 @@ if filtered.empty:
     st.warning("No records match the selected filters.")
     st.stop()
 
-filtered_events, filtered_transitions, filtered_summary, _ = (
-    calculate_dashboard_metrics(filtered)
-)
+# Calculate transitions from the complete event timeline first.
+# Then filter existing transitions without creating artificial adjacency.
+filtered_events = events[
+    events["case_id"].isin(selected_cases)
+    & events["activity"].isin(selected_activities)
+].copy()
+
+filtered_transitions = transitions[
+    transitions["case_id"].isin(selected_cases)
+    & transitions["previous_activity"].isin(selected_activities)
+    & transitions["activity"].isin(selected_activities)
+].copy()
+
+if filtered_transitions.empty:
+    filtered_summary = transition_summary.iloc[0:0].copy()
+else:
+    filtered_summary = (
+        filtered_transitions.groupby(
+            ["previous_activity", "activity"]
+        )["elapsed_minutes"]
+        .agg(
+            mean_minutes="mean",
+            median_minutes="median",
+            maximum_minutes="max",
+            count="count",
+        )
+        .reset_index()
+        .sort_values("mean_minutes", ascending=False)
+    )
 
 
 # --------------------------------------------------
