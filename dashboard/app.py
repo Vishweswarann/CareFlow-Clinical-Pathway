@@ -704,6 +704,45 @@ elif page == "Process Mining":
         st.warning("No valid events are available for process mining.")
         st.stop()
 
+    # REWORK ANALYSIS: repeated activity types within each encounter
+    st.markdown("### Rework Analysis")
+    st.caption(
+        "Repeated activity types are counted within each encounter. "
+        "A repeat does not automatically indicate an error."
+    )
+
+    repeated_events = process_df[
+        process_df.duplicated(
+            subset=["case_id", "activity"], keep=False
+        )
+    ].copy()
+
+    if repeated_events.empty:
+        st.info("No repeated activity types were found in the selected data.")
+    else:
+        rework_by_activity = (
+            repeated_events.groupby("activity")["case_id"]
+            .nunique()
+            .reset_index(name="encounters_with_repeat")
+            .sort_values("encounters_with_repeat", ascending=False)
+        )
+
+        rework_cases = repeated_events["case_id"].nunique()
+        total_cases = process_df["case_id"].nunique()
+
+        metric_col1, metric_col2 = st.columns(2)
+        metric_col1.metric(
+            "Encounters with repeated activities", f"{rework_cases:,}"
+        )
+        metric_col2.metric("Total encounters analyzed", f"{total_cases:,}")
+
+        st.markdown("#### Most frequently repeated activities")
+        st.dataframe(
+            rework_by_activity,
+            use_container_width=True,
+            hide_index=True,
+        )
+
     try:
         event_log = pm4py.format_dataframe(
             process_df,
