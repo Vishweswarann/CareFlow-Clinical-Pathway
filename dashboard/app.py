@@ -20,7 +20,7 @@ st.markdown(
     .stApp {background-color: #f4f7fb;}
     [data-testid="stSidebar"] {background-color: #10243a;}
     [data-testid="stSidebar"] * {color: #f4f7fb;}
-    
+
 /* Make sidebar buttons clearly visible */
 [data-testid="stSidebar"] button {
     background-color: #e2e8f0 !important;
@@ -265,8 +265,8 @@ with st.sidebar:
     )
 
     st.divider()
-   
-   
+
+
     st.markdown("### Event Log")
 
     data_source = st.radio(
@@ -761,6 +761,7 @@ elif page == "Process Mining":
             "Directly-Follows Graph (DFG)",
             "Petri Net",
             "Interactive Pathway Map",
+            "Conformance Checking",
         ],
         horizontal=True,
     )
@@ -779,17 +780,29 @@ elif page == "Process Mining":
 
     elif model_type == "Directly-Follows Graph (DFG)":
         try:
-            dfg, start_activities, end_activities = pm4py.discover_dfg(event_log)
-            st.graphviz_chart(
-                dfg_visualizer.apply(
-                    dfg, log=event_log,
-                    variant=dfg_visualizer.Variants.FREQUENCY,
+            dfg, start_activities, end_activities = pm4py.discover_dfg(
+                event_log
+            )
+
+            if not dfg:
+                st.warning(
+                    "No consecutive activity transitions were found. "
+                    "Each encounter needs at least two valid events "
+                    "to generate a Directly-Follows Graph."
                 )
-            )
-            st.caption(
-                f"Start activity types: {len(start_activities)} · "
-                f"End activity types: {len(end_activities)}"
-            )
+            else:
+                st.graphviz_chart(
+                    dfg_visualizer.apply(
+                        dfg,
+                        log=event_log,
+                        variant=dfg_visualizer.Variants.FREQUENCY,
+                    )
+                )
+                st.caption(
+                    f"Start activity types: {len(start_activities)} · "
+                    f"End activity types: {len(end_activities)}"
+                )
+
         except Exception as exc:
             st.error(f"Could not generate the DFG: {exc}")
 
@@ -804,8 +817,103 @@ elif page == "Process Mining":
         except Exception as exc:
             st.error(f"Could not generate the Petri Net: {exc}")
 
-    else:
+
+    elif model_type == "Conformance Checking":
+        st.markdown("### Conformance Checking")
+        st.caption(
+            "Compares observed patient journeys against a Petri Net "
+            "discovered from the currently selected event log."
+        )
+
+        try:
+            from pm4py.algo.conformance.tokenreplay import algorithm as token_replay
+            from pm4py.algo.evaluation.replay_fitness import algorithm as replay_fitness
+            from pm4py.algo.evaluation.precision import algorithm as precision_evaluator
+
+            with st.spinner("Evaluating patient journeys..."):
+                net, initial_marking, final_marking = (
+                    pm4py.discover_petri_net_inductive(event_log)
+                )
+
+                replay_results = token_replay.apply(
+                    event_log, net, initial_marking, final_marking
+                )
+
+                fitness = replay_fitness.apply(
+                    event_log, net, initial_marking, final_marking
+                )
+
+                precision_score = precision_evaluator.apply(
+                    event_log, net, initial_marking, final_marking
+                )
+
+            fitting_traces = sum(
+                1 for result in replay_results
+                if result.get("trace_is_fit", False)
+            )
+            total_traces = len(replay_results)
+            deviations = total_traces - fitting_traces
+
+            metric1, metric2, metric3, metric4 = st.columns(4)
+            metric1.metric(
+                "Process Fitness",
+                f"{fitness['average_trace_fitness'] * 100:.2f}%"
+            )
+            metric2.metric(
+                "Process Precision",
+                f"{precision_score * 100:.2f}%"
+            )
+            metric3.metric(
+                "Fitting Encounters",
+                f"{fitting_traces:,} / {total_traces:,}"
+            )
+            metric4.metric(
+                "Deviating Encounters",
+                f"{deviations:,}"
+            )
+            st.markdown("#### Patient Journey Replay Results")
+
+
+            replay_event_log = pm4py.convert_to_event_log(event_log)
+            trace_rows = []
+
+            for index, (trace, result) in enumerate(
+                zip(replay_event_log, replay_results)
+            ):
+                trace_rows.append({
+                    "Case ID": trace.attributes.get(
+                        "concept:name", f"Trace {index + 1}"
+                    ),
+                    "Fitting": "Yes" if result.get("trace_is_fit") else "No",
+                    "Trace Fitness": round(
+                        result.get("trace_fitness", 0) * 100, 2
+                    ),
+                    "Missing Tokens": result.get("missing_tokens", 0),
+                    "Remaining Tokens": result.get("remaining_tokens", 0),
+                })
+
+            trace_df = pd.DataFrame(trace_rows)
+
+            st.dataframe(
+                trace_df.sort_values(
+                    ["Fitting", "Trace Fitness"],
+                    ascending=[True, True]
+                ),
+                use_container_width=True,
+                hide_index=True,
+            )
+
+            st.caption(
+                "Token replay identifies deviations relative to this "
+                "discovered model. It does not establish clinical non-compliance."
+            )
+
+        except Exception as exc:
+            st.error(f"Conformance checking failed: {exc}")
+
+    elif model_type == "Interactive Pathway Map":
         st.markdown("### Interactive pathway abstraction")
+
         st.caption(
             "This is a frequency-filtered DFG (fuzzy-style abstraction), "
             "not PM4Py's native Fuzzy Miner algorithm."
