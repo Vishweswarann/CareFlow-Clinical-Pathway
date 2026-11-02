@@ -1,4 +1,4 @@
-
+﻿
 import os
 import tempfile
 
@@ -348,6 +348,8 @@ if error:
 
 data, quality = loaded
 
+quality["duplicate_rows"] = int(data.duplicated().sum())
+
 if data.empty:
     st.error("No valid event records remain after validation.")
     st.stop()
@@ -639,11 +641,11 @@ elif page == "Data Quality":
         '<div class="section-heading">Data Quality Report</div>',
         unsafe_allow_html=True,
     )
-
-    q1, q2, q3 = st.columns(3)
+    q1, q2, q3, q4 = st.columns(4)
     q1.metric("Input rows", f"{quality['input_rows']:,}")
     q2.metric("Valid rows", f"{quality['valid_rows']:,}")
     q3.metric("Invalid rows removed", f"{quality['invalid_rows']:,}")
+    q4.metric("Exact duplicate rows", f"{quality['duplicate_rows']:,}")
 
     checks = pd.DataFrame([
         {
@@ -660,6 +662,11 @@ elif page == "Data Quality":
             "Check": "Negative elapsed intervals",
             "Result": "Review required" if negative_intervals else "Passed",
             "Details": str(negative_intervals),
+        },
+        {
+            "Check": "Exact duplicate event rows",
+            "Result": "Review required" if quality["duplicate_rows"] else "Passed",
+            "Details": f"{quality['duplicate_rows']} exact duplicate rows found",
         },
     ])
     st.dataframe(checks, use_container_width=True, hide_index=True)
