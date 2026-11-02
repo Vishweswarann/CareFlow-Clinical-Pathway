@@ -70,6 +70,7 @@ page = st.sidebar.radio(
         "Process Discovery (Standard Models)",
         "Interactive Fuzzy Miner & Timelines",
         "Clinician Operations Audit",
+        "Peak Hours & Crowding Analysis",
     ],
 )
 st.sidebar.divider()
@@ -623,3 +624,297 @@ elif page == "Clinician Operations Audit":
         st.dataframe(friction_df, use_container_width=True, hide_index=True)
     else:
         st.success("No active clinical handoff frictions logged.")
+
+
+# ==========================================
+# MODULE 5: Peak Hours & Crowding Analysis
+# ==========================================
+elif page == "Peak Hours & Crowding Analysis":
+    st.title("⏰ Hospital Crowding & Time-Slot Bottleneck Analysis")
+    st.markdown(
+        "Analyze how patient volume and departmental waiting times shift across different clinical time slots."
+    )
+
+    df = global_df.copy()
+
+    # 1. Calculate step duration (waiting/processing time in minutes)
+    df["next_ts"] = df.groupby("case_id")["timestamp"].shift(-1)
+    df["duration"] = (df["next_ts"] - df["timestamp"]).dt.total_seconds() / 60.0
+
+    # 2. Extract Hour and categorize into Clinical Time Slots
+    df["hour"] = df["timestamp"].dt.hour
+
+    def assign_time_slot(hr):
+        if 8 <= hr < 12:
+            return "Morning Peak (08:00 - 12:00)"
+        elif 12 <= hr < 16:
+            return "Afternoon (12:00 - 16:00)"
+        elif 16 <= hr < 20:
+            return "Evening Peak (16:00 - 20:00)"
+        elif 20 <= hr < 24:
+            return "Night (20:00 - 00:00)"
+        else:
+            return "Late Night / Early Morning (00:00 - 08:00)"
+
+    df["time_slot"] = df["hour"].apply(assign_time_slot)
+
+    slot_order = [
+        "Morning Peak (08:00 - 12:00)",
+        "Afternoon (12:00 - 16:00)",
+        "Evening Peak (16:00 - 20:00)",
+        "Night (20:00 - 00:00)",
+        "Late Night / Early Morning (00:00 - 08:00)",
+    ]
+
+    # Filter valid transitions (between 0 and 24 hours) for wait-time math
+    valid_trans = df[(df["duration"] > 0) & (df["duration"] < 1440)].copy()
+
+    # Sidebar Filters for Interactive Slicing
+    st.sidebar.subheader("Time Slot Controls")
+    selected_slot = st.sidebar.selectbox(
+        "Filter Specific Time Slot (for Network & Timeline):",
+        ["All Time Slots"] + slot_order,
+    )
+
+    acuity_filter = st.sidebar.radio(
+        "Patient Acuity:",
+        ["All Patients", "High-Acuity / Emergency Only", "Routine / Walk-in Only"],
+    )
+
+    if acuity_filter == "High-Acuity / Emergency Only":
+        df = df[df["is_emergency"] == True]
+        valid_trans = valid_trans[valid_trans["is_emergency"] == True]
+    elif acuity_filter == "Routine / Walk-in Only":
+        df = df[df["is_emergency"] == False]
+        valid_trans = valid_trans[valid_trans["is_emergency"] == False]
+
+    # ==========================================
+    # KPI Row: High-Level Crowding Summary
+    # ==========================================
+    if not valid_trans.empty:
+        slot_wait_means = valid_trans.groupby("time_slot")["duration"].mean()
+        worst_slot = slot_wait_means.idxmax()
+        worst_wait = slot_wait_means.max()
+
+        busiest_slot = df.groupby("time_slot")["case_id"].nunique().idxmax()
+        busiest_vol = df.groupby("time_slot")["case_id"].nunique().max()
+
+        dept_slot_means = valid_trans.groupby(["department", "time_slot"])[
+            "duration"
+        ].mean()
+        worst_dept, worst_dept_slot = dept_slot_means.idxmax()
+        worst_dept_val = dept_slot_means.max()
+    else:
+        worst_slot, worst_wait = "N/A", 0
+        busiest_slot, busiest_vol = "N/A", 0
+        worst_dept, worst_dept_slot, worst_dept_val = "N/A", "N/A", 0
+
+    k1, k2, k3 = st.columns(3)
+    k1.metric(
+        "Most Crowded Time Slot (Volume)",
+        f"{busiest_slot}",
+        f"{busiest_vol} Active Patients",
+    )
+    k2.metric(
+        "Longest Overall Wait Slot", f"{worst_slot}", f"{worst_wait:.1f} mins avg wait"
+    )
+    k3.metric(
+        "Peak Departmental Bottleneck",
+        f"{worst_dept} ({worst_dept_val:.1f}m)",
+        f"During {worst_dept_slot}",
+    )
+    st.divider()
+
+    # ==========================================
+    # Representation 1 & 2: Overall vs. Departmental Wait Times
+    # ==========================================
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("1. Average Patient Wait Time by Time Slot")
+        slot_avg_df = (
+            valid_trans.groupby("time_slot", as_index=False)["duration"]
+            .mean()
+            .rename(columns={"duration": "Avg Wait Time (mins)"})
+        )
+        fig_slot_wait = px.bar(
+            slot_avg_df,
+            x="Avg Wait Time (mins)",
+            y="time_slot",
+            orientation="h",
+            color="Avg Wait Time (mins)",
+            color_continuous_scale="Reds",
+            category_orders={"time_slot": slot_order},
+            text_auto=".1f",
+        )
+        st.plotly_chart(fig_slot_wait, use_container_width=True)
+
+    with col2:
+        st.subheader("2. Departmental Wait Time Shifts Across Time Slots")
+        dept_slot_df = (
+            valid_trans.groupby(["department", "time_slot"], as_index=False)["duration"]
+            .mean()
+            .rename(columns={"duration": "Avg Wait Time (mins)"})
+        )
+        fig_dept_slot = px.bar(
+            dept_slot_df,
+            x="Avg Wait Time (mins)",
+            y="department",
+            color="time_slot",
+            barmode="group",
+            orientation="h",
+            category_orders={"time_slot": slot_order},
+        )
+        st.plotly_chart(fig_dept_slot, use_container_width=True)
+
+    st.divider()
+
+    # ==========================================
+    # Representation 3: Patient Volume vs. Role & Department
+    # ==========================================
+    col3, col4 = st.columns(2)
+
+    with col3:
+        st.subheader("3. Patient Crowd Volume by Department & Slot")
+        vol_df = (
+            df.groupby(["time_slot", "department"])["case_id"]
+            .nunique()
+            .reset_index(name="Unique Patients")
+        )
+        fig_vol = px.bar(
+            vol_df,
+            x="Unique Patients",
+            y="time_slot",
+            color="department",
+            orientation="h",
+            category_orders={"time_slot": slot_order},
+        )
+        st.plotly_chart(fig_vol, use_container_width=True)
+
+    with col4:
+        st.subheader("4. Hour-by-Hour Departmental Wait Heatmap")
+        heatmap_df = valid_trans.pivot_table(
+            index="department", columns="hour", values="duration", aggfunc="mean"
+        ).fillna(0)
+        fig_heat = px.imshow(
+            heatmap_df,
+            labels=dict(x="Hour of Day (0-23)", y="Department", color="Wait (mins)"),
+            color_continuous_scale="YlOrRd",
+            aspect="auto",
+        )
+        st.plotly_chart(fig_heat, use_container_width=True)
+
+    st.divider()
+
+    # Filter data according to sidebar selection for the granular views below
+    slot_filtered_df = (
+        df
+        if selected_slot == "All Time Slots"
+        else df[df["time_slot"] == selected_slot]
+    )
+    slot_valid_trans = (
+        valid_trans
+        if selected_slot == "All Time Slots"
+        else valid_trans[valid_trans["time_slot"] == selected_slot]
+    )
+
+    # ==========================================
+    # Representation 4: Interactive Event Timeline (Scatter Plot)
+    # ==========================================
+    st.subheader(f"5. Chronological Patient Crowding Timeline ({selected_slot})")
+    if not slot_filtered_df.empty:
+        case_starts = (
+            slot_filtered_df.groupby("case_id")["timestamp"]
+            .min()
+            .reset_index()
+            .rename(columns={"timestamp": "arrival_time"})
+        )
+        merged_timeline = pd.merge(
+            slot_filtered_df, case_starts, on="case_id"
+        ).sort_values(by=["arrival_time", "timestamp"])
+        fig_scatter = px.scatter(
+            merged_timeline,
+            x="timestamp",
+            y="case_id",
+            color="department",
+            symbol="activity",
+            hover_data=["activity", "resource_role", "time_slot"],
+            title="Patient Journey Clusters by Department",
+        )
+        fig_scatter.update_layout(
+            yaxis=dict(
+                type="category",
+                categoryorder="trace",
+                showticklabels=False,
+                title="Patients (Ordered by Arrival)",
+            ),
+            plot_bgcolor="white",
+            height=500,
+        )
+        st.plotly_chart(fig_scatter, use_container_width=True)
+    else:
+        st.info("No timeline events available for the selected time slot.")
+
+    st.divider()
+
+    # ==========================================
+    # Representation 5: Dynamic Departmental Bottleneck Network
+    # ==========================================
+    st.subheader(f"6. Departmental Flow & Bottleneck Network ({selected_slot})")
+    st.markdown(
+        "Edge thickness shows patient transition volume; labels indicate both patient count and average transition delay."
+    )
+
+    if not slot_valid_trans.empty:
+        slot_valid_trans["next_dept"] = slot_valid_trans.groupby("case_id")[
+            "department"
+        ].shift(-1)
+        dept_edges = (
+            slot_valid_trans.dropna(subset=["department", "next_dept"])
+            .groupby(["department", "next_dept"], as_index=False)
+            .agg(
+                patient_count=("case_id", "count"),
+                avg_wait=("duration", "mean"),
+            )
+        )
+
+        net_crowd = Network(
+            height="550px", width="100%", directed=True, bgcolor="#ffffff"
+        )
+        net_crowd.set_options(
+            '{"physics": {"enabled": true, "barnesHut": {"gravitationalConstant": -4000}}, "edges": {"smooth": {"type": "dynamic"}}}'
+        )
+
+        added_depts = set()
+        for _, row in dept_edges.iterrows():
+            src, dst = row["department"], row["next_dept"]
+            cnt, wait = int(row["patient_count"]), row["avg_wait"]
+
+            for d_node in [src, dst]:
+                if d_node not in added_depts:
+                    net_crowd.add_node(
+                        d_node,
+                        label=d_node,
+                        shape="box",
+                        color={"background": "#e0e7ff", "border": "#4f46e5"},
+                        font={"size": 16, "bold": True, "color": "#1e1b4b"},
+                        margin=12,
+                    )
+                    added_depts.add(d_node)
+
+            # Highlight slow transitions (> 45 mins) in red
+            edge_color = "#ef4444" if wait > 45 else "#64748b"
+            net_crowd.add_edge(
+                src,
+                dst,
+                value=cnt,
+                label=f"{cnt} pts | {wait:.1f}m",
+                title=f"From {src} to {dst}: {cnt} transitions, Avg Delay: {wait:.1f} mins",
+                color=edge_color,
+            )
+
+        net_crowd.save_graph("crowding_net.html")
+        with open("crowding_net.html", "r") as f:
+            components.html(f.read(), height=570)
+    else:
+        st.info("Insufficient transition records for network generation in this slot.")
