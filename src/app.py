@@ -71,6 +71,7 @@ page = st.sidebar.radio(
         "Interactive Fuzzy Miner & Timelines",
         "Clinician Operations Audit",
         "Peak Hours & Crowding Analysis",
+        "Live ER Wait Room & Boarding",
     ],
 )
 st.sidebar.divider()
@@ -918,3 +919,130 @@ elif page == "Peak Hours & Crowding Analysis":
             components.html(f.read(), height=570)
     else:
         st.info("Insufficient transition records for network generation in this slot.")
+
+# ==========================================
+# MODULE 5: Live ER Wait Room & Boarding
+# ==========================================
+elif page == "Live ER Wait Room & Boarding":
+    st.title("🚨 Live ER Wait Room & Bed Capacity")
+    st.markdown(
+        "Real-time operational view of active patients, identifying capacity bottlenecks and clinical delays."
+    )
+
+    # Simulate 'now' using the latest timestamp in the dataset
+    current_time = global_df["timestamp"].max()
+
+    # 1. Isolate the most recent event for every patient
+    latest_events = (
+        global_df.sort_values("timestamp").groupby("case_id").last().reset_index()
+    )
+
+    # 2. Filter for ACTIVE patients (not discharged or admitted yet)
+    active_patients = latest_events[
+        ~latest_events["activity"].isin(["Discharge", "Hospital Admission"])
+    ].copy()
+
+    # 3. Calculate time waiting since their last recorded step
+    active_patients["mins_waiting"] = (
+        current_time - active_patients["timestamp"]
+    ).dt.total_seconds() / 60.0
+
+    # 4. Classify the wait reason based on their last activity
+    def classify_wait(row):
+        if row["activity"] == "Triage":
+            return "Waiting for ER Bed / Initial Consult"
+        elif row["activity"] in ["Laboratory Testing", "Imaging"]:
+            return "Waiting on Diagnostic Results"
+        elif row["activity"] == "Doctor Consultation":
+            return "Waiting on Treatment Plan / Disposition"
+        elif row["activity"] == "Registration":
+            return "Waiting for Triage"
+        else:
+            return f"Waiting post-{row['activity']}"
+
+    active_patients["wait_reason"] = active_patients.apply(classify_wait, axis=1)
+
+    # ==========================================
+    # KPI Row
+    # ==========================================
+    bed_capacity = 30  # Configurable hospital bed limit
+    current_load = len(active_patients)
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric(
+        "Active Patients in ER",
+        f"{current_load}",
+        f"{current_load - bed_capacity} over capacity"
+        if current_load > bed_capacity
+        else f"{bed_capacity - current_load} beds open",
+        delta_color="inverse" if current_load > bed_capacity else "normal",
+    )
+    c2.metric(
+        "Patients Waiting for Bed",
+        len(
+            active_patients[
+                active_patients["wait_reason"] == "Waiting for ER Bed / Initial Consult"
+            ]
+        ),
+    )
+    c3.metric(
+        "Patients Waiting on Diagnostics",
+        len(
+            active_patients[
+                active_patients["wait_reason"] == "Waiting on Diagnostic Results"
+            ]
+        ),
+    )
+
+    st.divider()
+
+    # ==========================================
+    # Wait Reason Breakdown Chart
+    # ==========================================
+    st.subheader("Current Bottleneck Breakdown")
+    wait_summary = active_patients["wait_reason"].value_counts().reset_index()
+    wait_summary.columns = ["Wait Reason", "Patient Count"]
+
+    fig_wait = px.bar(
+        wait_summary,
+        x="Patient Count",
+        y="Wait Reason",
+        orientation="h",
+        color="Wait Reason",
+        text_auto=True,
+    )
+    fig_wait.update_layout(showlegend=False, height=300)
+    st.plotly_chart(fig_wait, use_container_width=True)
+
+    st.divider()
+
+    # ==========================================
+    # Active Patient Roster
+    # ==========================================
+    st.subheader("Active Patient Roster (Sorted by Urgency & Wait Time)")
+
+    # Sort by Triage Level (1 is most urgent) then by wait time (longest first)
+    roster_df = active_patients.sort_values(
+        by=["triage_level", "mins_waiting"], ascending=[True, False]
+    )
+
+    # Clean up column names for display
+    display_cols = {
+        "case_id": "Patient ID",
+        "triage_level": "Triage Level",
+        "chief_complaint": "Chief Complaint",
+        "activity": "Last Completed Step",
+        "wait_reason": "Current Status",
+        "mins_waiting": "Mins Waiting",
+    }
+
+    roster_display = roster_df[list(display_cols.keys())].rename(columns=display_cols)
+    roster_display["Mins Waiting"] = roster_display["Mins Waiting"].round(1)
+
+    # Display with a heatmap gradient on the wait time column
+    st.dataframe(
+        roster_display.style.background_gradient(subset=["Mins Waiting"], cmap="Reds"),
+        use_container_width=True,
+        hide_index=True,
+        height=500,
+    )
