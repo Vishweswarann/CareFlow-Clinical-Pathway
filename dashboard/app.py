@@ -383,6 +383,13 @@ filtered = data[
 if filtered.empty:
     st.warning("No records match the selected filters.")
     st.stop()
+st.download_button(
+    label="Download filtered event log (CSV)",
+    data=filtered.to_csv(index=False).encode("utf-8"),
+    file_name="careflow_filtered_event_log.csv",
+    mime="text/csv",
+    help="Download event records matching the selected encounter and activity filters.",
+)
 
 # Calculate transitions from the complete event timeline first.
 # Then filter existing transitions without creating artificial adjacency.
