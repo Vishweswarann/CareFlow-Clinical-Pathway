@@ -117,6 +117,8 @@ The Streamlit application provides multiple analysis sections.
 - Supports inspection of the loaded event sample.
 - Helps identify missing or invalid values.
 - Provides visibility into the prepared dataset.
+- Reports the number of exact duplicate event rows.
+- Displays input, valid, invalid, and duplicate row counts.
 
 ### 5. Process Mining
 
@@ -128,6 +130,7 @@ The process-mining section includes:
 - Interactive Pathway Map.
 - Rework Analysis.
 - Patient Timeline.
+- Conformance Checking to evaluate recorded traces against a process model.
 
 These features help explore the order of activities, repeated workflow steps, and differences in recorded pathways.
 
@@ -137,6 +140,7 @@ These features help explore the order of activities, repeated workflow steps, an
 - Google BigQuery connection.
 - Configurable sample limits of 200, 500, and 1,000 rows.
 - User sign-up and login.
+- Download filtered event records as a CSV file.
 
 ## Data Processing Workflow
 
