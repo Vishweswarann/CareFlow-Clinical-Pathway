@@ -693,7 +693,32 @@ elif page == "Data Quality":
             "Details": str(negative_intervals),
         },
     ])
+    counts = pd.DataFrame([
+        {
+            "Check": "Input rows",
+            "Result": "Info",
+            "Details": str(quality["input_rows"]),
+        },
+        {
+            "Check": "Valid rows",
+            "Result": "Info",
+            "Details": str(quality["valid_rows"]),
+        },
+        {
+            "Check": "Invalid rows removed",
+            "Result": "Info",
+            "Details": str(quality["invalid_rows"]),
+        },
+    ])
+    report = pd.concat([checks, counts], ignore_index=True)
+
     st.dataframe(checks, use_container_width=True, hide_index=True)
+    st.download_button(
+        label="Download data quality report (CSV)",
+        data=report.to_csv(index=False).encode("utf-8"),
+        file_name="careflow_data_quality_report.csv",
+        mime="text/csv",
+    )
 
     st.markdown("### Event data preview")
     st.dataframe(filtered.head(100), use_container_width=True, hide_index=True)
