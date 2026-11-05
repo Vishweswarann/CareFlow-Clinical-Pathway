@@ -261,6 +261,7 @@ with st.sidebar:
             "Elapsed-Time Analysis",
             "Data Quality",
             "Process Mining",
+            "Workflow Variant Analysis",
         ],
     )
 
@@ -1086,7 +1087,73 @@ elif page == "Process Mining":
         except Exception as exc:
             st.error(f"Could not generate the interactive pathway map: {exc}")
 
+# --------------------------------------------------
+# WORKFLOW VARIANT ANALYSIS
+# --------------------------------------------------
+elif page == "Workflow Variant Analysis":
+    st.markdown(
+        '<div class="section-heading">Clinical Workflow Variant Analysis</div>',
+        unsafe_allow_html=True,
+    )
 
+    st.caption(
+        "Explore the different event sequences observed across encounters. "
+        "These are descriptive patterns, not clinical compliance judgments. "
+        "BigQuery results may represent partial encounters because data is sampled."
+    )
+
+    if filtered.empty:
+        st.info("No events are available for workflow analysis.")
+    else:
+        workflows = (
+            filtered.sort_values(["case_id", "timestamp"])
+            .groupby("case_id")["activity"]
+            .agg(lambda activities: " → ".join(activities.astype(str)))
+            .reset_index(name="Observed sequence")
+        )
+
+        variants = (
+            workflows.groupby("Observed sequence")
+            .size()
+            .reset_index(name="Encounter count")
+            .sort_values("Encounter count", ascending=False)
+        )
+
+        variants["Percentage"] = (
+            variants["Encounter count"] / len(workflows) * 100
+        ).round(2)
+
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Encounters analysed", f"{len(workflows):,}")
+        c2.metric("Distinct workflow variants", f"{len(variants):,}")
+        c3.metric(
+            "Most common variant",
+            f"{variants.iloc[0]['Encounter count']:,}",
+        )
+
+        st.markdown("### Most frequently observed workflows")
+
+        st.dataframe(
+            variants.head(15),
+            use_container_width=True,
+            hide_index=True,
+        )
+
+        fig = px.bar(
+            variants.head(10).sort_values("Encounter count"),
+            x="Encounter count",
+            y="Observed sequence",
+            orientation="h",
+            title="Top 10 Observed Workflow Variants",
+        )
+        make_chart(fig, height=550)
+
+        st.download_button(
+            "Download workflow variant report",
+            data=variants.to_csv(index=False).encode("utf-8"),
+            file_name="careflow_workflow_variants.csv",
+            mime="text/csv",
+        )
 # --------------------------------------------------
 # FOOTER
 # --------------------------------------------------
