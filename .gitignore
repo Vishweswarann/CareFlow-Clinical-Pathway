@@ -7,3 +7,5 @@ venv/
 logs/
 careflow_dbt/target/
 careflow_dbt/dbt_packages/
+
+dashboard/.streamlit/secrets.toml

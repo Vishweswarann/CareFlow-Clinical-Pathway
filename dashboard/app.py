@@ -6,6 +6,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 from auth import login, signup
+from ai_workflow import generate_workflow_summary
 
 st.set_page_config(
     page_title="CareFlow | Clinical Pathway Analytics",
@@ -262,6 +263,7 @@ with st.sidebar:
             "Data Quality",
             "Process Mining",
             "Workflow Variant Analysis",
+            "AI Workflow Summary",
         ],
     )
 
@@ -1154,6 +1156,39 @@ elif page == "Workflow Variant Analysis":
             file_name="careflow_workflow_variants.csv",
             mime="text/csv",
         )
+# --------------------------------------------------
+# AI WORKFLOW SUMMARY
+# --------------------------------------------------
+elif page == "AI Workflow Summary":
+    st.markdown("## AI Workflow Summary")
+
+    if filtered.empty:
+        st.info("No events available for analysis.")
+    else:
+        workflows = (
+            filtered.sort_values(["case_id", "timestamp"])
+            .groupby("case_id")["activity"]
+            .agg(lambda x: " → ".join(x.astype(str)))
+        )
+
+        summary_data = {
+            "encounters": int(len(workflows)),
+            "events": int(len(filtered)),
+            "distinct_activities": int(filtered["activity"].nunique()),
+            "common_activities": filtered["activity"].value_counts().head(8).to_dict(),
+            "common_workflows": workflows.value_counts().head(5).to_dict(),
+        }
+
+        st.write("Aggregate workflow statistics are ready.")
+
+        if st.button("Generate AI Workflow Summary"):
+            with st.spinner("Gemini is analysing workflow patterns..."):
+                try:
+                    result = generate_workflow_summary(summary_data)
+                    st.markdown("### AI Analysis")
+                    st.write(result)
+                except Exception as exc:
+                    st.error(f"AI analysis failed: {exc}")
 # --------------------------------------------------
 # FOOTER
 # --------------------------------------------------

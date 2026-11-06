@@ -5,3 +5,4 @@ google-cloud-bigquery
 db-dtypes
 pm4py
 pyvis
+google-genai
