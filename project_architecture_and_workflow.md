@@ -332,3 +332,35 @@ Dashboard views for pathway, timing, data quality, and workflow exploration
 The local dry-run pipeline on `PrasadKavitake` is a separate validation simulation: it compares incoming IDs with a local fixture and performs no BigQuery query or write. The direct upload scripts, dbt models, SQL files, and dashboards are also separate entry points. A shared canonical table, agreed schema, and an integration branch are still needed before describing this as one automated end-to-end pipeline.
 
 This team-wide map is an overview only. Detailed documentation of each team's stage, handoff, and integration points will be added incrementally in subsequent updates.
+
+## 18. Synthetic event generation and validation (Day 2)
+
+### Generation responsibility
+
+The cached `dolly-careflow` branch contains the synthetic event generator at `src/generate_ehr_events.py`. Its purpose is to create fictional emergency-department encounter histories that are suitable for data-pipeline and process-mining development. The generator supports a target event count or encounter count, a configurable date range, and a random seed. The documented generation command requests about 200,000 events with seed `42`; it may produce a slightly different total because it completes whole encounters rather than truncating an encounter at the requested row limit.
+
+The branch documentation describes a 15-column event-level CSV with identifiers, activity/timestamp/order, department and synthetic staff/resource details, encounter attributes, and disposition. `case_id` groups events into an encounter; `event_id` identifies an event; `event_sequence` provides the within-encounter order. The documented snapshot contains 200,004 events across 28,737 encounters. These are synthetic records, not real patient data or measured hospital performance.
+
+### Validation and exploratory analysis
+
+The same branch contains `src/eda_validation.py`, `src/eda_analysis.py`, tests under `tests/`, and a GitHub Actions workflow. The documented validation covers required fields, event-ID uniqueness, timestamp validity/order, consecutive sequence numbers, encounter-level attribute consistency, activity-to-department/resource mappings, and expected encounter starts and terminal events. Generator tests also cover repeatability under the same seed, pathway variation, and completing an encounter when targeting a row count. The EDA script produces activity, duration, interval, pathway-variant, and category summaries under `reports/eda/`.
+
+These checks establish that generated records follow the generator's programmed rules. They do not establish clinical accuracy. The generation parameters and workflow patterns are assumptions for exercising analytics code.
+
+### Handoff to later stages
+
+The generator branch's handoff is a CSV with the 15 source fields. Its data dictionary explicitly leaves calculated waiting time, length of stay, shift, and bottleneck flags to downstream work. Before a team-wide load, agree whether that CSV is shared as a generated artifact or regenerated from committed code, and ensure all consumers use the same snapshot and schema. In the cached branch documentation, the full CSV is excluded from Git, while a smaller sample is kept for reference.
+
+The current `PrasadKavitake` work adds a separate optional local enrichment step that parses approximate task and queue values from `event_detail` and derives first-event and next-event timestamps. Those derived columns are not part of the generator's 15-column contract and should be treated as a downstream transformation, with their own null handling and definitions.
+
+```text
+Generator (synthetic 15-column CSV)
+        ↓
+Structural and encounter-rule validation
+        ↓
+EDA summaries and test evidence
+        ↓
+CSV handoff to ingestion / transformation owners
+```
+
+This generation/validation stage is documented from the cached `dolly-careflow` branch. It is not invoked by the local nightly dry-run script on `PrasadKavitake`.
