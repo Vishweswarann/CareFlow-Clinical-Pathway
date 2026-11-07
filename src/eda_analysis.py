@@ -122,12 +122,16 @@ print("\nIntervals between consecutive events (minutes):")
 print(intervals["interval_minutes"].describe().round(2))
 
 transition_summary = (
-    intervals.groupby("from_activity", as_index=False)
+    intervals.groupby(
+        ["from_activity", "activity"],
+        as_index=False
+    )
     .agg(
         mean_interval_minutes=("interval_minutes", "mean"),
         median_interval_minutes=("interval_minutes", "median"),
         transition_count=("interval_minutes", "size"),
     )
+    .rename(columns={"activity": "to_activity"})
     .sort_values("median_interval_minutes", ascending=False)
 )
 
