@@ -6,7 +6,10 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 from auth import login, signup
-from ai_workflow import generate_workflow_summary
+from ai_workflow import (
+    generate_workflow_summary,
+    generate_bottleneck_analysis,
+)
 
 st.set_page_config(
     page_title="CareFlow | Clinical Pathway Analytics",
@@ -1156,6 +1159,7 @@ elif page == "Workflow Variant Analysis":
             file_name="careflow_workflow_variants.csv",
             mime="text/csv",
         )
+
 # --------------------------------------------------
 # AI WORKFLOW SUMMARY
 # --------------------------------------------------
@@ -1181,6 +1185,7 @@ elif page == "AI Workflow Summary":
 
         st.write("Aggregate workflow statistics are ready.")
 
+        # AI WORKFLOW SUMMARY
         if st.button("Generate AI Workflow Summary"):
             with st.spinner("Gemini is analysing workflow patterns..."):
                 try:
@@ -1189,6 +1194,130 @@ elif page == "AI Workflow Summary":
                     st.write(result)
                 except Exception as exc:
                     st.error(f"AI analysis failed: {exc}")
+
+        # AI BOTTLENECK ANALYSIS
+        st.divider()
+        st.markdown("### AI Bottleneck Analysis")
+
+        if filtered_summary.empty:
+            st.info("No transition data available for bottleneck analysis.")
+        elif st.button("Generate AI Bottleneck Analysis"):
+            transition_data = filtered_summary.to_dict(orient="records")
+
+            with st.spinner("Gemini is analysing transition times..."):
+                try:
+                    result = generate_bottleneck_analysis(transition_data)
+                    st.markdown("### Bottleneck Insights")
+                    st.write(result)
+                except Exception as exc:
+                    st.error(f"Bottleneck analysis failed: {exc}")
+
+
+# --------------------------------------------------
+# AI WORKFLOW SUMMARY
+# --------------------------------------------------
+elif page == "AI Workflow Summary":
+    st.markdown("## AI Workflow Summary")
+
+    if filtered.empty:
+        st.info("No events available for analysis.")
+    else:
+        workflows = (
+            filtered.sort_values(["case_id", "timestamp"])
+            .groupby("case_id")["activity"]
+            .agg(lambda x: " → ".join(x.astype(str)))
+        )
+
+        summary_data = {
+            "encounters": int(len(workflows)),
+            "events": int(len(filtered)),
+            "distinct_activities": int(filtered["activity"].nunique()),
+            "common_activities": filtered["activity"].value_counts().head(8).to_dict(),
+            "common_workflows": workflows.value_counts().head(5).to_dict(),
+        }
+
+        st.write("Aggregate workflow statistics are ready.")
+
+        # AI WORKFLOW SUMMARY
+        if st.button("Generate AI Workflow Summary"):
+            with st.spinner("Gemini is analysing workflow patterns..."):
+                try:
+                    result = generate_workflow_summary(summary_data)
+                    st.markdown("### AI Analysis")
+                    st.write(result)
+                except Exception as exc:
+                    st.error(f"AI analysis failed: {exc}")
+
+        # AI BOTTLENECK ANALYSIS
+        st.divider()
+        st.markdown("### AI Bottleneck Analysis")
+
+        if filtered_summary.empty:
+            st.info("No transition data available for bottleneck analysis.")
+        elif st.button("Generate AI Bottleneck Analysis"):
+            transition_data = filtered_summary.to_dict(orient="records")
+
+            with st.spinner("Gemini is analysing transition times..."):
+                try:
+                    result = generate_bottleneck_analysis(transition_data)
+                    st.markdown("### Bottleneck Insights")
+                    st.write(result)
+                except Exception as exc:
+                    st.error(f"Bottleneck analysis failed: {exc}")
+
+
+
+# --------------------------------------------------
+# AI WORKFLOW SUMMARY
+# --------------------------------------------------
+elif page == "AI Workflow Summary":
+    st.markdown("## AI Workflow Summary")
+
+    if filtered.empty:
+        st.info("No events available for analysis.")
+    else:
+        workflows = (
+            filtered.sort_values(["case_id", "timestamp"])
+            .groupby("case_id")["activity"]
+            .agg(lambda x: " → ".join(x.astype(str)))
+        )
+
+        summary_data = {
+            "encounters": int(len(workflows)),
+            "events": int(len(filtered)),
+            "distinct_activities": int(filtered["activity"].nunique()),
+            "common_activities": filtered["activity"].value_counts().head(8).to_dict(),
+            "common_workflows": workflows.value_counts().head(5).to_dict(),
+        }
+
+        st.write("Aggregate workflow statistics are ready.")
+
+        # AI WORKFLOW SUMMARY
+        if st.button("Generate AI Workflow Summary"):
+            with st.spinner("Gemini is analysing workflow patterns..."):
+                try:
+                    result = generate_workflow_summary(summary_data)
+                    st.markdown("### AI Analysis")
+                    st.write(result)
+                except Exception as exc:
+                    st.error(f"AI analysis failed: {exc}")
+
+        # AI BOTTLENECK ANALYSIS
+        st.divider()
+        st.markdown("### AI Bottleneck Analysis")
+
+        if filtered_summary.empty:
+            st.info("No transition data available for bottleneck analysis.")
+        elif st.button("Generate AI Bottleneck Analysis"):
+            transition_data = filtered_summary.to_dict(orient="records")
+
+            with st.spinner("Gemini is analysing transition times..."):
+                try:
+                    result = generate_bottleneck_analysis(transition_data)
+                    st.markdown("### Bottleneck Insights")
+                    st.write(result)
+                except Exception as exc:
+                    st.error(f"Bottleneck analysis failed: {exc}")
 # --------------------------------------------------
 # FOOTER
 # --------------------------------------------------
