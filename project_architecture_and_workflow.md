@@ -364,3 +364,38 @@ CSV handoff to ingestion / transformation owners
 ```
 
 This generation/validation stage is documented from the cached `dolly-careflow` branch. It is not invoked by the local nightly dry-run script on `PrasadKavitake`.
+
+## 19. BigQuery storage and dbt handoff (Day 3)
+
+### Intended warehouse stages
+
+Across the task branches, BigQuery is intended to hold the event rows centrally so that transformations and analytics can query a shared source. The Lehana branch provides a dbt staging-view example: it reads `careflow-analytics-98234.careflow_analytics.event_logs`, casts `event_id` and `case_id` to strings, trims activity labels, safely casts the timestamp, and substitutes `Unknown` for a blank department. Its schema tests check that the core identifiers, activity, timestamp, and department are populated and that `event_id` is unique.
+
+In this design, raw event rows are loaded first, dbt standardizes and checks them, and downstream SQL/dashboard components consume a documented table contract. The dbt files describe a transformation and checks; they do not by themselves schedule the model or guarantee that it has run in the target BigQuery project.
+
+### Upload paths found on `PrasadKavitake`
+
+The checked-out branch has two independent uploader scripts:
+
+- `src/upload_to_bigquery.py` reads `data/ehr_events_full.csv`, validates a 15-column event schema, rejects duplicate event IDs, and targets `careflow_analytics.event_logs_test`.
+- `src/upload_enhanced_to_bigquery.py` reads the root-level `ehr_events_enhanced.csv`, relies on schema autodetection, and targets `careflow_analytics.event_logs_enhanced`.
+
+Both load jobs use `WRITE_TRUNCATE`, so running either script replaces the contents of its destination table. They are direct cloud-write commands and are not called by the local nightly dry run. They require Google credentials, the relevant BigQuery permissions, and a configured project/dataset.
+
+### Integration gap to resolve
+
+The cached branches refer to `event_logs`, `event_logs_test`, `event_logs_enhanced`, and `event_logs_analysis`. The Lehana dbt model reads `event_logs`, while the checked-out `PrasadKavitake` dbt model reads `event_logs_analysis`; the dashboard reader also targets `event_logs`. These names and model definitions should not be treated as one connected storage design until the team confirms which tables exist and selects a canonical source and staging model.
+
+The 15-column generated CSV, the optional 19-column locally enriched CSV, and dbt's selected output fields also represent different contracts. Before loading or transforming the full dataset, agree on field names and types, null behavior, timestamp naming, derived-field definitions, and whether refreshes replace or append records. No production scheduler or automatic raw-to-dbt handoff is evidenced by these scripts.
+
+```text
+Generated CSV ──> manual uploader ──> chosen BigQuery raw table
+                                      ↓
+                              dbt staging view
+                                      ↓
+                              schema/data tests
+                                      ↓
+                         SQL and dashboard readers
+```
+
+This is the intended warehouse handoff across branches. In the checked-out code, the uploaders, dbt model, SQL queries, and dashboard reads remain separately configured entry points.
