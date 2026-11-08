@@ -399,3 +399,37 @@ Generated CSV ──> manual uploader ──> chosen BigQuery raw table
 ```
 
 This is the intended warehouse handoff across branches. In the checked-out code, the uploaders, dbt model, SQL queries, and dashboard reads remain separately configured entry points.
+
+## 20. SQL analytics and process-mining analysis (Day 4)
+
+### BigQuery SQL analysis on `PrasadKavitake`
+
+The checked-out branch contains standalone BigQuery SQL files for several analysis questions:
+
+- `waitingTimeAnalysis.sql` orders events within each case and uses `LAG` to compare consecutive activities and timestamps. It summarizes non-negative elapsed intervals by transition with count, mean, median, and maximum.
+- `pathwayBottleneckRanking.sql` ranks observed transitions using the 90th-percentile elapsed interval, and requires at least 30 observations for a transition to be ranked.
+- `caseDurationAnalysis.sql` and `patientJourneyAnalysis.sql` summarize case duration from the first to last recorded event and related journey measures.
+- `reworkAnalysis.sql` counts repeated activity types within a case; repeated visits are a proxy, not proof of unnecessary work.
+- `patientOutcomeAnalysis.sql` summarizes final disposition by case, while `dataQualityChecks.sql` checks key-field completeness and duplicate event IDs.
+- `bottleneckAnalysis.sql` groups the derived `waiting_time_minutes` field by department and activity.
+
+These queries are analysis definitions, not scheduled jobs. The files reference multiple BigQuery tables and depend on the selected table containing their expected columns. In particular, a timestamp gap between events is not necessarily time spent waiting, and a first-to-last timestamp span is not necessarily the full real-world visit duration.
+
+### Python transition analysis
+
+`src/waiting_time_analysis.py` performs a related local analysis with Pandas: it sorts by case and timestamp, identifies each case's prior event, calculates elapsed minutes, excludes negative intervals, and saves interval details and transition summaries. Its configured default input file was absent from the repository listing reviewed earlier, so that path needs to be supplied or confirmed before the default command can run successfully.
+
+### PM4Py discovery and conformance on `Vishweswaran`
+
+The cached `Vishweswaran` branch contains a separate Streamlit process-mining application. It formats event records for PM4Py, discovers standard process models (including directly-follows, heuristics-net, and Petri-net views), and provides a frequency-filtered pathway abstraction and patient timelines. Its compliance view constructs a reference Petri net and uses alignment-based conformance diagnostics to compare observed traces with that model. A clinician/department audit view groups activities by staff/resource and department.
+
+The reference process and its definition of deviation are part of the analysis assumptions. Conformance scores describe fit to that encoded model; they do not establish clinical correctness. The clinician audit and BigQuery data access are also separate from the SQL files and dashboard on `PrasadKavitake` in the cached branch snapshot.
+
+```text
+Event rows
+   ├──> SQL: transitions, case duration, outcomes, repeats, quality summaries
+   ├──> Python: local per-case elapsed intervals and transition aggregates
+   └──> PM4Py: discovered process models and comparison to a reference model
+```
+
+The team-wide analysis workflow is therefore a set of complementary approaches. Aligning event ordering, input table, filters, and measure definitions is necessary before comparing their results or presenting them as one consistent analytics layer.
