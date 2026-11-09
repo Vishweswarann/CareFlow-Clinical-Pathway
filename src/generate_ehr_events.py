@@ -244,9 +244,17 @@ def describe_event(rng, activity, occurrence, triage_level):
 # 3. MAIN GENERATOR
 # ---------------------------------------------------------------------------
 
+
 def generate_events(n_encounters=None, target_events=None, seed=42,
                     start_date=datetime(2025, 1, 1), days=365):
-        if n_encounters is not None and target_events is not None:
+    """Build the full event log and return it as a pandas DataFrame.
+
+    Stops when n_encounters encounters were created, or once at least
+    target_events events exist (whichever limit is given). An encounter is
+    never cut in half, so the final row count can be slightly above the target.
+    """
+
+    if n_encounters is not None and target_events is not None:
         raise ValueError("Give either n_encounters or target_events, not both.")
 
     if n_encounters is not None and n_encounters < 1:
@@ -260,16 +268,12 @@ def generate_events(n_encounters=None, target_events=None, seed=42,
 
     if not isinstance(start_date, datetime):
         raise TypeError("start_date must be a datetime object.")
-    """Build the full event log and return it as a pandas DataFrame.
 
-    Stops when n_encounters encounters were created, or once at least
-    target_events events exist (whichever limit is given). An encounter is
-    never cut in half, so the final row count can be slightly above the target.
-    """
     if n_encounters is None and target_events is None:
         raise ValueError("Give n_encounters or target_events.")
 
-    rng = random.Random(seed)   # our own random generator -> reproducible
+    rng = random.Random(seed)
+  # our own random generator -> reproducible
     rows = []
     encounter_number = 0
 
