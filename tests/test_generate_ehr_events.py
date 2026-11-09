@@ -135,3 +135,29 @@ def test_sample_event_log_integrity():
 
     timestamps = pd.to_datetime(sample["timestamp"], errors="coerce")
     assert timestamps.notna().all()
+
+@pytest.mark.parametrize("n_encounters", [0, -1, -100])
+def test_rejects_invalid_encounter_count(n_encounters):
+    with pytest.raises(ValueError, match="n_encounters must be at least 1"):
+        generate_events(n_encounters=n_encounters)
+
+
+@pytest.mark.parametrize("target_events", [0, -1, -100])
+def test_rejects_invalid_target_event_count(target_events):
+    with pytest.raises(ValueError, match="target_events must be at least 1"):
+        generate_events(target_events=target_events)
+
+
+def test_rejects_invalid_days():
+    with pytest.raises(ValueError, match="days must be at least 1"):
+        generate_events(n_encounters=1, days=0)
+
+
+def test_rejects_both_size_limits():
+    with pytest.raises(ValueError, match="either n_encounters or target_events"):
+        generate_events(n_encounters=10, target_events=100)
+
+
+def test_rejects_invalid_start_date_type():
+    with pytest.raises(TypeError, match="start_date must be a datetime"):
+        generate_events(n_encounters=1, start_date="2025-01-01")
