@@ -433,3 +433,37 @@ Event rows
 ```
 
 The team-wide analysis workflow is therefore a set of complementary approaches. Aligning event ordering, input table, filters, and measure definitions is necessary before comparing their results or presenting them as one consistent analytics layer.
+
+## 21. Dashboard workflows across task branches (Day 5)
+
+### `PrasadKavitake` and `Lehana` dashboard path
+
+The current branch's `dashboard/app.py` offers CSV upload or a BigQuery sample as its source. The BigQuery reader targets `careflow_analytics.event_logs` and caps the selected sample at 200, 500, or 1,000 rows, with a maximum billed-bytes setting. The app validates the core fields `case_id`, `activity`, and `timestamp`, removes invalid records, and calculates transition intervals in memory. Its pages are Overview, Activity Analysis, Elapsed-Time Analysis, Data Quality, and Process Mining. Users can filter cases and activities; several summary tables can be downloaded as CSV.
+
+The dashboard's elapsed-time values come from gaps between consecutive events within a case. The app labels these intervals as distinct from confirmed waiting times. The Process Mining page uses the loaded and filtered events to create PM4Py views and a frequency-filtered pathway map. A limited BigQuery sample can make metrics and maps incomplete representations of the full table.
+
+The cached Lehana branch contains a related dashboard and BigQuery reader with bounded sampling, service-account-secret/ADC authentication paths, and the same broad analytics-page family. Treat it as a parallel implementation with its own revisions, not as a second live front end automatically combined with the current branch.
+
+### `Vishweswaran` dashboard path
+
+The cached `Vishweswaran` branch contains a separate `src/app.py` application. It queries event data from `careflow-analytics-98234.careflow_analytics.event_logs`, then presents four modules: Executive Compliance, Process Discovery, Interactive Fuzzy Miner & Timelines, and Clinician Operations Audit. Its views include alignment against a hand-built reference process, standard PM4Py process maps, filtered pathway/timeline views, and staff/department workload and transition summaries.
+
+That application's compliance and emergency categories follow rules encoded in its source (including arrival mode and triage level). Those choices are model assumptions for analysis, not external clinical standards. Its BigQuery authentication and dashboard data path are configured separately from the current branch's CSV-or-sample interface.
+
+### Authentication and data-source boundary
+
+The `PrasadKavitake` dashboard's app login uses local SQLite accounts in `dashboard/users.db`; BigQuery access is a separate Google credential flow. A successful app login therefore does not prove warehouse access, and warehouse credentials do not establish a user's dashboard account. The branches contain different dashboard designs and different BigQuery access code, so selecting one integrated deployment requires an explicit decision about authentication, data source, row limits, and which pages are in scope.
+
+```text
+CSV upload or bounded BigQuery read
+                 ↓
+        core-field validation
+                 ↓
+      case/activity filters
+                 ↓
+  in-memory summaries and models
+                 ↓
+ dashboard pages, charts, and exports
+```
+
+These dashboard workflows consume event data for exploration; they do not trigger ingestion or update BigQuery. The repository snapshot does not establish that any dashboard is deployed for production users or that its displayed values have been clinically validated.
