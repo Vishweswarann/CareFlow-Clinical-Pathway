@@ -246,6 +246,20 @@ def describe_event(rng, activity, occurrence, triage_level):
 
 def generate_events(n_encounters=None, target_events=None, seed=42,
                     start_date=datetime(2025, 1, 1), days=365):
+        if n_encounters is not None and target_events is not None:
+        raise ValueError("Give either n_encounters or target_events, not both.")
+
+    if n_encounters is not None and n_encounters < 1:
+        raise ValueError("n_encounters must be at least 1.")
+
+    if target_events is not None and target_events < 1:
+        raise ValueError("target_events must be at least 1.")
+
+    if days < 1:
+        raise ValueError("days must be at least 1.")
+
+    if not isinstance(start_date, datetime):
+        raise TypeError("start_date must be a datetime object.")
     """Build the full event log and return it as a pandas DataFrame.
 
     Stops when n_encounters encounters were created, or once at least
