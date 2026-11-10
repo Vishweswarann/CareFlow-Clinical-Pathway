@@ -257,20 +257,28 @@ def generate_events(n_encounters=None, target_events=None, seed=42,
     if n_encounters is not None and target_events is not None:
         raise ValueError("Give either n_encounters or target_events, not both.")
 
-    if n_encounters is not None and n_encounters < 1:
-        raise ValueError("n_encounters must be at least 1.")
+    if n_encounters is None and target_events is None:
+        raise ValueError("Give n_encounters or target_events.")
 
-    if target_events is not None and target_events < 1:
-        raise ValueError("target_events must be at least 1.")
+    if n_encounters is not None:
+        if isinstance(n_encounters, bool) or not isinstance(n_encounters, int):
+            raise TypeError("n_encounters must be an integer.")
+        if n_encounters < 1:
+            raise ValueError("n_encounters must be at least 1.")
 
+    if target_events is not None:
+        if isinstance(target_events, bool) or not isinstance(target_events, int):
+            raise TypeError("target_events must be an integer.")
+        if target_events < 1:
+            raise ValueError("target_events must be at least 1.")
+
+    if isinstance(days, bool) or not isinstance(days, int):
+        raise TypeError("days must be an integer.")
     if days < 1:
         raise ValueError("days must be at least 1.")
 
     if not isinstance(start_date, datetime):
         raise TypeError("start_date must be a datetime object.")
-
-    if n_encounters is None and target_events is None:
-        raise ValueError("Give n_encounters or target_events.")
 
     rng = random.Random(seed)
   # our own random generator -> reproducible
