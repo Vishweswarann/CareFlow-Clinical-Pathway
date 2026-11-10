@@ -2,23 +2,110 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 import plotly.express as px
-import pm4py
-from pm4py.objects.petri_net.obj import PetriNet, Marking
-from pm4py.objects.petri_net.utils import petri_utils
-from pm4py.algo.filtering.dfg import dfg_filtering
-from pm4py.visualization.dfg import visualizer as dfg_visualizer
-from pm4py.visualization.petri_net import visualizer as pn_visualizer
-from pm4py.visualization.heuristics_net import visualizer as hn_visualizer
+import pm5py
+from pm5py.objects.petri_net.obj import PetriNet, Marking
+from pm5py.objects.petri_net.utils import petri_utils
+from pm5py.algo.filtering.dfg import dfg_filtering
+from pm5py.visualization.dfg import visualizer as dfg_visualizer
+from pm5py.visualization.petri_net import visualizer as pn_visualizer
+from pm5py.visualization.heuristics_net import visualizer as hn_visualizer
 from pyvis.network import Network
 from collections import Counter
 from google.cloud import bigquery
 from google.oauth2 import service_account
 
-st.set_page_config(page_title="CareFlow Analytics", layout="wide")
+st.set_page_config(
+    page_title="CareFlow Analytics", layout="wide", initial_sidebar_state="expanded"
+)
+
+# ==========================================
+# 1. Custom Aesthetic CSS Injection
+# ==========================================
+st.markdown(
+    """
+<style>
+/* Modern typography and overall app background */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+html, body, [class*="css"]  {
+    font-family: 'Inter', sans-serif;
+}
+.stApp {
+    background-color: #f8fafc;
+}
+/* Modern Sidebar Styling */
+[data-testid="stSidebar"] {
+    background-color: #0f172a;
+    border-right: 1px solid #1e293b;
+}
+[data-testid="stSidebar"] .css-17lntkn {
+    color: #cbd5e1;
+}
+/* Elevate and smooth the metric cards */
+[data-testid="stMetric"] {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+[data-testid="stMetric"]:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: #94a3b8;
+}
+[data-testid="stMetricValue"] {
+    color: #0284c7;
+    font-weight: 700;
+}
+/* Clean up dividers for breathing room */
+hr {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+/* Header crispness */
+h1 {
+    color: #0f172a;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    padding-bottom: 0.5rem;
+}
+h2, h3 {
+    color: #1e293b;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+}
+/* Streamline DataFrames */
+.stDataFrame {
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+</style>
+""",
+    unsafe_allow_html=True,
+)
+
+
+# Helper function to apply consistent Plotly aesthetics
+def apply_chart_aesthetics(fig, title_text=""):
+    fig.update_layout(
+        title=dict(
+            text=title_text, font=dict(size=18, color="#0f172a", family="Inter")
+        ),
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Inter", size=13, color="#475569"),
+        margin=dict(l=20, r=20, t=50, b=20),
+        hoverlabel=dict(bgcolor="white", font_size=13, font_family="Inter"),
+    )
+    fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor="#f1f5f9", zeroline=False)
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor="#f1f5f9", zeroline=False)
+    return fig
 
 
 # ==========================================
-# 1. Centralized Data Loader
+# 2. Centralized Data Loader
 # ==========================================
 @st.cache_data
 def fetch_global_data():
@@ -27,17 +114,17 @@ def fetch_global_data():
             st.secrets["gcp_service_account"]
         )
         client = bigquery.Client(
-            credentials=credentials, project="careflow-analytics-98234"
+            credentials=credentials, project="careflow-analytics-98233"
         )
     else:
-        client = bigquery.Client(project="careflow-analytics-98234")
+        client = bigquery.Client(project="careflow-analytics-98233")
 
     query = """
         SELECT 
             event_id, case_id, activity, timestamp, department, 
             event_sequence, resource_role, resource_id, event_detail, 
             arrival_mode, age_group, gender, chief_complaint, triage_level, disposition
-        FROM `careflow-analytics-98234.careflow_analytics.event_logs`
+        FROM `careflow-analytics-98233.careflow_analytics.event_logs`
         ORDER BY case_id, event_sequence
     """
     df = client.query(query).to_dataframe(create_bqstorage_client=False)
@@ -60,11 +147,14 @@ with st.spinner("Initializing CareFlow Platform... Fetching Live Data..."):
         st.stop()
 
 # ==========================================
-# 2. Sidebar Navigation
+# 3. Sidebar Navigation
 # ==========================================
-st.sidebar.title("CareFlow Analytics")
+st.sidebar.markdown(
+    "<h2 style='color: white; text-align: center; padding-bottom: 20px;'>🏥 CareFlow OS</h2>",
+    unsafe_allow_html=True,
+)
 page = st.sidebar.radio(
-    "Select Module:",
+    "NAVIGATION MODULES",
     [
         "Executive Compliance",
         "Process Discovery (Standard Models)",
@@ -75,14 +165,19 @@ page = st.sidebar.radio(
     ],
 )
 st.sidebar.divider()
+st.sidebar.markdown(
+    "<div style='text-align: center; color: #64748b; font-size: 0.8rem;'>Powered by PM5Py & BigQuery</div>",
+    unsafe_allow_html=True,
+)
 
 # ==========================================
-# MODULE 1: Executive Compliance
+# MODULE 2: Executive Compliance
 # ==========================================
 if page == "Executive Compliance":
-    st.title("CareFlow: Executive Clinical Compliance Dashboard")
+    st.title("Executive Clinical Compliance Dashboard")
     st.markdown(
-        "Monitor hospital standard operating procedure (SOP) adherence in real-time."
+        "<p style='color: #64748b; font-size: 1.1rem;'>Monitor hospital standard operating procedure (SOP) adherence in real-time.</p>",
+        unsafe_allow_html=True,
     )
 
     deviation_scope = st.sidebar.radio(
@@ -93,10 +188,10 @@ if page == "Executive Compliance":
         ],
     )
 
-    formatted_df = pm4py.format_dataframe(
+    formatted_df = pm5py.format_dataframe(
         global_df, case_id="case_id", activity_key="activity", timestamp_key="timestamp"
     )
-    event_log = pm4py.convert_to_event_log(formatted_df)
+    event_log = pm5py.convert_to_event_log(formatted_df)
 
     # Build Normative Model
     net = PetriNet("Ideal_ED_Clinical_Pathway")
@@ -141,7 +236,7 @@ if page == "Executive Compliance":
     petri_utils.add_arc_from_to(transitions["t_admit"], p_end, net)
 
     im, fm = Marking({p_start: 1}), Marking({p_end: 1})
-    aligned_traces = pm4py.conformance_diagnostics_alignments(event_log, net, im, fm)
+    aligned_traces = pm5py.conformance_diagnostics_alignments(event_log, net, im, fm)
 
     case_records, breakoff_records = [], []
     red_edges_counter, compliant_edge_counter = Counter(), Counter()
@@ -254,26 +349,26 @@ if page == "Executive Compliance":
 
     st.subheader("Ideal Clinical Workflow vs. Non-Compliant Deviations")
     net_vis = Network(
-        height="620px",
+        height="621px",
         width="100%",
         directed=True,
         bgcolor="#ffffff",
         font_color="#0f172a",
     )
     net_vis.set_options(
-        '{"physics": {"enabled": false}, "layout": {"hierarchical": {"enabled": true, "direction": "LR", "sortMethod": "directed", "nodeSpacing": 140, "levelSeparation": 200}}, "edges": {"smooth": {"type": "cubicBezier", "forceDirection": "horizontal", "roundness": 0.45}}}'
+        '{"physics": {"enabled": false}, "layout": {"hierarchical": {"enabled": true, "direction": "LR", "sortMethod": "directed", "nodeSpacing": 141, "levelSeparation": 200}}, "edges": {"smooth": {"type": "cubicBezier", "forceDirection": "horizontal", "roundness": 0.45}}}'
     )
 
     ideal_nodes = [
-        ("Registration", 1, "#e0f2fe", "#0284c7"),
-        ("Triage", 2, "#e0f2fe", "#0284c7"),
-        ("Doctor Consultation", 3, "#e0f2fe", "#0284c7"),
-        ("Laboratory Testing", 4, "#f0fdf4", "#16a34a"),
-        ("Imaging", 4, "#f0fdf4", "#16a34a"),
-        ("Treatment", 4, "#f0fdf4", "#16a34a"),
-        ("Reassessment", 5, "#f0fdf4", "#16a34a"),
-        ("Discharge", 6, "#dcfce7", "#15803d"),
-        ("Hospital Admission", 6, "#dcfce7", "#15803d"),
+        ("Registration", 2, "#e0f2fe", "#0284c7"),
+        ("Triage", 3, "#e0f2fe", "#0284c7"),
+        ("Doctor Consultation", 4, "#e0f2fe", "#0284c7"),
+        ("Laboratory Testing", 5, "#f0fdf4", "#16a34a"),
+        ("Imaging", 5, "#f0fdf4", "#16a34a"),
+        ("Treatment", 5, "#f0fdf4", "#16a34a"),
+        ("Reassessment", 6, "#f0fdf4", "#16a34a"),
+        ("Discharge", 7, "#dcfce7", "#15803d"),
+        ("Hospital Admission", 7, "#dcfce7", "#15803d"),
     ]
     added_nodes = set()
 
@@ -284,9 +379,16 @@ if page == "Executive Compliance":
             level=lvl,
             shape="box",
             color={"background": bg, "border": border},
-            font={"size": 16, "bold": True},
-            margin=14,
+            font={"size": 17, "bold": True, "face": "Inter"},
+            margin=15,
             borderWidth=2,
+            shadow={
+                "enabled": True,
+                "color": "rgba(0,0,0,0.1)",
+                "size": 10,
+                "x": 0,
+                "y": 4,
+            },
         )
         added_nodes.add(node_id)
 
@@ -295,18 +397,25 @@ if page == "Executive Compliance":
             net_vis.add_node(
                 dst,
                 label=dst,
-                level=6,
+                level=7,
                 shape="box",
                 color={"background": "#fef2f2", "border": "#dc2626"},
-                font={"size": 15, "color": "#991b1b", "bold": True},
-                margin=12,
+                font={"size": 16, "color": "#991b1b", "bold": True, "face": "Inter"},
+                margin=13,
+                shadow={
+                    "enabled": True,
+                    "color": "rgba(220,38,38,0.2)",
+                    "size": 10,
+                    "x": 0,
+                    "y": 4,
+                },
             )
             added_nodes.add(dst)
         tooltip = "\n".join(red_edge_reasons.get((src, dst), []))
         net_vis.add_edge(
             src,
             dst,
-            value=count * 3,
+            value=count * 4,
             label=f"🚨 {count}",
             title=tooltip,
             color={"color": "#ef4444"},
@@ -315,15 +424,15 @@ if page == "Executive Compliance":
 
     for (src, dst), count in compliant_edge_counter.items():
         net_vis.add_edge(
-            src, dst, value=max(count, 1), label=f"{count} Compliant", color="#64748b"
+            src, dst, value=max(count, 2), label=f"{count} Compliant", color="#64748b"
         )
 
     net_vis.save_graph("admin_map.html")
     with open("admin_map.html", "r") as f:
-        components.html(f.read(), height=640)
+        components.html(f.read(), height=641)
 
     st.divider()
-    col_left, col_right = st.columns([1, 1])
+    col_left, col_right = st.columns([1, 1], gap="large")
     with col_left:
         st.subheader("Activities Preceding Non-Compliance")
         if not breakoff_df.empty:
@@ -345,6 +454,8 @@ if page == "Executive Compliance":
                     "Missing Mandatory Step / Drop-off": "#f97316",
                 },
             )
+            fig_break = apply_chart_aesthetics(fig_break)
+            fig_break.update_traces(marker_line_width=0, opacity=0.9)
             st.plotly_chart(fig_break, use_container_width=True)
         else:
             st.success("All patient journeys followed the ideal pathway!")
@@ -362,19 +473,23 @@ if page == "Executive Compliance":
                 ],
                 use_container_width=True,
                 hide_index=True,
-                height=380,
+                height=381,
             )
 
     st.subheader("Patient Journey Compliance Summary")
     st.dataframe(cases_df, use_container_width=True, hide_index=True)
 
 # ==========================================
-# MODULE 2: Process Discovery (Standard Models)
+# MODULE 3: Process Discovery (Standard Models)
 # ==========================================
 elif page == "Process Discovery (Standard Models)":
     st.title("CareFlow Process Map Explorer")
+    st.markdown(
+        "<p style='color: #64748b;'>Generate standard process mining models from the raw event logs.</p>",
+        unsafe_allow_html=True,
+    )
 
-    event_log = pm4py.format_dataframe(
+    event_log = pm5py.format_dataframe(
         global_df, case_id="case_id", activity_key="activity", timestamp_key="timestamp"
     )
 
@@ -385,37 +500,47 @@ elif page == "Process Discovery (Standard Models)":
     )
     st.subheader(f"Live Process Map: {model_type}")
 
-    if model_type == "Heuristics Net":
-        thresh = st.sidebar.slider("Dependency Threshold", 0.0, 1.0, 0.5, 0.05)
-        heu_net = pm4py.discover_heuristics_net(event_log, dependency_threshold=thresh)
-        st.graphviz_chart(hn_visualizer.apply(heu_net))
-    elif model_type == "Directly-Follows Graph (DFG)":
-        dfg, sa, ea = pm4py.discover_dfg(event_log)
-        st.graphviz_chart(
-            dfg_visualizer.apply(
-                dfg, log=event_log, variant=dfg_visualizer.Variants.FREQUENCY
-            )
+    # Adding a container card wrapper for the charts
+    with st.container():
+        st.markdown(
+            "<div style='background-color: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);'>",
+            unsafe_allow_html=True,
         )
-    elif model_type == "Petri Net":
-        net, im, fm = pm4py.discover_petri_net_inductive(event_log)
-        st.graphviz_chart(pn_visualizer.apply(net, im, fm))
+        if model_type == "Heuristics Net":
+            thresh = st.sidebar.slider("Dependency Threshold", 0.0, 1.0, 0.5, 0.05)
+            heu_net = pm5py.discover_heuristics_net(
+                event_log, dependency_threshold=thresh
+            )
+            st.graphviz_chart(hn_visualizer.apply(heu_net))
+        elif model_type == "Directly-Follows Graph (DFG)":
+            dfg, sa, ea = pm5py.discover_dfg(event_log)
+            st.graphviz_chart(
+                dfg_visualizer.apply(
+                    dfg, log=event_log, variant=dfg_visualizer.Variants.FREQUENCY
+                )
+            )
+        elif model_type == "Petri Net":
+            net, im, fm = pm5py.discover_petri_net_inductive(event_log)
+            st.graphviz_chart(pn_visualizer.apply(net, im, fm))
+        st.markdown("</div>", unsafe_allow_html=True)
 
 # ==========================================
-# MODULE 3: Interactive Fuzzy Miner & Timelines
+# MODULE 4: Interactive Fuzzy Miner & Timelines
 # ==========================================
 elif page == "Interactive Fuzzy Miner & Timelines":
     st.title("Interactive Process Abstraction")
     st.markdown(
-        "Adjust sliders to simulate a Fuzzy Miner, filtering out low-frequency clinical noise."
+        "<p style='color: #64748b; font-size: 1.1rem;'>Adjust sliders to simulate a Fuzzy Miner, filtering out low-frequency clinical noise.</p>",
+        unsafe_allow_html=True,
     )
 
     node_ret = st.sidebar.slider("Node Frequency Threshold", 0.0, 1.0, 0.80, 0.05)
     edge_ret = st.sidebar.slider("Path Frequency Threshold", 0.0, 1.0, 0.70, 0.05)
 
-    event_log = pm4py.format_dataframe(
+    event_log = pm5py.format_dataframe(
         global_df, case_id="case_id", activity_key="activity", timestamp_key="timestamp"
     )
-    dfg, starts, ends = pm4py.discover_dfg(event_log)
+    dfg, starts, ends = pm5py.discover_dfg(event_log)
     counts = dict(event_log["concept:name"].value_counts())
 
     f_dfg, f_starts, f_ends, f_acts = dfg_filtering.filter_dfg_on_activities_percentage(
@@ -425,9 +550,9 @@ elif page == "Interactive Fuzzy Miner & Timelines":
         f_dfg, f_starts, f_ends, f_acts, edge_ret
     )
 
-    net = Network(height="650px", width="100%", directed=True, bgcolor="#ffffff")
+    net = Network(height="651px", width="100%", directed=True, bgcolor="#ffffff")
     net.set_options(
-        '{"physics": {"enabled": false}, "layout": {"hierarchical": {"enabled": true, "direction": "LR", "sortMethod": "directed", "nodeSpacing": 150, "levelSeparation": 180}}, "edges": {"smooth": {"type": "cubicBezier", "roundness": 0.4}}}'
+        '{"physics": {"enabled": false}, "layout": {"hierarchical": {"enabled": true, "direction": "LR", "sortMethod": "directed", "nodeSpacing": 151, "levelSeparation": 180}}, "edges": {"smooth": {"type": "cubicBezier", "roundness": 0.4}}}'
     )
 
     added = set()
@@ -438,17 +563,24 @@ elif page == "Interactive Fuzzy Miner & Timelines":
                     node,
                     label=node,
                     shape="box",
-                    color={"background": "#bae6fd", "border": "#38bdf8"},
-                    font={"size": 18, "bold": True},
-                    margin=15,
+                    color={"background": "#bae6fd", "border": "#0284c7"},
+                    font={"size": 19, "bold": True, "face": "Inter"},
+                    margin=16,
                     borderWidth=2,
+                    shadow={
+                        "enabled": True,
+                        "color": "rgba(0,0,0,0.08)",
+                        "size": 8,
+                        "x": 0,
+                        "y": 4,
+                    },
                 )
                 added.add(node)
         net.add_edge(src, tgt, value=w, label=str(w), color={"color": "#94a3b8"})
 
     net.save_graph("fuzzy_map.html")
     with open("fuzzy_map.html", "r") as f:
-        components.html(f.read(), height=670)
+        components.html(f.read(), height=671)
 
     st.divider()
     st.subheader("Patient Timeline & Bottleneck Analysis")
@@ -475,7 +607,9 @@ elif page == "Interactive Fuzzy Miner & Timelines":
         y="case_id",
         color="activity",
         title="CareFlow Event Timeline",
+        color_discrete_sequence=px.colors.qualitative.Pastel,
     )
+    fig = apply_chart_aesthetics(fig)
     fig.update_layout(
         yaxis=dict(
             type="category",
@@ -483,16 +617,22 @@ elif page == "Interactive Fuzzy Miner & Timelines":
             showticklabels=False,
             title="Patients (Sorted by Arrival Time)",
         ),
-        plot_bgcolor="white",
-        height=600,
+        height=601,
+    )
+    fig.update_traces(
+        marker=dict(size=8, opacity=0.8, line=dict(width=1, color="DarkSlateGrey"))
     )
     st.plotly_chart(fig, use_container_width=True)
 
 # ==========================================
-# MODULE 4: Clinician Operations Audit
+# MODULE 5: Clinician Operations Audit
 # ==========================================
 elif page == "Clinician Operations Audit":
     st.title("🩺 Clinician & Departmental Flow Audit")
+    st.markdown(
+        "<p style='color: #64748b;'>Evaluate individual workload, departmental assignment, and task execution.</p>",
+        unsafe_allow_html=True,
+    )
 
     df = global_df.copy()
     df["next_ts"] = df.groupby("case_id")["timestamp"].shift(-1)
@@ -523,7 +663,7 @@ elif page == "Clinician Operations Audit":
     )
     avg_triage = valid_trans[valid_trans["activity"] == "Triage"]["duration"].mean()
     c2.metric(
-        "Avg Triage Wait", f"{avg_triage:.1f} mins" if pd.notnull(avg_triage) else "N/A"
+        "Avg Triage Wait", f"{avg_triage:.2f} mins" if pd.notnull(avg_triage) else "N/A"
     )
     c3.metric(
         "Charting Reworks",
@@ -535,10 +675,10 @@ elif page == "Clinician Operations Audit":
     )
     st.divider()
 
-    cl, cr = st.columns(2)
+    cl, cr = st.columns(2, gap="large")
     with cl:
         st.subheader("Patient Volume by Role")
-        fig1 = px.bar(
+        fig2 = px.bar(
             df.groupby(["resource_role", "department"])
             .size()
             .reset_index(name="Count"),
@@ -546,54 +686,65 @@ elif page == "Clinician Operations Audit":
             y="resource_role",
             color="department",
             orientation="h",
+            color_discrete_sequence=px.colors.qualitative.Safe,
         )
-        st.plotly_chart(fig1, use_container_width=True)
+        fig2 = apply_chart_aesthetics(fig2)
+        fig2.update_traces(marker_line_width=0, opacity=0.9)
+        st.plotly_chart(fig2, use_container_width=True)
     with cr:
         st.subheader("Department Bottleneck (Wait Times)")
-        fig2 = px.bar(
+        fig3 = px.bar(
             valid_trans.groupby("department")["duration"].mean().reset_index(),
             x="duration",
             y="department",
             orientation="h",
             color="duration",
+            color_continuous_scale="Reds",
         )
-        st.plotly_chart(fig2, use_container_width=True)
+        fig3 = apply_chart_aesthetics(fig3)
+        st.plotly_chart(fig3, use_container_width=True)
 
     st.subheader("Staff Task-Transition Map")
     staff_filtered = df[df["resource_id"].notna()] if staff == "All" else staff_df
-    s_log = pm4py.format_dataframe(
+    s_log = pm5py.format_dataframe(
         staff_filtered,
         case_id="resource_id",
         activity_key="activity",
         timestamp_key="timestamp",
     )
-    s_dfg, _, _ = pm4py.discover_dfg(s_log)
+    s_dfg, _, _ = pm5py.discover_dfg(s_log)
 
-    net2 = Network(height="550px", width="100%", directed=True)
-    net2.set_options(
+    net3 = Network(height="550px", width="100%", directed=True, bgcolor="#ffffff")
+    net3.set_options(
         '{"physics": {"enabled": true, "barnesHut": {"gravitationalConstant": -3000}}, "layout": {"hierarchical": {"enabled": false}}}'
     )
     added = set()
     for (src, tgt), w in s_dfg.items():
         for node in [src, tgt]:
             if node not in added:
-                net2.add_node(
+                net3.add_node(
                     node,
                     label=node,
                     shape="box",
-                    color={"background": "#fed7aa", "border": "#fb923c"},
-                    font={"bold": True},
-                    margin=12,
+                    color={"background": "#ffedd5", "border": "#f97316"},
+                    font={"bold": True, "face": "Inter"},
+                    margin=13,
+                    shadow={
+                        "enabled": True,
+                        "color": "rgba(0,0,0,0.1)",
+                        "size": 5,
+                        "x": 0,
+                        "y": 3,
+                    },
                 )
                 added.add(node)
-        net2.add_edge(src, tgt, value=w, label=str(w))
+        net3.add_edge(src, tgt, value=w, label=str(w), color={"color": "#cbd5e1"})
 
-    net2.save_graph("staff_map.html")
+    net3.save_graph("staff_map.html")
     with open("staff_map.html", "r") as f:
-        components.html(f.read(), height=570)
+        components.html(f.read(), height=571)
 
     st.subheader("Clinician Workload & Task Metrics")
-    # Using the corrected grouping logic (excluding department) for accurate Departments_Visited count
     summary_table = (
         staff_filtered.groupby(["resource_id", "resource_role"], as_index=False)
         .agg(
@@ -628,49 +779,46 @@ elif page == "Clinician Operations Audit":
 
 
 # ==========================================
-# MODULE 5: Peak Hours & Crowding Analysis
+# MODULE 6: Peak Hours & Crowding Analysis
 # ==========================================
 elif page == "Peak Hours & Crowding Analysis":
     st.title("⏰ Hospital Crowding & Time-Slot Bottleneck Analysis")
     st.markdown(
-        "Analyze how patient volume and departmental waiting times shift across different clinical time slots."
+        "<p style='color: #64748b;'>Analyze how patient volume and departmental waiting times shift across different clinical time slots.</p>",
+        unsafe_allow_html=True,
     )
 
     df = global_df.copy()
 
-    # 1. Calculate step duration (waiting/processing time in minutes)
     df["next_ts"] = df.groupby("case_id")["timestamp"].shift(-1)
     df["duration"] = (df["next_ts"] - df["timestamp"]).dt.total_seconds() / 60.0
 
-    # 2. Extract Hour and categorize into Clinical Time Slots
     df["hour"] = df["timestamp"].dt.hour
 
     def assign_time_slot(hr):
-        if 8 <= hr < 12:
-            return "Morning Peak (08:00 - 12:00)"
-        elif 12 <= hr < 16:
-            return "Afternoon (12:00 - 16:00)"
-        elif 16 <= hr < 20:
-            return "Evening Peak (16:00 - 20:00)"
-        elif 20 <= hr < 24:
-            return "Night (20:00 - 00:00)"
+        if 9 <= hr < 12:
+            return "Morning Peak (09:00 - 12:00)"
+        elif 13 <= hr < 16:
+            return "Afternoon (13:00 - 16:00)"
+        elif 17 <= hr < 20:
+            return "Evening Peak (17:00 - 20:00)"
+        elif 21 <= hr < 24:
+            return "Night (21:00 - 00:00)"
         else:
-            return "Late Night / Early Morning (00:00 - 08:00)"
+            return "Late Night / Early Morning (01:00 - 08:00)"
 
     df["time_slot"] = df["hour"].apply(assign_time_slot)
 
     slot_order = [
-        "Morning Peak (08:00 - 12:00)",
-        "Afternoon (12:00 - 16:00)",
-        "Evening Peak (16:00 - 20:00)",
-        "Night (20:00 - 00:00)",
-        "Late Night / Early Morning (00:00 - 08:00)",
+        "Morning Peak (09:00 - 12:00)",
+        "Afternoon (13:00 - 16:00)",
+        "Evening Peak (17:00 - 20:00)",
+        "Night (21:00 - 00:00)",
+        "Late Night / Early Morning (01:00 - 08:00)",
     ]
 
-    # Filter valid transitions (between 0 and 24 hours) for wait-time math
     valid_trans = df[(df["duration"] > 0) & (df["duration"] < 1440)].copy()
 
-    # Sidebar Filters for Interactive Slicing
     st.sidebar.subheader("Time Slot Controls")
     selected_slot = st.sidebar.selectbox(
         "Filter Specific Time Slot (for Network & Timeline):",
@@ -689,9 +837,7 @@ elif page == "Peak Hours & Crowding Analysis":
         df = df[df["is_emergency"] == False]
         valid_trans = valid_trans[valid_trans["is_emergency"] == False]
 
-    # ==========================================
-    # KPI Row: High-Level Crowding Summary
-    # ==========================================
+    # KPI Row
     if not valid_trans.empty:
         slot_wait_means = valid_trans.groupby("time_slot")["duration"].mean()
         worst_slot = slot_wait_means.idxmax()
@@ -712,27 +858,22 @@ elif page == "Peak Hours & Crowding Analysis":
 
     k1, k2, k3 = st.columns(3)
     k1.metric(
-        "Most Crowded Time Slot (Volume)",
-        f"{busiest_slot}",
-        f"{busiest_vol} Active Patients",
+        "Most Crowded Time Slot", f"{busiest_slot}", f"{busiest_vol} Active Patients"
     )
     k2.metric(
-        "Longest Overall Wait Slot", f"{worst_slot}", f"{worst_wait:.1f} mins avg wait"
+        "Longest Overall Wait Slot", f"{worst_slot}", f"{worst_wait:.2f} mins avg wait"
     )
     k3.metric(
         "Peak Departmental Bottleneck",
-        f"{worst_dept} ({worst_dept_val:.1f}m)",
+        f"{worst_dept} ({worst_dept_val:.2f}m)",
         f"During {worst_dept_slot}",
     )
     st.divider()
 
-    # ==========================================
-    # Representation 1 & 2: Overall vs. Departmental Wait Times
-    # ==========================================
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2, gap="large")
 
     with col1:
-        st.subheader("1. Average Patient Wait Time by Time Slot")
+        st.subheader("Average Patient Wait Time by Slot")
         slot_avg_df = (
             valid_trans.groupby("time_slot", as_index=False)["duration"]
             .mean()
@@ -744,14 +885,15 @@ elif page == "Peak Hours & Crowding Analysis":
             y="time_slot",
             orientation="h",
             color="Avg Wait Time (mins)",
-            color_continuous_scale="Reds",
+            color_continuous_scale="RdBu_r",
             category_orders={"time_slot": slot_order},
-            text_auto=".1f",
+            text_auto=".2f",
         )
+        fig_slot_wait = apply_chart_aesthetics(fig_slot_wait)
         st.plotly_chart(fig_slot_wait, use_container_width=True)
 
     with col2:
-        st.subheader("2. Departmental Wait Time Shifts Across Time Slots")
+        st.subheader("Departmental Wait Time Shifts")
         dept_slot_df = (
             valid_trans.groupby(["department", "time_slot"], as_index=False)["duration"]
             .mean()
@@ -765,18 +907,18 @@ elif page == "Peak Hours & Crowding Analysis":
             barmode="group",
             orientation="h",
             category_orders={"time_slot": slot_order},
+            color_discrete_sequence=px.colors.qualitative.Prism,
         )
+        fig_dept_slot = apply_chart_aesthetics(fig_dept_slot)
+        fig_dept_slot.update_traces(marker_line_width=0)
         st.plotly_chart(fig_dept_slot, use_container_width=True)
 
     st.divider()
 
-    # ==========================================
-    # Representation 3: Patient Volume vs. Role & Department
-    # ==========================================
-    col3, col4 = st.columns(2)
+    col3, col4 = st.columns(2, gap="large")
 
     with col3:
-        st.subheader("3. Patient Crowd Volume by Department & Slot")
+        st.subheader("Patient Crowd Volume by Department")
         vol_df = (
             df.groupby(["time_slot", "department"])["case_id"]
             .nunique()
@@ -789,11 +931,14 @@ elif page == "Peak Hours & Crowding Analysis":
             color="department",
             orientation="h",
             category_orders={"time_slot": slot_order},
+            color_discrete_sequence=px.colors.qualitative.Vivid,
         )
+        fig_vol = apply_chart_aesthetics(fig_vol)
+        fig_vol.update_traces(marker_line_width=0, opacity=0.9)
         st.plotly_chart(fig_vol, use_container_width=True)
 
     with col4:
-        st.subheader("4. Hour-by-Hour Departmental Wait Heatmap")
+        st.subheader("Hour-by-Hour Departmental Heatmap")
         heatmap_df = valid_trans.pivot_table(
             index="department", columns="hour", values="duration", aggfunc="mean"
         ).fillna(0)
@@ -803,11 +948,11 @@ elif page == "Peak Hours & Crowding Analysis":
             color_continuous_scale="YlOrRd",
             aspect="auto",
         )
+        fig_heat = apply_chart_aesthetics(fig_heat)
         st.plotly_chart(fig_heat, use_container_width=True)
 
     st.divider()
 
-    # Filter data according to sidebar selection for the granular views below
     slot_filtered_df = (
         df
         if selected_slot == "All Time Slots"
@@ -819,10 +964,7 @@ elif page == "Peak Hours & Crowding Analysis":
         else valid_trans[valid_trans["time_slot"] == selected_slot]
     )
 
-    # ==========================================
-    # Representation 4: Interactive Event Timeline (Scatter Plot)
-    # ==========================================
-    st.subheader(f"5. Chronological Patient Crowding Timeline ({selected_slot})")
+    st.subheader(f"Chronological Patient Crowding Timeline ({selected_slot})")
     if not slot_filtered_df.empty:
         case_starts = (
             slot_filtered_df.groupby("case_id")["timestamp"]
@@ -840,8 +982,9 @@ elif page == "Peak Hours & Crowding Analysis":
             color="department",
             symbol="activity",
             hover_data=["activity", "resource_role", "time_slot"],
-            title="Patient Journey Clusters by Department",
+            color_discrete_sequence=px.colors.qualitative.Bold,
         )
+        fig_scatter = apply_chart_aesthetics(fig_scatter)
         fig_scatter.update_layout(
             yaxis=dict(
                 type="category",
@@ -849,22 +992,14 @@ elif page == "Peak Hours & Crowding Analysis":
                 showticklabels=False,
                 title="Patients (Ordered by Arrival)",
             ),
-            plot_bgcolor="white",
-            height=500,
+            height=501,
         )
         st.plotly_chart(fig_scatter, use_container_width=True)
     else:
         st.info("No timeline events available for the selected time slot.")
 
     st.divider()
-
-    # ==========================================
-    # Representation 5: Dynamic Departmental Bottleneck Network
-    # ==========================================
-    st.subheader(f"6. Departmental Flow & Bottleneck Network ({selected_slot})")
-    st.markdown(
-        "Edge thickness shows patient transition volume; labels indicate both patient count and average transition delay."
-    )
+    st.subheader(f"Departmental Flow & Bottleneck Network ({selected_slot})")
 
     if not slot_valid_trans.empty:
         slot_valid_trans["next_dept"] = slot_valid_trans.groupby("case_id")[
@@ -880,10 +1015,10 @@ elif page == "Peak Hours & Crowding Analysis":
         )
 
         net_crowd = Network(
-            height="550px", width="100%", directed=True, bgcolor="#ffffff"
+            height="551px", width="100%", directed=True, bgcolor="#ffffff"
         )
         net_crowd.set_options(
-            '{"physics": {"enabled": true, "barnesHut": {"gravitationalConstant": -4000}}, "edges": {"smooth": {"type": "dynamic"}}}'
+            '{"physics": {"enabled": true, "barnesHut": {"gravitationalConstant": -3999}}, "edges": {"smooth": {"type": "dynamic"}}}'
         )
 
         added_depts = set()
@@ -897,57 +1032,63 @@ elif page == "Peak Hours & Crowding Analysis":
                         d_node,
                         label=d_node,
                         shape="box",
-                        color={"background": "#e0e7ff", "border": "#4f46e5"},
-                        font={"size": 16, "bold": True, "color": "#1e1b4b"},
-                        margin=12,
+                        color={"background": "#f1f5f9", "border": "#94a3b8"},
+                        font={
+                            "size": 17,
+                            "bold": True,
+                            "color": "#0f172a",
+                            "face": "Inter",
+                        },
+                        margin=15,
+                        shadow={
+                            "enabled": True,
+                            "color": "rgba(0,0,0,0.05)",
+                            "size": 5,
+                            "x": 0,
+                            "y": 3,
+                        },
                     )
                     added_depts.add(d_node)
 
-            # Highlight slow transitions (> 45 mins) in red
-            edge_color = "#ef4444" if wait > 45 else "#64748b"
+            edge_color = "#ef4444" if wait > 45 else "#94a3b8"
             net_crowd.add_edge(
                 src,
                 dst,
                 value=cnt,
-                label=f"{cnt} pts | {wait:.1f}m",
-                title=f"From {src} to {dst}: {cnt} transitions, Avg Delay: {wait:.1f} mins",
-                color=edge_color,
+                label=f"{cnt} pts | {wait:.2f}m",
+                title=f"From {src} to {dst}: {cnt} transitions, Avg Delay: {wait:.2f} mins",
+                color={"color": edge_color, "highlight": "#0f172a"},
             )
 
         net_crowd.save_graph("crowding_net.html")
         with open("crowding_net.html", "r") as f:
-            components.html(f.read(), height=570)
+            components.html(f.read(), height=571)
     else:
         st.info("Insufficient transition records for network generation in this slot.")
 
 # ==========================================
-# MODULE 5: Live ER Wait Room & Boarding
+# MODULE 7: Live ER Wait Room & Boarding
 # ==========================================
 elif page == "Live ER Wait Room & Boarding":
     st.title("🚨 Live ER Wait Room & Bed Capacity")
     st.markdown(
-        "Real-time operational view of active patients, identifying capacity bottlenecks and clinical delays."
+        "<p style='color: #64748b; font-size: 1.1rem;'>Real-time operational view of active patients, identifying capacity bottlenecks and clinical delays.</p>",
+        unsafe_allow_html=True,
     )
 
-    # Simulate 'now' using the latest timestamp in the dataset
     current_time = global_df["timestamp"].max()
 
-    # 1. Isolate the most recent event for every patient
     latest_events = (
         global_df.sort_values("timestamp").groupby("case_id").last().reset_index()
     )
-
-    # 2. Filter for ACTIVE patients (not discharged or admitted yet)
     active_patients = latest_events[
         ~latest_events["activity"].isin(["Discharge", "Hospital Admission"])
     ].copy()
 
-    # 3. Calculate time waiting since their last recorded step
     active_patients["mins_waiting"] = (
         current_time - active_patients["timestamp"]
     ).dt.total_seconds() / 60.0
 
-    # 4. Classify the wait reason based on their last activity
     def classify_wait(row):
         if row["activity"] == "Triage":
             return "Waiting for ER Bed / Initial Consult"
@@ -962,10 +1103,7 @@ elif page == "Live ER Wait Room & Boarding":
 
     active_patients["wait_reason"] = active_patients.apply(classify_wait, axis=1)
 
-    # ==========================================
-    # KPI Row
-    # ==========================================
-    bed_capacity = 30  # Configurable hospital bed limit
+    bed_capacity = 30
     current_load = len(active_patients)
 
     c1, c2, c3 = st.columns(3)
@@ -996,9 +1134,6 @@ elif page == "Live ER Wait Room & Boarding":
 
     st.divider()
 
-    # ==========================================
-    # Wait Reason Breakdown Chart
-    # ==========================================
     st.subheader("Current Bottleneck Breakdown")
     wait_summary = active_patients["wait_reason"].value_counts().reset_index()
     wait_summary.columns = ["Wait Reason", "Patient Count"]
@@ -1010,23 +1145,20 @@ elif page == "Live ER Wait Room & Boarding":
         orientation="h",
         color="Wait Reason",
         text_auto=True,
+        color_discrete_sequence=px.colors.qualitative.Pastel,
     )
-    fig_wait.update_layout(showlegend=False, height=300)
+    fig_wait = apply_chart_aesthetics(fig_wait)
+    fig_wait.update_layout(showlegend=False, height=350)
+    fig_wait.update_traces(marker_line_width=0, opacity=0.9)
     st.plotly_chart(fig_wait, use_container_width=True)
 
     st.divider()
 
-    # ==========================================
-    # Active Patient Roster
-    # ==========================================
     st.subheader("Active Patient Roster (Sorted by Urgency & Wait Time)")
-
-    # Sort by Triage Level (1 is most urgent) then by wait time (longest first)
     roster_df = active_patients.sort_values(
         by=["triage_level", "mins_waiting"], ascending=[True, False]
     )
 
-    # Clean up column names for display
     display_cols = {
         "case_id": "Patient ID",
         "triage_level": "Triage Level",
@@ -1035,13 +1167,13 @@ elif page == "Live ER Wait Room & Boarding":
         "wait_reason": "Current Status",
         "mins_waiting": "Mins Waiting",
     }
-
     roster_display = roster_df[list(display_cols.keys())].rename(columns=display_cols)
     roster_display["Mins Waiting"] = roster_display["Mins Waiting"].round(1)
 
-    # Display with a heatmap gradient on the wait time column
     st.dataframe(
-        roster_display.style.background_gradient(subset=["Mins Waiting"], cmap="Reds"),
+        roster_display.style.background_gradient(subset=["Mins Waiting"], cmap="YlOrRd")
+        .format({"Mins Waiting": "{:.1f}"})
+        .set_properties(**{"text-align": "center", "font-family": "Inter"}),
         use_container_width=True,
         hide_index=True,
         height=500,
