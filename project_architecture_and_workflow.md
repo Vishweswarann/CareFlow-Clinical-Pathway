@@ -467,3 +467,29 @@ CSV upload or bounded BigQuery read
 ```
 
 These dashboard workflows consume event data for exploration; they do not trigger ingestion or update BigQuery. The repository snapshot does not establish that any dashboard is deployed for production users or that its displayed values have been clinically validated.
+
+## 22. Setup, verification, and final integration checklist (Day 6)
+
+### Local setup and verification path
+
+The repository's documented local setup is to create and activate a Python virtual environment, install `requirements.txt`, and run commands from the repository root. The relevant local checks include the generator tests and CI workflow on the `dolly-careflow` task branch, the ID-comparison and elapsed-time tests on `PrasadKavitake`, and the local dry-run pipeline. The dashboard can be started with Streamlit after its UI dependencies are installed. dbt requires a separately configured profile and access to the expected BigQuery project and source table.
+
+The current checkout does not provide a single pinned environment for every branch. Some inputs are generated or ignored, and the Python interval-analysis default path needs an available sample CSV. For that reason, a successful installation alone does not establish that every task branch can be executed from the current `PrasadKavitake` checkout.
+
+BigQuery upload scripts are not safe substitutes for a local test: they issue real load jobs and truncate their configured destinations. Before using them, confirm credentials, billing, the destination table, and whether replacement is intended. By contrast, `src/nightly_bigquery_pipeline.py` is a local dry run and does not query or write BigQuery.
+
+### Final project status
+
+| Stage | Evidence in task branches | Integration status |
+|---|---|---|
+| Synthetic event generation and validation | Generator, schema docs, validation/EDA scripts, tests, and CI in cached `dolly-careflow` | Exists as a separate branch task stream; full CSV is not tracked in Git. |
+| BigQuery loading and dbt checks | Manual upload scripts on `PrasadKavitake`; staging models/tests on `Lehana` and `PrasadKavitake` | Different table names and model definitions need reconciliation. |
+| SQL and process analytics | SQL/Pandas analysis on `PrasadKavitake`; PM4Py discovery/conformance on `Vishweswaran` | Implementations are separate and use their own data assumptions. |
+| Dashboards | Streamlit variants on `Lehana`, `PrasadKavitake`, and `Vishweswaran` | Multiple designs exist; no single team-wide deployment path is established. |
+| Scheduled incremental ingestion | Local dry-run comparison and simulated Pandas merge only in the checked-out branch | No verified live BigQuery incremental merge or configured scheduler. |
+
+### Remaining integration decisions
+
+Before describing the whole project as one operational system, the team still needs to choose a canonical event table and schema; decide how the full generated dataset is handed off; align timestamp names, null treatment, and derived metrics; select the dashboard to maintain; and agree on ownership of credentials, dbt execution, and any scheduler. If incremental cloud ingestion is pursued, implement and validate a BigQuery staging/`MERGE` path separately from the current local simulation, including repeat-batch behavior and failure recovery.
+
+The completed project should therefore be presented as a collection of implemented task components with a clear intended flow, while clearly marking cross-branch integration and production automation as pending. Documentation of this status does not imply that branch merges, cloud jobs, or deployment have occurred.
