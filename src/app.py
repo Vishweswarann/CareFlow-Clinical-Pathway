@@ -2,13 +2,13 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 import plotly.express as px
-import pm5py
-from pm5py.objects.petri_net.obj import PetriNet, Marking
-from pm5py.objects.petri_net.utils import petri_utils
-from pm5py.algo.filtering.dfg import dfg_filtering
-from pm5py.visualization.dfg import visualizer as dfg_visualizer
-from pm5py.visualization.petri_net import visualizer as pn_visualizer
-from pm5py.visualization.heuristics_net import visualizer as hn_visualizer
+import pm4py
+from pm4py.objects.petri_net.obj import PetriNet, Marking
+from pm4py.objects.petri_net.utils import petri_utils
+from pm4py.algo.filtering.dfg import dfg_filtering
+from pm4py.visualization.dfg import visualizer as dfg_visualizer
+from pm4py.visualization.petri_net import visualizer as pn_visualizer
+from pm4py.visualization.heuristics_net import visualizer as hn_visualizer
 from pyvis.network import Network
 from collections import Counter
 from google.cloud import bigquery
@@ -109,22 +109,14 @@ def apply_chart_aesthetics(fig, title_text=""):
 # ==========================================
 @st.cache_data
 def fetch_global_data():
-    if "gcp_service_account" in st.secrets:
-        credentials = service_account.Credentials.from_service_account_info(
-            st.secrets["gcp_service_account"]
-        )
-        client = bigquery.Client(
-            credentials=credentials, project="careflow-analytics-98233"
-        )
-    else:
-        client = bigquery.Client(project="careflow-analytics-98233")
+    client = bigquery.Client(project="careflow-analytics-98234")
 
     query = """
         SELECT 
             event_id, case_id, activity, timestamp, department, 
             event_sequence, resource_role, resource_id, event_detail, 
             arrival_mode, age_group, gender, chief_complaint, triage_level, disposition
-        FROM `careflow-analytics-98233.careflow_analytics.event_logs`
+        FROM `careflow-analytics-98234.careflow_analytics.event_logs`
         ORDER BY case_id, event_sequence
     """
     df = client.query(query).to_dataframe(create_bqstorage_client=False)
@@ -166,7 +158,7 @@ page = st.sidebar.radio(
 )
 st.sidebar.divider()
 st.sidebar.markdown(
-    "<div style='text-align: center; color: #64748b; font-size: 0.8rem;'>Powered by PM5Py & BigQuery</div>",
+    "<div style='text-align: center; color: #64748b; font-size: 0.8rem;'>Powered by pm4Py & BigQuery</div>",
     unsafe_allow_html=True,
 )
 
@@ -188,10 +180,10 @@ if page == "Executive Compliance":
         ],
     )
 
-    formatted_df = pm5py.format_dataframe(
+    formatted_df = pm4py.format_dataframe(
         global_df, case_id="case_id", activity_key="activity", timestamp_key="timestamp"
     )
-    event_log = pm5py.convert_to_event_log(formatted_df)
+    event_log = pm4py.convert_to_event_log(formatted_df)
 
     # Build Normative Model
     net = PetriNet("Ideal_ED_Clinical_Pathway")
@@ -236,7 +228,7 @@ if page == "Executive Compliance":
     petri_utils.add_arc_from_to(transitions["t_admit"], p_end, net)
 
     im, fm = Marking({p_start: 1}), Marking({p_end: 1})
-    aligned_traces = pm5py.conformance_diagnostics_alignments(event_log, net, im, fm)
+    aligned_traces = pm4py.conformance_diagnostics_alignments(event_log, net, im, fm)
 
     case_records, breakoff_records = [], []
     red_edges_counter, compliant_edge_counter = Counter(), Counter()
@@ -489,7 +481,7 @@ elif page == "Process Discovery (Standard Models)":
         unsafe_allow_html=True,
     )
 
-    event_log = pm5py.format_dataframe(
+    event_log = pm4py.format_dataframe(
         global_df, case_id="case_id", activity_key="activity", timestamp_key="timestamp"
     )
 
@@ -508,19 +500,19 @@ elif page == "Process Discovery (Standard Models)":
         )
         if model_type == "Heuristics Net":
             thresh = st.sidebar.slider("Dependency Threshold", 0.0, 1.0, 0.5, 0.05)
-            heu_net = pm5py.discover_heuristics_net(
+            heu_net = pm4py.discover_heuristics_net(
                 event_log, dependency_threshold=thresh
             )
             st.graphviz_chart(hn_visualizer.apply(heu_net))
         elif model_type == "Directly-Follows Graph (DFG)":
-            dfg, sa, ea = pm5py.discover_dfg(event_log)
+            dfg, sa, ea = pm4py.discover_dfg(event_log)
             st.graphviz_chart(
                 dfg_visualizer.apply(
                     dfg, log=event_log, variant=dfg_visualizer.Variants.FREQUENCY
                 )
             )
         elif model_type == "Petri Net":
-            net, im, fm = pm5py.discover_petri_net_inductive(event_log)
+            net, im, fm = pm4py.discover_petri_net_inductive(event_log)
             st.graphviz_chart(pn_visualizer.apply(net, im, fm))
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -537,10 +529,10 @@ elif page == "Interactive Fuzzy Miner & Timelines":
     node_ret = st.sidebar.slider("Node Frequency Threshold", 0.0, 1.0, 0.80, 0.05)
     edge_ret = st.sidebar.slider("Path Frequency Threshold", 0.0, 1.0, 0.70, 0.05)
 
-    event_log = pm5py.format_dataframe(
+    event_log = pm4py.format_dataframe(
         global_df, case_id="case_id", activity_key="activity", timestamp_key="timestamp"
     )
-    dfg, starts, ends = pm5py.discover_dfg(event_log)
+    dfg, starts, ends = pm4py.discover_dfg(event_log)
     counts = dict(event_log["concept:name"].value_counts())
 
     f_dfg, f_starts, f_ends, f_acts = dfg_filtering.filter_dfg_on_activities_percentage(
@@ -706,13 +698,13 @@ elif page == "Clinician Operations Audit":
 
     st.subheader("Staff Task-Transition Map")
     staff_filtered = df[df["resource_id"].notna()] if staff == "All" else staff_df
-    s_log = pm5py.format_dataframe(
+    s_log = pm4py.format_dataframe(
         staff_filtered,
         case_id="resource_id",
         activity_key="activity",
         timestamp_key="timestamp",
     )
-    s_dfg, _, _ = pm5py.discover_dfg(s_log)
+    s_dfg, _, _ = pm4py.discover_dfg(s_log)
 
     net3 = Network(height="550px", width="100%", directed=True, bgcolor="#ffffff")
     net3.set_options(
